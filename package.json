@@ -4,7 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "mkdir": "mkdir -p build",
+    "clean": "rm -rf build",
+    "build": "npm run clean && npm run mkdir webpack ",
+    "serve": "node server/index.js"
   },
   "repository": {
     "type": "git",
