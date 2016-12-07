@@ -6,9 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "mkdir": "npm run mkdir:public",
-    "clean": "npm run clean:public",
+    "clean": "rm -rf build",
     "mkdir:public": "mkdir -p build/dev/public",
-    "clean:public": "rm -rf build/dev/public",
     "build": "npm run clean && npm run mkdir && npm run build:html && npm run build:css && npm run build:js",
     "serve": "node server/index.js",
     "build:html": "npm run clean:html && cp client/index.html build/dev/public",
