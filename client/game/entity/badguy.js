@@ -5,7 +5,7 @@ export default function makeBadGuy() {
 	console.log("Creating bad guy entity");
 	var badguy = {};
 	var graphics = makeBadGuyGraphicComponent(badguy);
-	var location = {x: 200, y: 100};
+	var location = {x: 100, y: 100};
 
 	var components = {
 		graphics: graphics,
