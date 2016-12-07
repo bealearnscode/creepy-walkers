@@ -5,10 +5,11 @@
   "main": "client/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "mkdir": "npm run mkdir:public",
     "clean": "rm -rf build",
+    "mkdir": "npm run mkdir:public && npm run mkdir:assets",
     "mkdir:public": "mkdir -p build/dev/public",
-    "build": "npm run clean && npm run mkdir && npm run build:html && npm run build:css && npm run build:js",
+    "mkdir:assets": "mkdir -p build/dev/public/assets",
+    "build": "npm run clean && npm run mkdir && npm run build:html && npm run build:css && npm run build:js && npm run build:assets",
     "serve": "[ \"$NODE_ENV\" = \"production\" ] && npm run serve:server:production || npm run serve:server:dev",
     "serve:server:production": "NODE_ENV=production CLIENT_PATH=build/production/public node build/production/server/index.js",
     "serve:server:dev": "NODE_ENV=development CLIENT_PATH=build/dev/public nodemon --exec babel-node server/index.js --watch server --ignore server/public",
@@ -17,7 +18,9 @@
     "build:css": "npm run clean:css && cp client/main.css build/dev/public",
     "clean:css": "rm -f build/main.css",
     "build:js": "npm run clean:js && webpack",
-    "clean:js": "rm -f build/$npm_package_name.$npm_package_version.js build/$npm_package_name.$npm_package_version.js.map"
+    "clean:js": "rm -f build/$npm_package_name.$npm_package_version.js build/$npm_package_name.$npm_package_version.js.map",
+    "build:assets": "npm run clean:assets && cp -r client/assets build/dev/public/assets",
+    "clean:assets": "rm -rf build/dev/public/assets"
   },
   "repository": {
     "type": "git",
