@@ -96,7 +96,7 @@ function drawPath(path) {
 	}		
 }
 
-
+console.log(findPath(map2.layout,[0,1],[15,14]))
 var w = window;
 requestAnimationFrame = w.requestAnimationFrame || w.webkitRequestAnimationFrame || w.msRequestAnimationFrame || w.mozRequestAnimationFrame;
 
