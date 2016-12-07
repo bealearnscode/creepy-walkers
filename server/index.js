@@ -4,7 +4,7 @@ var http = require('http');
 var express = require('express');
 
 var app = express();
-app.use(express.static('public'));
+app.use(express.static('build/dev/public'));
 
 var server = http.Server(app);
 var io = socket_io(server);
