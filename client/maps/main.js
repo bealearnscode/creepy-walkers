@@ -75,12 +75,12 @@ function renderMap(map) {
 			switch(map.layout[x][y]) {
 				case 0:
 					if(dirtReady) {
-						ctx.drawImage(dirt,0,0,tileWidth,tileHeight,x*tileWidth,y*tileHeight,tileWidth,tileHeight)
+						ctx.drawImage(dirt,0,0,tileWidth,tileHeight,y*tileWidth,x*tileHeight,tileWidth,tileHeight)
 					}		
 					break;
 				case 1:
 					if(grassReady) {
-						ctx.drawImage(grass,0,0,tileWidth,tileHeight,x*tileWidth,y*tileHeight,tileWidth,tileHeight)
+						ctx.drawImage(grass,0,0,tileWidth,tileHeight,y*tileWidth,x*tileHeight,tileWidth,tileHeight)
 					}
 					break;
 			}
@@ -91,7 +91,7 @@ function renderMap(map) {
 function drawPath(path) {
 	for(var i = 0;i<path.length;i++) {
 		if(coinReady) {
-			ctx.drawImage(coin,0,0,8,8,path[i][0]*tileWidth,path[i][1]*tileHeight,8,8)
+			ctx.drawImage(coin,0,0,8,8,path[i][1]*tileWidth,path[i][0]*tileHeight,8,8)
 		}	
 	}		
 }
