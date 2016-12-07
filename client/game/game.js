@@ -1,13 +1,19 @@
+import graphicsSystem from './system/graphics';
+import badguy from './entity/badguy';
+
 export default function game() {
-	//import entities
-	//import systems
+
+	var entities = [badguy()];
+	var canvas = document.getElementById("canvas");
+	var graphics = graphicsSystem(entities, canvas);
 
 	function run() {
-		//run the systems
 		console.log("test");
+		graphics.run();
 	}
 
 	return Object.freeze ({
 		run: run,
 	});
+	
 }
