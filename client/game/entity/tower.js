@@ -12,8 +12,8 @@ export default function makeTower() {
 	});
 	
 	var location = tileLocationComponent({
-		x: 15,
-		y: 15,
+		x: 2,
+		y: 3,
 	});
 
 	var components = {

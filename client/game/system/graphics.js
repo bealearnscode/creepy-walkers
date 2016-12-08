@@ -23,11 +23,10 @@ export default function graphicsSystem(entities, gameCanvas) {
 	
 		//console.log("canvas width: " + canvas.width + " canvas height: " +  canvas.height);
 		
-		var newWidth = ((canvas.width / canvas.width) * 16) - 1;
-		var newHeight = ((canvas.height / canvas.height) * 16) - 1;
+		var newWidth = (canvas.width / 16);
+		var newHeight = (canvas.height / 16);
 		/*ctx.scale(canvas.width, newWidth);
 		ctx.scale(canvas.height, newHeight);*/
-		console.log("canvas width: " + newWidth + "canvas height: " +  newHeight);
 		ctx.scale(newWidth, newHeight);
 		console.log("canvas width: " + canvas.width + " canvas height: " +  canvas.height)
 		

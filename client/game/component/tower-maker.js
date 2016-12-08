@@ -7,11 +7,7 @@ export default function towerGraphicComponent(spec) {
 	function drawTower(ctx, x, y) {
 		ctx.save();
 		ctx.imageSmoothingEnabled = false;
-		ctx.beginPath();
-		ctx.rect(x, y, 4, 4);
-		ctx.stroke();
-		ctx.closePath();
-		ctx.drawImage(spriteSheet, 0, 0, 16, 16, x, y, 4, 4);
+		ctx.drawImage(spriteSheet, 0, 0, 16, 16, x, y, 1, 1);
 		ctx.restore();
 	}
 

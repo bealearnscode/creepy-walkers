@@ -7,7 +7,7 @@ export default function badGuyGraphicComponent(entity) {
 
 	function drawBadGuy(ctx) {
 		ctx.beginPath();
-		ctx.arc(badguy.getXLocation(), badguy.getYLocation(), 4, 0, Math.PI * 2);
+		ctx.arc(badguy.getXLocation(), badguy.getYLocation(), 1, 0, Math.PI * 2);
 		ctx.fillStyle = "#ef4426";
 		ctx.fill();
 		ctx.closePath();
