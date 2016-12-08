@@ -8,9 +8,12 @@ export default function makeLevelGraphicComponent(spec) {
 	var grass = new Image()
 	grass.src = spec.grass;
 
+	var tileWidth = 32
+	var tileHeight = 32 
+
 	function drawMap(ctx,map) {
-		for(var y = 0;y<(map.dimensions);y++) {
-		for(var x = 0; x<(map.dimensions);x++) {
+		for(var y = 0;y<map.dimensions;y++) {
+		for(var x = 0; x<map.dimensions;x++) {
 			switch(map.layout[x][y]) {
 				case 0:
 					ctx.drawImage(dirt,0,0,tileWidth,tileHeight,y*tileWidth,x*tileHeight,tileWidth,tileHeight)	
@@ -18,11 +21,12 @@ export default function makeLevelGraphicComponent(spec) {
 				case 1:
 					ctx.drawImage(grass,0,0,tileWidth,tileHeight,y*tileWidth,x*tileHeight,tileWidth,tileHeight)
 					break;
+				}
 			}
 		}
 	}
 	
 	return Object.freeze ({
 		drawMap: drawMap,
-	})
+	});
 }

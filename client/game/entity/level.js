@@ -7,8 +7,8 @@ export default function makeLevel() {
 	var level = {};
 	var graphics = makeLevelGraphicComponent({
 		entityOfComponent: level,
-		dirt: 'assets/img/maptiles/dirt-noborder.png';
-		grass: 'assets/img/maptiles/grass-noborder.png';
+		dirt: 'assets/img/maptiles/dirt-noborder.png',
+		grass: 'assets/img/maptiles/grass-noborder.png',
 	});
 
 	var components = {
@@ -16,14 +16,14 @@ export default function makeLevel() {
 	};
 
 	level.getMap = function() {
-		return makeLevelMapComponent.map
+		return makeLevelMapComponent().map
 	}
 
 	level.getComponentKeys = function() {
 		return Object.keys(components);
 	};
 
-	level.draw = function(ctx,map) {
+	level.draw = function(ctx) {
 		components.graphics.drawMap(ctx,level.getMap())
 	}
 
