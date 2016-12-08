@@ -1,13 +1,11 @@
 //this is where I load the grass and dirt
 export default function makeLevelGraphicComponent(spec) {
-	console.log('makin the land.. like god')
+	console.log('makin the land')
 
-	var entity = spec.entityOfComponent;
 	var dirt = new Image()
 	dirt.src = spec.dirt;
 	var grass = new Image()
 	grass.src = spec.grass;
-
 	var tileWidth = 32
 	var tileHeight = 32 
 

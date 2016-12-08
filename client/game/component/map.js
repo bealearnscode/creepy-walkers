@@ -19,8 +19,8 @@ export default function mapComponent(spec) {
 			[1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1],
 			],
 		dimensions: 16,
-		startingPoint: [1,0],
-		endingPoint: [14,15],
+		startingPoint: {x:1,y:0},
+		endPoint: {x:14,y:15},
 	}
 
 	return Object.freeze({

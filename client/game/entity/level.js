@@ -10,14 +10,17 @@ export default function makeLevel() {
 		dirt: 'assets/img/maptiles/dirt-noborder.png',
 		grass: 'assets/img/maptiles/grass-noborder.png',
 	});
+	var map = makeLevelMapComponent().map
 
 	var components = {
 		graphics: graphics,
+		map: map
 	};
 
 	level.getMap = function() {
-		return makeLevelMapComponent().map
+		return components.map
 	}
+
 
 	level.getComponentKeys = function() {
 		return Object.keys(components);
