@@ -20,6 +20,7 @@ export default function graphicsSystem(entities, gameCanvas) {
 
 		ctx.save();
 
+		//Every graphic entity that has a graphic component needs a draw function
 		graphicalEntities.forEach(function(entity) {
 			if(entity.getComponentKeys().includes("graphics")) {
 				entity.draw(ctx);

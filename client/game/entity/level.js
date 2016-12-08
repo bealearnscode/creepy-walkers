@@ -1,3 +1,6 @@
+import makeLevelMapComponent from '../component/map';
+import makeLevelGraphicComponent from '../component/terrain-graphic';
+
 export default function makeLevel() {
 
 	console.log("making levels, ya'll");

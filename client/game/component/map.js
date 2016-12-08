@@ -1,21 +1,48 @@
 export default function mapComponent(spec) {
 
-	var currentLocation = {
-		x: spec.x,
-		y: spec.y,
-	};
-
-	function getXLocation() {
-		return currentLocation.x;
+	//0: dirt
+	//1: grass
+	
+	var map2 = {
+		layout: [
+		[1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+		[1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1],
+		[1,0,1,0,1,1,1,1,1,1,1,1,1,1,0,1],
+		[1,0,1,0,1,0,0,0,0,0,0,0,0,1,0,1],
+		[1,0,1,0,1,0,1,1,1,1,1,1,0,1,0,1],
+		[1,0,1,0,1,0,1,0,0,0,0,1,0,1,0,1],
+		[1,0,1,0,1,0,1,0,1,1,0,1,0,1,0,1],
+		[1,0,1,0,1,0,1,0,0,1,0,1,0,1,0,1],
+		[1,0,1,0,1,0,1,0,0,1,0,1,0,1,0,1],
+		[1,0,1,0,1,0,1,1,0,1,0,1,0,1,0,1],
+		[1,0,1,0,1,0,0,0,0,1,0,1,0,1,0,1],
+		[1,0,1,0,1,1,1,1,1,1,0,1,0,1,0,1],
+		[1,0,1,0,0,0,0,0,0,0,0,1,0,1,0,1],
+		[1,0,1,1,1,1,1,1,1,1,1,1,0,1,0,1],
+		[1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1],
+		[1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1],
+		],
+		dimensions: 16,
+		startingPoint: [1,0],
+		endingPoint: [14,15],
 	}
 
-	function getYLocation() {
-		return currentLocation.y;
-	}
+	// var currentLocation = {
+	// 	x: spec.x,
+	// 	y: spec.y,
+	// };
 
-	return Object.freeze({
-		getXLocation: getXLocation,
-		getYLocation: getYLocation,
-	});
+	// function getXLocation() {
+	// 	return currentLocation.x;
+	// }
+
+	// function getYLocation() {
+	// 	return currentLocation.y;
+	// }
+
+	// return Object.freeze({
+	// 	getXLocation: getXLocation,
+	// 	getYLocation: getYLocation,
+	// });
 
 }

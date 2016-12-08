@@ -1,5 +1,5 @@
 import makeTowerGraphicComponent from  '../component/tower-maker';
-import makeTowerLocationComponent from '../component/tower-location';
+import makeTowerLocationComponent from '../component/location';
 
 export default function makeTower() {
 
