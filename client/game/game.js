@@ -1,13 +1,23 @@
+import graphicsSystem from './system/graphics';
+import inputSystem from './system/input';
+import badguy from './entity/badguy';
+import tower from './entity/tower';
+
 export default function game() {
-	//import entities
-	//import systems
+
+	var entities = [badguy(), tower()];
+	var canvas = document.getElementById("canvas");
+	var graphics = graphicsSystem(entities, canvas);
+	var input = inputSystem(entities, canvas);
 
 	function run() {
-		//run the systems
 		console.log("test");
+		graphics.run();
+		input.run();
 	}
 
 	return Object.freeze ({
 		run: run,
 	});
+	
 }

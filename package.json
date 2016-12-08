@@ -5,17 +5,27 @@
   "main": "client/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "mkdir": "npm run mkdir:public",
     "clean": "rm -rf build",
+    "mkdir": "npm run mkdir:public && npm run mkdir:assets",
     "mkdir:public": "mkdir -p build/dev/public",
-    "build": "npm run clean && npm run mkdir && npm run build:html && npm run build:css && npm run build:js",
-    "serve": "node server/index.js",
+    "mkdir:assets": "mkdir -p build/dev/public/assets",
+    "build": "npm run clean && npm run mkdir && npm run build:html && npm run build:css && npm run build:js && npm run build:assets",
+    "watch": "npm run watch:html & npm run watch:css & npm run watch:js",
+
+    "serve": "[ \"$NODE_ENV\" = \"production\" ] && npm run serve:server:production || npm run serve:server:dev",
+    "serve:server:production": "NODE_ENV=production CLIENT_PATH=build/production/public node build/production/server/index.js",
+    "serve:server:dev": "NODE_ENV=development CLIENT_PATH=build/dev/public nodemon --exec babel-node server/index.js --watch server --ignore server/public",
     "build:html": "npm run clean:html && cp client/index.html build/dev/public",
+    "watch:html": "npm run build:html && chokidar client/index.html -c 'npm run build:html'",
     "clean:html": "rm -f build/index.html",
     "build:css": "npm run clean:css && cp client/main.css build/dev/public",
+    "watch:css": "npm run build:css && chokidar client/main.css -c 'npm run build:css'",
     "clean:css": "rm -f build/main.css",
     "build:js": "npm run clean:js && webpack",
-    "clean:js": "rm -f build/$npm_package_name.$npm_package_version.js build/$npm_package_name.$npm_package_version.js.map"
+    "watch:js": "npm run build:js && webpack --watch",
+    "clean:js": "rm -f build/$npm_package_name.$npm_package_version.js build/$npm_package_name.$npm_package_version.js.map",
+    "build:assets": "npm run clean:assets && cp -r client/assets build/dev/public/assets",
+    "clean:assets": "rm -rf build/dev/public/assets"
   },
   "repository": {
     "type": "git",
@@ -32,9 +42,12 @@
     "socket.io": "^1.7.1"
   },
   "devDependencies": {
+    "babel-cli": "^6.18.0",
     "babel-core": "^6.18.2",
     "babel-loader": "^6.2.8",
     "babel-preset-es2015": "^6.18.0",
+    "chokidar-cli": "^1.2.0",
+    "nodemon": "^1.11.0",
     "webpack": "^1.13.3"
   }
 }

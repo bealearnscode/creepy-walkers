@@ -11,6 +11,8 @@ var io = socket_io(server);
 
 var PORT = process.env.PORT || 8080;
 
+console.log(`Server running in ${process.env.NODE_ENV} mode`);
+
 io.on('connection', function(socket) {
 	console.log('a user connected');
 	
