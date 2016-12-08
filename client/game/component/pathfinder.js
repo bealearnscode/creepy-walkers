@@ -1,0 +1,1 @@
+//this component needs to know about what the current map is

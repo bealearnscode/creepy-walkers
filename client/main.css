@@ -1,5 +1,12 @@
 /*css goes here*/
+html, body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
 #canvas {
-	width: 200px;
-	height: 200px;
+	width: 800px;
+	height: 800px;
+	background-color: gray; 
 }
