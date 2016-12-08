@@ -21,14 +21,14 @@ export default function inputSystem(entities, gameCanvas) {
 		//console.log('x:', xPercent, 'y:', yPercent);
 
 		var mapWidthAndHeight = 16;
-		var xTile = (x / canvas.width) * mapWidthAndHeight;
-		var yTile = (y / canvas.height) * mapWidthAndHeight;
+		var xTile = Math.floor((x / canvas.width) * mapWidthAndHeight);
+		var yTile = Math.floor((y / canvas.height) * mapWidthAndHeight);
 		console.log(`x: ${xTile}, y: ${yTile}`);
 
 		//if xTile is between 0 and 1 && yTile is between 0 and 1, you're at the top left tile
-		if((xTile > 0 && xTile < 1) && (yTile > 0 && yTile < 1)) {
+		/*if((xTile > 0 && xTile < 1) && (yTile > 0 && yTile < 1)) {
 			console.log("top left tile");
-		}
+		}*/
 
 		// for(var i = 0; i <= mapWidthAndHeight; i++) {
 		// 	for(var j = 0; j <= mapWidthAndHeight; j++) {

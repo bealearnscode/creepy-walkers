@@ -2,7 +2,7 @@ import makeTowerGraphicComponent from  '../component/tower-maker';
 import makeTowerLocationComponent from '../component/location';
 import tileLocationComponent from '../component/tile-location';
 
-export default function makeTower(spec) {
+export default function makeTower() {
 
 	console.log("make tower");
 	var tower = {};
@@ -12,8 +12,8 @@ export default function makeTower(spec) {
 	});
 	
 	var location = tileLocationComponent({
-		x: spec.x,
-		y: spec.y,
+		x: 15,
+		y: 15,
 	});
 
 	var components = {
