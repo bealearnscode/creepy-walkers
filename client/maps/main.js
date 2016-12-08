@@ -80,9 +80,9 @@ whiteWalker.onload =  function() {
 var currentCoordinateIndex=0;
 var nextCoordinate;
 var currentCoordinate;
-//pixel change on y-axis
-var rowDelta=0;
 //pixel change on x-axis
+var rowDelta=0;
+//pixel change on y-axis
 var colDelta=0;
 //current x x-axis coordinate of the creep
 var creepX=0;
@@ -134,15 +134,15 @@ function moveCreep(path) {
 			currentCoordinate = path[0];
 			creepStarted = true;
 			nextCoordinate = path[1];
-			creepX = currentCoordinate[0]*32;
-			creepY = currentCoordinate[1]*32;
+			creepX = currentCoordinate.x*32;
+			creepY = currentCoordinate.y*32;
 		}
 		//check if the creep has reached the next coordinate
-		console.log('current coordinatex ' + creepX)
-		console.log('current coordinatey ' + creepY)
-		console.log('target coordinatex ' + nextCoordinate[1]*32)
-		console.log('target coordinatey ' + nextCoordinate[0]*32)
-		if(creepX==nextCoordinate[0]*32 && creepY==nextCoordinate[1]*32) {
+		// console.log('current coordinatex ' + creepX)
+		// console.log('current coordinatey ' + creepY)
+		// console.log('target coordinatex ' + nextCoordinate[1]*32)
+		// console.log('target coordinatey ' + nextCoordinate[0]*32)
+		if(creepX==nextCoordinate.x*32 && creepY==nextCoordinate.y*32) {
 			currentCoordinateIndex++;
 			if(currentCoordinateIndex == path.length) {
 				finishedPath = true;
@@ -154,17 +154,17 @@ function moveCreep(path) {
 
 		//calculate where to move next
 		if(!finishedPath) {
-			if(nextCoordinate[1] > currentCoordinate[1]) {
-				colDelta=1;
-			}else if(nextCoordinate[1] < currentCoordinate[1]) {
-				colDelta=-1
+			if(nextCoordinate.y > currentCoordinate.y) {
+				colDelta=4;
+			}else if(nextCoordinate.y < currentCoordinate.y) {
+				colDelta=-4
 			}else {
 				colDelta = 0 
 			}
-			if(nextCoordinate[0] > currentCoordinate[0]) {
-				rowDelta = 1;
-			}else if(nextCoordinate[0] < currentCoordinate[0]) {
-				rowDelta = -1
+			if(nextCoordinate.x > currentCoordinate.x) {
+				rowDelta = 4;
+			}else if(nextCoordinate.x < currentCoordinate.x) {
+				rowDelta = -4
 			}else {
 				rowDelta=0
 			}
@@ -172,20 +172,33 @@ function moveCreep(path) {
 		}
 		
 		creepX+=rowDelta;
-		creepY+=colDelta
+		creepY+=colDelta;
+
 		ctx.save();
 		ctx.setTransform(1,0,0,1,0,0);
-		ctx.translate((creepY),(creepX)+52);
-		ctx.drawImage(coin,0,0,32,32,8,-32,32,32);
+		//not sure why, but x and y are flipped here
+		//only spot where this happens
+		ctx.translate((creepY)+16,(creepX)+16);
+		ctx.drawImage(coin,0,0,32,32,-4,0,32,32);
 		ctx.restore();
 	}
+	else {
+		// put logic for if creep reaches end here.
+		return
+	}
 }
+
+var path = findPath(map2.layout,[0,1],[15,14])
 
 export default function main() {
 	renderMap(map2);
 	// drawPath(findPath(map2.layout,[0,1],[15,14]))
-	moveCreep(findPath(map2.layout,[0,1],[15,14]))
+	moveCreep(path)
 	requestAnimationFrame(main)
 }
 
-
+//todo list for this function
+/*
+modularize the functions, make them into objects
+and only return the actual function for the recursion
+*/
