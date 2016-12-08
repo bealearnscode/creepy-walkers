@@ -26,9 +26,9 @@ export default function inputSystem(entities, gameCanvas) {
 		console.log(`x: ${xTile}, y: ${yTile}`);
 
 		//if xTile is between 0 and 1 && yTile is between 0 and 1, you're at the top left tile
-		// if((xTile > 0 && xTile < 1) && (yTile > 0 && yTile < 1)) {
-		// 	console.log("top left tile");
-		// }
+		if((xTile > 0 && xTile < 1) && (yTile > 0 && yTile < 1)) {
+			console.log("top left tile");
+		}
 
 		// for(var i = 0; i <= mapWidthAndHeight; i++) {
 		// 	for(var j = 0; j <= mapWidthAndHeight; j++) {
@@ -39,26 +39,26 @@ export default function inputSystem(entities, gameCanvas) {
 		// 	}
 		// }
 
-		var arr = [];
-		for(var x = 0; x < mapWidthAndHeight; x++) {
-			arr[x] = [];
-			for(var y = 0; y < mapWidthAndHeight; y++) {
-				arr[x][y] = y;
+		// var arr = [];
+		// for(var x = 0; x < mapWidthAndHeight; x++) {
+		// 	arr[x] = [];
+		// 	for(var y = 0; y < mapWidthAndHeight; y++) {
+		// 		arr[x][y] = y;
 
-				if((xTile > y && xTile < x) && (yTile > y && yTile < x)) {
-					console.log(arr[y][x]);
-				}
-			}
-		}
-
-		console.log(arr);
-
-		// locationEntities.forEach(function(entity) {
-		// 	if(entity.getComponentKeys().includes("location")) {
-		// 		console.log("you draw!");
-		// 		//entity.draw(ctx);
+		// 		if((xTile > y && xTile < x) && (yTile > y && yTile < x)) {
+		// 			console.log(arr[y][x]);
+		// 		}
 		// 	}
-		// });
+		// }
+
+		// console.log(arr);
+
+		locationEntities.forEach(function(entity) {
+			if(entity.getComponentKeys().includes("location")) {
+				console.log("you draw!");
+				entity.draw(ctx, xTile, yTile);
+			}
+		});
 	}
 
 	return Object.freeze ({

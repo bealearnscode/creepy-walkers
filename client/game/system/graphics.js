@@ -18,11 +18,15 @@ export default function graphicsSystem(entities, gameCanvas) {
 		//clear the canvas every frame
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+		ctx.save();
+
 		graphicalEntities.forEach(function(entity) {
 			if(entity.getComponentKeys().includes("graphics")) {
 				entity.draw(ctx);
 			}
 		});
+
+		ctx.restore();
 
 		requestAnimationFrame(tick);
 	}
