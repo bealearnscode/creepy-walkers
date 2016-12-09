@@ -20,7 +20,7 @@ export default function makeBadGuy() {
 		graphics: graphics,
 		spawnLocation: spawnLocation,
 		path: path,
-		badGuyMoves: badGuyMoves
+		badGuyMoves: badGuyMoves,
 	};
 
 
