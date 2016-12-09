@@ -46,7 +46,7 @@ export default function findPath(grid,pathStart,pathEnd) {
 			}
 			//take the next node to be checked and removes it from the need to be checked array
 			currentNode = nodesToBeChecked.splice(lowHeuristicIndex,1)[0]
-
+			console.log(currentNode)
 			//checks to see if the current node is the destination node
 			if(currentNode.value === pathEndPoint.value) {
 				return translatePathNodesIntoCoordinates(currentNode)
@@ -94,4 +94,4 @@ var testGrid3 =
  [0,0]]
 
 
-// console.log(findPath(testGrid3,[0,0],[1,1]))
+console.log(findPath(testGrid3,[0,0],[1,1]))
