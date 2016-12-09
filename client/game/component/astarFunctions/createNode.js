@@ -1,10 +1,9 @@
 module.exports = function(dimensions,parentNode,coordinates) {
-	var gridWidth = dimensions;
 	var newNode = {
 			//pointer to another node object
 			Parent: parentNode,
 			//array index represented as an object containing x and y coordinates, should be unique for each coordinate
-			value: coordinates.x + (coordinates.y * gridWidth),
+			value: coordinates.x + (coordinates.y * dimensions),
 			//coordinates for this node
 			x: coordinates.x,
 			y: coordinates.y,
