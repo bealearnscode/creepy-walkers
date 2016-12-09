@@ -3,10 +3,7 @@
 export default function pathfinder(spec) {
 	//map layout variables
 	// var mapLayout = spec.layout;
-	var mapLayout = 
-	[[0,0,1],
-	 [1,0,1],
-	 [1,0,0]]
+	var mapLayout = spec.layout;
 	var mapDimensions = spec.dimensions;
 	var startingPoint = spec.startingPoint;
 	var endPoint = spec.endPoint;
