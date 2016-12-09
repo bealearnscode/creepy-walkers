@@ -1,16 +1,13 @@
-export default function badGuyGraphicComponent(entity) {
+export default function badGuyGraphicComponent(spec) {
 
-	//TODO: add in appropriate sprite
+	console.log("Creating whiteWalker");
+	var whiteWalker = new Image();
+	whiteWalker.src = spec.whiteWalker;
 
-	console.log("Creating bad guy graphic");
-	var badguy = entity;
-
-	function drawBadGuy(ctx) {
-		ctx.beginPath();
-		ctx.arc(badguy.getXLocation(), badguy.getYLocation(), 1, 0, Math.PI * 2);
-		ctx.fillStyle = "#ef4426";
-		ctx.fill();
-		ctx.closePath();
+	function drawBadGuy(ctx, path) {
+	for(var i = 0; i < path.length; i++) {
+			ctx.drawImage(whiteWalker, 0, 0, 16, 16, path[i].x, path[i].y, 1, 1);
+		}		
 	}
 
 	return Object.freeze ({
