@@ -11,14 +11,16 @@ export default function makeBadGuy() {
 		whiteWalker: 'assets/img/enemies/white-walker-left.png'
 	});
 	var spawnLocation = {x: 100, y: 100};
-	var map = makeLevelMapComponent().map
-	var path = pathfinder(map).path()
-	console.log(path)
+	var map = makeLevelMapComponent().map;
+	var path = pathfinder(map).path();
+	console.log(path);
+	var badGuyMoves = badGuyMovementComponent();
 
 	var components = {
 		graphics: graphics,
 		spawnLocation: spawnLocation,
-		path: path
+		path: path,
+		badGuyMoves: badGuyMoves
 	};
 
 
