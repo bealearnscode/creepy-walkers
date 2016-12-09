@@ -1,9 +1,9 @@
-import distanceFunction from './astarFunctions/distanceFunction'
-import isValidForPath from './astarFunctions/isValidForPath'
-import checkNeighbors from './astarFunctions/checkNeighbors'
-import createNode from './astarFunctions/createNode'
-import translatePathNodesIntoCoordinates from './astarFunctions/translatePathNodesIntoCoordinates'
-import createRandomGrid from './astarFunctions/createRandomGrid'
+import distanceFunction from './astarFunctions/distanceFunction';
+import isValidForPath from './astarFunctions/isValidForPath';
+import checkNeighbors from './astarFunctions/checkNeighbors';
+import createNode from './astarFunctions/createNode';
+import translatePathNodesIntoCoordinates from './astarFunctions/translatePathNodesIntoCoordinates';
+import createRandomGrid from './astarFunctions/createRandomGrid';
 
 //this component needs to know about what the current map is
 export default function pathfinder(spec) {
