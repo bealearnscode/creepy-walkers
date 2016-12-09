@@ -5,16 +5,18 @@ import pathfinder from '../component/pathfinder';
 
 export default function makeBadGuy() {
 
-	console.log("Creating bad guy entity");
 	var badguy = {};
-	var graphics = makeBadGuyGraphicComponent({
-		whiteWalker: 'assets/img/enemies/white-walker-left.png'
-	});
-	var spawnLocation = {x: 10, y: 10};
 	var map = makeLevelMapComponent().map;
+	var spawnLocation = map.startingPoint;
 	var path = pathfinder(map).path();
-	console.log(path);
-	var movement = badGuyMovementComponent(badguy);
+	var movement = badGuyMovementComponent({
+		entity: badguy,
+		path: path,
+	});
+	var graphics = makeBadGuyGraphicComponent({
+		whiteWalker: 'assets/img/enemies/white-walker-left.png',
+		movement: movement,
+	});
 
 	var components = {
 		graphics: graphics,
@@ -22,8 +24,6 @@ export default function makeBadGuy() {
 		path: path,
 		movement: movement
 	};
-	
-	var movementPath = {path: path};
 
 	badguy.getXLocation = function() {
 		return components.spawnLocation.x;
@@ -42,14 +42,12 @@ export default function makeBadGuy() {
 	};
 
 	badguy.draw = function(ctx) {
-		components.graphics.drawBadGuy(ctx,path);
+		components.graphics.drawBadGuy(ctx);
 	};
 	
 	badguy.move = function() {
-		console.log("omg he's moving");
-		components.movement.moveBadGuy(movementPath);
+		components.movement.moveBadGuy();
 	};
-	
 
 	return Object.freeze(badguy);
 }

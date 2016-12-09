@@ -3,7 +3,6 @@ import makeLevelGraphicComponent from '../component/terrain-graphic';
 
 export default function makeLevel() {
 
-	console.log("making levels, ya'll");
 	var level = {};
 	var graphics = makeLevelGraphicComponent({
 		entityOfComponent: level,
@@ -19,7 +18,7 @@ export default function makeLevel() {
 
 	level.getMap = function() {
 		return components.map
-	}
+	};
 
 
 	level.getComponentKeys = function() {
@@ -27,8 +26,8 @@ export default function makeLevel() {
 	};
 
 	level.draw = function(ctx) {
-		components.graphics.drawMap(ctx,level.getMap())
-	}
+		components.graphics.drawMap(ctx, level.getMap())
+	};
 
 	return Object.freeze(level);
 	

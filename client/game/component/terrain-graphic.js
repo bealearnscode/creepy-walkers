@@ -1,6 +1,5 @@
 //this is where I load the grass and dirt
 export default function makeLevelGraphicComponent(spec) {
-	console.log('makin the land');
 
 	var dirt = new Image()
 	dirt.src = spec.dirt;

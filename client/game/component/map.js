@@ -1,4 +1,5 @@
 export default function mapComponent(spec) {
+
 	var map = {
 		layout: [
 			[1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
@@ -26,4 +27,5 @@ export default function mapComponent(spec) {
 	return Object.freeze({
 		map: map,
 	});
+	
 }

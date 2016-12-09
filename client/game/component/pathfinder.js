@@ -10,7 +10,6 @@ export default function pathfinder(spec) {
 	//map layout variables
 	var mapLayout = spec.layout;
 	var mapDimensions = spec.dimensions;
-	console.log(mapDimensions)
 	var startingPoint = spec.startingPoint;
 	var endPoint = spec.endPoint;
 	var mapSize = mapLayout.length * mapDimensions;
@@ -19,8 +18,6 @@ export default function pathfinder(spec) {
 	var uniqueCoordinateValueArray = new Array(mapSize)
 	var startingNode = createNode(mapDimensions, null, startingPoint)
 	var endingNode = createNode(mapDimensions, null, endPoint)
-	console.log(startingNode)
-	console.log(endingNode)
 	var nodesToBeChecked = [startingNode]
 	var checkedNodes = [];
 	var nodeNeighbors;

@@ -4,7 +4,6 @@ import tileLocationComponent from '../component/tile-location';
 
 export default function makeTower() {
 
-	console.log("make tower");
 	var tower = {};
 	var graphics = makeTowerGraphicComponent({
 		entityOfComponent: tower,

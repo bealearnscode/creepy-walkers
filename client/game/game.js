@@ -7,14 +7,13 @@ import level from './entity/level';
 
 export default function game() {
 
-	var entities = [level(),badguy(), tower()];
+	var entities = [level(), badguy(), tower()];
 	var canvas = document.getElementById("canvas");
 	var graphics = graphicsSystem(entities, canvas);
 	var input = inputSystem(entities, canvas);
 	var movement = movementSystem(entities);
 
 	function run() {
-		console.log("test");
 		graphics.run();
 		input.run();
 		movement.run();
