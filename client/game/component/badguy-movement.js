@@ -1,35 +1,51 @@
 export default function badGuyMovementComponent(spec) {
-    
+    var path = spec.path;
     console.log("Bad guy on the move");
     
-    /*function moveBadGuy(spec) {
+    /*function moveBadGuy(path) {
+        if(!finishedPath) {
+		    if(!creepStarted) {
+			 var currentCoordinate = path[0];
+			 var creepStarted = true;
+			 var nextCoordinate = path[1];
+			 var creepX = currentCoordinate.x;
+			 var creepY = currentCoordinate.y;
+		}
+		//check if the creep has reached the next coordinate
+		if(creepX==nextCoordinate.x && creepY==nextCoordinate.y) {
+			currentCoordinateIndex++;
+			if(currentCoordinateIndex == path.length) {
+				finishedPath = true;
+			}
+			currentCoordinate = nextCoordinate;
+			nextCoordinate = path[currentCoordinateIndex]
+			creepMoving = false;
+		}
+
+		//calculate where to move next
+		if(!finishedPath) {
+			if(nextCoordinate.y > currentCoordinate.y) {
+				colDelta=4;
+			}else if(nextCoordinate.y < currentCoordinate.y) {
+				colDelta=-4
+			}else {
+				colDelta = 0 
+			}
+			if(nextCoordinate.x > currentCoordinate.x) {
+				rowDelta = 4;
+			}else if(nextCoordinate.x < currentCoordinate.x) {
+				rowDelta = -4
+			}else {
+				rowDelta=0
+			}
+			creepMoving = true;
+		}
+		
+		creepX+=rowDelta;
+		creepY+=colDelta;*/
     
-    //need click event
-    //import entities and game canvas? this is already in the input system
-    //canvas.addEventListener("click", clickHandler, false);
-    //function clickHandler(e) {
-		console.log("you clicked the canvas");
-		var x = e.pageX - canvas.offsetLeft;
-		var y = e.pageY - canvas.offsetTop;
-		
-	////// ------------ //////	
-		
-        var move = {
-            speed: 256
-        }
-        var update = function (modifier) {
-	        if (38 in keysDown) { // Player holding up
-		    move -= move.speed * modifier;
-	    }
-	        if (40 in keysDown) { // Player holding down
-		    move += move.speed * modifier;
-	}
-	if (37 in keysDown) { // Player holding left
-		hero.x -= hero.speed * modifier;
-	}
-	if (39 in keysDown) { // Player holding right
-		hero.x += hero.speed * modifier;
-	}
+    
+        
         
         /*return Object.freeze({
 		    moveBadGuy: moveBadGuy,

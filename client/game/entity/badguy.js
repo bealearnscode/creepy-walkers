@@ -22,7 +22,7 @@ export default function makeBadGuy() {
 		path: path,
 		badGuyMoves: badGuyMoves,
 	};
-
+	
 
 	badguy.getXLocation = function() {
 		return components.spawnLocation.x;
@@ -43,6 +43,12 @@ export default function makeBadGuy() {
 	badguy.draw = function(ctx) {
 		components.graphics.drawBadGuy(ctx,path);
 	};
+	
+	badguy.move = function() {
+		console.log("omg he's moving");
+		components.movement.badGuyMoves({path:path});
+	};
+	
 
 	return Object.freeze(badguy);
 }
