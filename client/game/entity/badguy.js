@@ -6,7 +6,9 @@ export default function makeBadGuy() {
 
 	console.log("Creating bad guy entity");
 	var badguy = {};
-	var graphics = makeBadGuyGraphicComponent(badguy);
+	var graphics = makeBadGuyGraphicComponent({
+		coin: 'assets/img/misc/coin-8x8.png'
+	});
 	var spawnLocation = {x: 100, y: 100};
 	var map = makeLevelMapComponent().map
 	var path = pathfinder(map).path()
@@ -36,7 +38,7 @@ export default function makeBadGuy() {
 	};
 
 	badguy.draw = function(ctx) {
-		components.graphics.drawBadGuy(ctx);
+		components.graphics.drawBadGuy(ctx,path);
 	};
 
 	return Object.freeze(badguy);
