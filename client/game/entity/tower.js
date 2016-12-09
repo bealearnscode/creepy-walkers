@@ -1,5 +1,6 @@
 import makeTowerGraphicComponent from  '../component/tower-maker';
 import makeTowerLocationComponent from '../component/location';
+import tileLocationComponent from '../component/tile-location';
 
 export default function makeTower() {
 
@@ -9,9 +10,10 @@ export default function makeTower() {
 		entityOfComponent: tower,
 		spriteSheet: "assets/img/towers/Stark/jon-left.png",
 	});
-	var location = makeTowerLocationComponent({
-		x: 200,
-		y: 200,
+	
+	var location = tileLocationComponent({
+		x: 0,
+		y: 0,
 	});
 
 	var components = {

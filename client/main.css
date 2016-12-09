@@ -1,6 +1,13 @@
 /*css goes here*/
+html, body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
 #canvas {
 	width: 800px;
 	height: 800px;
 	border: 1px black solid;
+	background-color: gray; 
 }

@@ -6,7 +6,7 @@ export default function badGuyGraphicComponent(spec) {
 
 	function drawBadGuy(ctx, path) {
 	for(var i = 0; i < path.length; i++) {
-			ctx.drawImage(whiteWalker, 0, 0, 16, 16, path[i].x * 32, path[i].y * 32, 16, 16);
+			ctx.drawImage(whiteWalker, 0, 0, 16, 16, path[i].x, path[i].y, 1, 1);
 		}		
 	}
 
