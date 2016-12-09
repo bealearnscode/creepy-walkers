@@ -14,15 +14,16 @@ export default function makeBadGuy() {
 	var map = makeLevelMapComponent().map;
 	var path = pathfinder(map).path();
 	console.log(path);
-	var badGuyMoves = badGuyMovementComponent();
+	var movement = badGuyMovementComponent(badguy);
 
 	var components = {
 		graphics: graphics,
 		spawnLocation: spawnLocation,
 		path: path,
-		badGuyMoves: badGuyMoves,
+		movement: movement
 	};
 	
+	var movementPath = {path: path};
 
 	badguy.getXLocation = function() {
 		return components.spawnLocation.x;
@@ -33,8 +34,8 @@ export default function makeBadGuy() {
 	};
 
 	badguy.getPath = function() {
-		return components.path
-	}
+		return components.path;
+	};
 
 	badguy.getComponentKeys = function() {
 		return Object.keys(components);
@@ -46,7 +47,7 @@ export default function makeBadGuy() {
 	
 	badguy.move = function() {
 		console.log("omg he's moving");
-		components.movement.badGuyMoves({path:path});
+		components.movement.moveBadGuy(movementPath);
 	};
 	
 

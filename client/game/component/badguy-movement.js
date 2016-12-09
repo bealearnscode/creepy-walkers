@@ -1,9 +1,12 @@
 export default function badGuyMovementComponent(spec) {
+    console.log(spec);
     var path = spec.path;
+	//console.log(path);
     console.log("Bad guy on the move");
     
-    /*function moveBadGuy(path) {
-        if(!finishedPath) {
+    function moveBadGuy(path) {
+    	console.log("hi");
+        /*if(!finishedPath) {
 		    if(!creepStarted) {
 			 var currentCoordinate = path[0];
 			 var creepStarted = true;
@@ -38,17 +41,17 @@ export default function badGuyMovementComponent(spec) {
 			}else {
 				rowDelta=0
 			}
-			creepMoving = true;
+			creepMoving = true;*/
 		}
 		
-		creepX+=rowDelta;
+		/*creepX+=rowDelta;
 		creepY+=colDelta;*/
     
     
         
         
-        /*return Object.freeze({
+        return Object.freeze({
 		    moveBadGuy: moveBadGuy,
 	    });
-    }*/
-}
+    }
+

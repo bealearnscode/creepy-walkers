@@ -44,8 +44,6 @@ export default function pathfinder(spec) {
 			}
 			//take the next node to be checked and removes it from the need to be checked array
 			currentNode = nodesToBeChecked.splice(lowHeuristicIndex,1)[0]
-			console.log(nodeNeighbors)
-			console.log(currentNode)
 			//checks to see if the current node is the destination node
 			if(currentNode.value === endingNode.value) {
 				return translatePathNodesIntoCoordinates(currentNode)
