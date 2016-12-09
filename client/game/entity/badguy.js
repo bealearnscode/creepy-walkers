@@ -1,6 +1,7 @@
+import badGuyMovementComponent from '../component/badguy-movement';
 import makeBadGuyGraphicComponent from '../component/badguy-graphic';
-import makeLevelMapComponent from '../component/map'
-import pathfinder from '../component/pathfinder'
+import makeLevelMapComponent from '../component/map';
+import pathfinder from '../component/pathfinder';
 
 export default function makeBadGuy() {
 
