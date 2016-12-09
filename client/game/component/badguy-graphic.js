@@ -1,13 +1,12 @@
 export default function badGuyGraphicComponent(spec) {
 
-	//TODO: add in appropriate sprite
+	console.log("Creating whiteWalker");
+	var whiteWalker = new Image();
+	whiteWalker.src = spec.whiteWalker;
 
-	console.log("Creating bad guy graphic");
-	var coin = new Image();
-	coin.src = spec.coin
 	function drawBadGuy(ctx, path) {
-	for(var i = 0;i<path.length;i++) {
-			ctx.drawImage(coin,0,0,8,8,path[i].x*32,path[i].y*32,8,8)
+	for(var i = 0; i < path.length; i++) {
+			ctx.drawImage(whiteWalker, 0, 0, 16, 16, path[i].x * 32, path[i].y * 32, 16, 16);
 		}		
 	}
 

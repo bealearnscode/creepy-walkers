@@ -7,7 +7,7 @@ export default function makeBadGuy() {
 	console.log("Creating bad guy entity");
 	var badguy = {};
 	var graphics = makeBadGuyGraphicComponent({
-		coin: 'assets/img/misc/coin-8x8.png'
+		whiteWalker: 'assets/img/enemies/white-walker-left.png'
 	});
 	var spawnLocation = {x: 100, y: 100};
 	var map = makeLevelMapComponent().map
