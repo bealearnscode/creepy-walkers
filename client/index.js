@@ -4,5 +4,5 @@ import main from './maps/main';
 
 document.addEventListener("DOMContentLoaded", function() {
 	main()
-	game().run();
+	//game().run();
 });

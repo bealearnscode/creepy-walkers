@@ -50,31 +50,31 @@ ctx.fillRect(0,0,canvas.width,canvas.height);
 //load up images
 var dirtReady = false;
 var dirt = new Image();
-dirt.src = './assets/maptiles/dirt-noborder.png';
+dirt.src = './assets/img/maptiles/dirt-noborder.png';
 dirt.onload = function() {
 	dirtReady = true
 }
 
 var grassReady = false;
 var grass = new Image();
-grass.src = './assets/maptiles/grass-noborder.png';
+grass.src = './assets/img/maptiles/grass-noborder.png';
 grass.onload = function() {
 	grassReady = true
 }
 
 var coinReady = false;
 var coin = new Image();
-coin.src = './assets/maptiles/coin.png'
+coin.src = './assets/img/misc/coin-8x8.png'
 coin.onload = function() {
 	coinReady = true
 }
 
-var whiteWalkerReady = false;
-var whiteWalker = new Image();
-whiteWalker.src = './assets/creep/whitewalker.png'
-whiteWalker.onload =  function() {
-	whiteWalker = true
-}
+// var whiteWalkerReady = false;
+// var whiteWalker = new Image();
+// whiteWalker.src = './assets/creep/whitewalker.png'
+// whiteWalker.onload =  function() {
+// 	whiteWalker = true
+// }
 
 //setup variables for function, to be moved out or eliminated as learning progresses
 var currentCoordinateIndex=0;
@@ -138,10 +138,6 @@ function moveCreep(path) {
 			creepY = currentCoordinate.y*32;
 		}
 		//check if the creep has reached the next coordinate
-		// console.log('current coordinatex ' + creepX)
-		// console.log('current coordinatey ' + creepY)
-		// console.log('target coordinatex ' + nextCoordinate[1]*32)
-		// console.log('target coordinatey ' + nextCoordinate[0]*32)
 		if(creepX==nextCoordinate.x*32 && creepY==nextCoordinate.y*32) {
 			currentCoordinateIndex++;
 			if(currentCoordinateIndex == path.length) {
