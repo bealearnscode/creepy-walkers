@@ -10,20 +10,9 @@ export default function makeBadGuy(spec) {
 	var map = makeLevelMapComponent().map;
 	var path = pathfinder(map).path();
 	
-	var graphics = makeBadGuyGraphicComponent({
-		entity: badguy,
-		whiteWalkerLeft: 'assets/img/enemies/white-walker-16x16-left.png',
-		whiteWalkerRight: 'assets/img/enemies/white-walker-16x16-right.png',
-		movement: movement,
-	});
-
 	var location = locationComponent({
 		x:path[0].x,
 		y:path[0].y,
-	});
-
-	var movement = badGuyMovementComponent({
-		entity: badguy,
 	});
 
 	var components = {
@@ -69,5 +58,19 @@ export default function makeBadGuy(spec) {
 		components.movement.moveBadGuy();
 	};
 
+	console.log(badguy)
+
+	var movement = badGuyMovementComponent({
+		entity: badguy,
+	});
+
+	var graphics = makeBadGuyGraphicComponent({
+		entity: badguy,
+		whiteWalkerLeft: 'assets/img/enemies/white-walker-16x16-left.png',
+		whiteWalkerRight: 'assets/img/enemies/white-walker-16x16-right.png',
+		movement: movement,
+	});
+
 	return Object.freeze(badguy);
 }
+//refactor the functions

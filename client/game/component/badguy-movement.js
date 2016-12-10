@@ -65,3 +65,14 @@ export default function badGuyMovementComponent(spec) {
 //instead of using coordinate index, shift off values from an array
 //utility function for making numbers more readable
 //change entity to badguy
+
+/*
+WHERE WE LEFT OFF
+need to change currentCoordinateIndex to shift() method
+review badguymovement to see if anything was left out
+test to see if refactor works
+work out the bugs
+
+
+
+*/

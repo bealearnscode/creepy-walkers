@@ -17,7 +17,7 @@ export default function locationComponent(spec) {
 		}
 	}
 
-	function changeYlocation(delta) {
+	function changeYLocation(delta) {
 		currentLocation.y =  currentLocation.y + delta;
 	}
 
