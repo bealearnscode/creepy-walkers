@@ -19,8 +19,7 @@ export default function makeLevel() {
 	level.getMap = function() {
 		return components.map
 	};
-
-
+	
 	level.getComponentKeys = function() {
 		return Object.keys(components);
 	};

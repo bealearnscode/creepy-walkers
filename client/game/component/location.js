@@ -1,5 +1,6 @@
 export default function locationComponent(spec) {
 
+	console.log(spec)
 	var currentLocation = {
 		x: spec.x,
 		y: spec.y,
@@ -17,5 +18,4 @@ export default function locationComponent(spec) {
 		getXLocation: getXLocation,
 		getYLocation: getYLocation,
 	});
-
 }

@@ -1,5 +1,8 @@
 export default function badGuyMovementComponent(spec) {
-    var path = spec.path;
+    console.log(spec)
+    var entity = spec.entity;
+    var path = entity.getPath()
+
     //if we want the location, get it through the entity
     var finishedPath = false;
     var creepStarted = false;
@@ -24,7 +27,6 @@ export default function badGuyMovementComponent(spec) {
 			//check if the creep has reached the next coordinate
 			if(Math.round(creepX*100)/100 === nextCoordinate.x && Math.round(creepY*100)/100 === nextCoordinate.y) {
 				currentCoordinateIndex++;
-				//console.log("currentCoordinateIndex", currentCoordinateIndex);
 				if(currentCoordinateIndex == path.length) {
 					finishedPath = true;
 				}
@@ -33,6 +35,7 @@ export default function badGuyMovementComponent(spec) {
 			}
 
 			//calculate where to move next
+			//checks which direction creep needs to go
 			if(!finishedPath) {
 				if(nextCoordinate.y > currentCoordinate.y) {
 					colDelta = .025;
@@ -42,25 +45,23 @@ export default function badGuyMovementComponent(spec) {
 					colDelta = 0;
 				}
 				if(nextCoordinate.x > currentCoordinate.x) {
-					rowDelta = .025
+					rowDelta = .025;
 				}else if(nextCoordinate.x < currentCoordinate.x) {
-					rowDelta = -.025
+					rowDelta = -.025;
 				}else {
 					rowDelta = 0;
 				}
 			}
-
 			creepX += rowDelta;
 			creepY += colDelta;
 		}
-
 		return {x: creepX, y: creepY, rowDelta:rowDelta};
-    
     }
-        
     return Object.freeze ({
 	    moveBadGuy: moveBadGuy,
     });
-
 }
 
+//pass through coordinate array once, not continuously generate a path
+//instead of using coordinate index, shift off values from an array
+//utility function for making numbers more readable

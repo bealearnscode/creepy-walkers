@@ -2,37 +2,42 @@ import badGuyMovementComponent from '../component/badguy-movement';
 import makeBadGuyGraphicComponent from '../component/badguy-graphic';
 import makeLevelMapComponent from '../component/map';
 import pathfinder from '../component/pathfinder';
+import locationComponent from '../component/location';
 
-export default function makeBadGuy() {
+export default function makeBadGuy(spec) {
 
 	var badguy = {};
 	var map = makeLevelMapComponent().map;
-	var spawnLocation = map.startingPoint;
 	var path = pathfinder(map).path();
-	var movement = badGuyMovementComponent({
-		entity: badguy,
-		path: path,
-	});
+	
 	var graphics = makeBadGuyGraphicComponent({
 		whiteWalkerLeft: 'assets/img/enemies/white-walker-16x16-left.png',
 		whiteWalkerRight: 'assets/img/enemies/white-walker-16x16-right.png',
 		movement: movement,
-		path:path
+	});
+
+	var location = locationComponent({
+		x:path[0].x,
+		y:path[0].y,
+	});
+
+	var movement = badGuyMovementComponent({
+		entity: badguy,
 	});
 
 	var components = {
 		graphics: graphics,
-		spawnLocation: spawnLocation,
+		location: location,
 		path: path,
 		movement: movement
 	};
 
 	badguy.getXLocation = function() {
-		return components.spawnLocation.x;
+		return components.location.getXLocation();
 	};
 
 	badguy.getYLocation = function() {
-		return components.spawnLocation.y;
+		return components.location.getYLocation();
 	};
 
 	badguy.getPath = function() {
@@ -43,8 +48,8 @@ export default function makeBadGuy() {
 		return Object.keys(components);
 	};
 
-	badguy.draw = function(ctx) {
-		components.graphics.drawBadGuy(ctx);
+	badguy.draw = function(ctx,x,y) {
+		components.graphics.drawBadGuy(ctx,badguy.getXLocation(),badguy.getYLocation());
 	};
 	
 	badguy.move = function() {
