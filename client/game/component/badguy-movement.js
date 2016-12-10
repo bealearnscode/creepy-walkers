@@ -66,8 +66,8 @@ export default function badGuyMovementComponent(spec) {
 			creepY += colDelta;
 			//console.log("creepX", creepX);
 			//console.log("creepY", creepY);
-			console.log("currentCoordinate", currentCoordinate);
-			console.log("nextCoordinate", nextCoordinate);
+			//console.log("currentCoordinate", currentCoordinate);
+			//console.log("nextCoordinate", nextCoordinate);
 
 		}
 

@@ -1,4 +1,4 @@
-//input system
+import makeTower from '../entity/tower';
 export default function inputSystem(entities, gameCanvas) {
 
 	var locationEntities = entities;
@@ -10,7 +10,6 @@ export default function inputSystem(entities, gameCanvas) {
 	}
 
 	function clickHandler(e) {
-		console.log("you clicked the canvas");
 		var x = e.pageX - canvas.offsetLeft;
 		var y = e.pageY - canvas.offsetTop;
 
@@ -21,13 +20,11 @@ export default function inputSystem(entities, gameCanvas) {
 		console.log(`x: ${xTile}, y: ${yTile}`);
 
 		locationEntities.forEach(function(entity) {
-			if(entity.getComponentKeys().includes("location")) {
-				console.log("you draw!");
-				entity.draw(ctx, xTile, yTile);
+			if (entity.getComponentKeys().includes("towerLocation")) {
+				console.log("you've placed a tower");
+				entities.push(makeTower({x: xTile, y: yTile}));
+				console.log(entities);
 			}
-			//if (entity.getComponentKeys().includes("tower")) {
-			
-			//}
 		});
 	}
 

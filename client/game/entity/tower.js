@@ -2,38 +2,38 @@ import makeTowerGraphicComponent from  '../component/tower-maker';
 import makeTowerLocationComponent from '../component/location';
 import tileLocationComponent from '../component/tile-location';
 
-export default function makeTower() {
+export default function makeTower(spec) {
 
 	var tower = {};
 	var graphics = makeTowerGraphicComponent({
 		entityOfComponent: tower,
 		spriteSheet: "assets/img/towers/Stark/jon-left.png",
 	});
-	
-	var location = tileLocationComponent({
-		x: 0,
-		y: 0,
+
+	var towerLocation = tileLocationComponent({
+		x: spec.x,
+		y: spec.y,
 	});
 
 	var components = {
 		graphics: graphics,
-		location: location,
+		towerLocation: towerLocation,
 	};
 
 	tower.getX = function() {
-		return components.location.getXLocation();
+		return components.towerLocation.getXLocation();
 	};
 
 	tower.getY = function() {
-		return components.location.getYLocation();
+		return components.towerLocation.getYLocation();
 	};
 
 	tower.getComponentKeys = function() {
 		return Object.keys(components);
 	};
 
-	tower.draw = function(ctx, x, y) {
-		components.graphics.drawTower(ctx, tower.getX(), tower.getY());
+	tower.draw = function(ctx) {
+		components.graphics.drawTower(ctx);
 	};
 
 	return Object.freeze(tower);
