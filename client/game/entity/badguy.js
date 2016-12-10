@@ -11,6 +11,7 @@ export default function makeBadGuy(spec) {
 	var path = pathfinder(map).path();
 	
 	var graphics = makeBadGuyGraphicComponent({
+		entity: badguy,
 		whiteWalkerLeft: 'assets/img/enemies/white-walker-16x16-left.png',
 		whiteWalkerRight: 'assets/img/enemies/white-walker-16x16-right.png',
 		movement: movement,
@@ -39,6 +40,18 @@ export default function makeBadGuy(spec) {
 	badguy.getYLocation = function() {
 		return components.location.getYLocation();
 	};
+
+	badguy.getDirection = function() {
+		return components.location.getDirection()
+	}
+
+	badguy.changeXLocation = function(delta) {
+		return components.location.changeXlocation(delta)
+	}
+
+	badguy.changeYlocation = function(delta) {
+		return components.location.changeYlocation(delta)
+	}
 
 	badguy.getPath = function() {
 		return components.path;

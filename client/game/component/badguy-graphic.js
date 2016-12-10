@@ -13,17 +13,17 @@ export default function badGuyGraphicComponent(spec) {
 		// for(var i = 0; i < path.length; i++) {
 		// 	//ctx.drawImage(whiteWalker, 0, 0, 16, 16, path[i].x, path[i].y, 1, 1);
 		// }
-		var currentRowDelta = spec.movement.moveBadGuy().rowDelta
-		var creepX = spec.movement.moveBadGuy().x;
-		var creepY = spec.movement.moveBadGuy().y;
-		
-		if(currentRowDelta > 0 ) {
+		var xCoordinate = spec.entity.getXLocation();
+		var yCoordinate = spec.entity.getYLocation();
+		var currentDirection = spec.entity.getDirection();
+
+		if(currentDirection == 'right' ) {
 			currentWhiteWalkerImage = whiteWalkerRight		
 		}
-		if(currentRowDelta < 0) {
+		if(currentDirection == 'left') {
 			currentWhiteWalkerImage = whiteWalkerLeft
 		}
-		ctx.drawImage(currentWhiteWalkerImage, 0, 0, 16, 16, creepX, creepY, 1, 1);
+		ctx.drawImage(currentWhiteWalkerImage, 0, 0, 16, 16, xCoordinate, yCoordinate, 1, 1);
 
 	}
 	return Object.freeze ({

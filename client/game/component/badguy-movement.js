@@ -10,8 +10,8 @@ export default function badGuyMovementComponent(spec) {
     var rowDelta = 0;
     var currentCoordinate;
     var nextCoordinate;
-    var creepX = 0;
-    var creepY = 0;
+    // var creepX = 0;
+    // var creepY = 0;
     var currentCoordinateIndex = 0;
 
     function moveBadGuy() {
@@ -20,12 +20,12 @@ export default function badGuyMovementComponent(spec) {
 				currentCoordinate = path[0];
 				creepStarted = true;
 				nextCoordinate = path[1];
-				creepX = currentCoordinate.x;
-				creepY = currentCoordinate.y;
+				// creepX = currentCoordinate.x;
+				// creepY = currentCoordinate.y;
 			}
 
 			//check if the creep has reached the next coordinate
-			if(Math.round(creepX*100)/100 === nextCoordinate.x && Math.round(creepY*100)/100 === nextCoordinate.y) {
+			if(Math.round(entity.getXLocation()*100)/100 === nextCoordinate.x && Math.round(entity.getYLocation()*100)/100 === nextCoordinate.y) {
 				currentCoordinateIndex++;
 				if(currentCoordinateIndex == path.length) {
 					finishedPath = true;
@@ -52,10 +52,9 @@ export default function badGuyMovementComponent(spec) {
 					rowDelta = 0;
 				}
 			}
-			creepX += rowDelta;
-			creepY += colDelta;
+			entity.changeXLocation(rowDelta);
+			entity.changeYLocation(colDelta);
 		}
-		return {x: creepX, y: creepY, rowDelta:rowDelta};
     }
     return Object.freeze ({
 	    moveBadGuy: moveBadGuy,
@@ -65,3 +64,4 @@ export default function badGuyMovementComponent(spec) {
 //pass through coordinate array once, not continuously generate a path
 //instead of using coordinate index, shift off values from an array
 //utility function for making numbers more readable
+//change entity to badguy
