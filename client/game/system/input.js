@@ -1,8 +1,7 @@
 import makeTower from '../entity/tower';
-export default function inputSystem(entities, gameCanvas) {
 
-	var locationEntities = entities;
-	var canvas = gameCanvas;
+export default function inputSystem(entities, canvas) {
+
 	var ctx = canvas.getContext('2d');
 
 	function run() {
@@ -20,8 +19,8 @@ export default function inputSystem(entities, gameCanvas) {
 		console.log(`x: ${xTile}, y: ${yTile}`);
 
 		//TODO: make the towers only plaeable on 1's, not 0's
-		
-		// locationEntities.forEach(function(entity) {
+
+		// entities.forEach(function(entity) {
 		// 	if (entity.getComponentKeys().includes("towerLocation")) {
 		// 		entities.push(makeTower({x: xTile, y: yTile}));
 		// 		console.log("gotta blast!");

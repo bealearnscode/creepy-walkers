@@ -1,8 +1,5 @@
-//graphics system
-export default function graphicsSystem(entities, gameCanvas) {
+export default function graphicsSystem(entities, canvas) {
 
-	//var graphicalEntities = entities;
-	var canvas = gameCanvas;
 	var ctx = canvas.getContext('2d');
 
 	function run() {
