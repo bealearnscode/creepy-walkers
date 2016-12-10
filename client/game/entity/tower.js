@@ -7,7 +7,7 @@ export default function makeTower() {
 	var tower = {};
 	var graphics = makeTowerGraphicComponent({
 		entityOfComponent: tower,
-		spriteSheet: "assets/img/towers/Stark/jon-left.png",
+		spriteSheet: "assets/img/towers/Stark/jon-16x16-right.png",
 	});
 	
 	var location = tileLocationComponent({

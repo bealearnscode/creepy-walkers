@@ -14,8 +14,10 @@ export default function makeBadGuy() {
 		path: path,
 	});
 	var graphics = makeBadGuyGraphicComponent({
-		whiteWalker: 'assets/img/enemies/white-walker-left.png',
+		whiteWalkerLeft: 'assets/img/enemies/white-walker-16x16-left.png',
+		whiteWalkerRight: 'assets/img/enemies/white-walker-16x16-right.png',
 		movement: movement,
+		path:path
 	});
 
 	var components = {

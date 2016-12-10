@@ -1,5 +1,4 @@
 export default function badGuyMovementComponent(spec) {
-
     var path = spec.path;
     //if we want the location, get it through the entity
     var finishedPath = false;
@@ -20,58 +19,42 @@ export default function badGuyMovementComponent(spec) {
 				nextCoordinate = path[1];
 				creepX = currentCoordinate.x;
 				creepY = currentCoordinate.y;
-				// console.log("creepX", creepX);
-				// console.log("creepY", creepY);
-				// console.log("currentCoordinate", currentCoordinate);
-				// console.log("nextCoordinate", nextCoordinate);
 			}
 
 			//check if the creep has reached the next coordinate
-			if(creepX == nextCoordinate.x || creepY == nextCoordinate.y) {
+			if(Math.round(creepX*100)/100 === nextCoordinate.x && Math.round(creepY*100)/100 === nextCoordinate.y) {
 				currentCoordinateIndex++;
-				console.log("currentCoordinateIndex", currentCoordinateIndex);
+				//console.log("currentCoordinateIndex", currentCoordinateIndex);
 				if(currentCoordinateIndex == path.length) {
-					console.log("We're done");
 					finishedPath = true;
 				}
 				currentCoordinate = nextCoordinate;
 				nextCoordinate = path[currentCoordinateIndex];
-				console.log("path[currentCoordinateIndex]", path[currentCoordinateIndex]);
-				// creepMoving = false;
 			}
 
 			//calculate where to move next
 			if(!finishedPath) {
 				if(nextCoordinate.y > currentCoordinate.y) {
-					colDelta = 1/10;
+					colDelta = .025;
 				}else if(nextCoordinate.y < currentCoordinate.y) {
-					colDelta = -1/10;
+					colDelta = -.025;
 				}else {
 					colDelta = 0;
 				}
 				if(nextCoordinate.x > currentCoordinate.x) {
-					rowDelta = 1/10;
+					rowDelta = .025
 				}else if(nextCoordinate.x < currentCoordinate.x) {
-					rowDelta = -1/10;
+					rowDelta = -.025
 				}else {
 					rowDelta = 0;
 				}
-				//creepMoving = true;
 			}
-			rowDelta = parseInt(rowDelta.toFixed(1));
-			colDelta = parseInt(colDelta.toFixed(1));
-			//console.log("rowDelta", rowDelta);
-			//console.log("colDelta", colDelta);
+
 			creepX += rowDelta;
 			creepY += colDelta;
-			//console.log("creepX", creepX);
-			//console.log("creepY", creepY);
-			console.log("currentCoordinate", currentCoordinate);
-			console.log("nextCoordinate", nextCoordinate);
-
 		}
 
-		return {x: creepX, y: creepY};
+		return {x: creepX, y: creepY, rowDelta:rowDelta};
     
     }
         
