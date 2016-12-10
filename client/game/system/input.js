@@ -19,13 +19,17 @@ export default function inputSystem(entities, gameCanvas) {
 		var yTile = Math.floor((y / canvas.height) * tileWidthAndHeight);
 		console.log(`x: ${xTile}, y: ${yTile}`);
 
-		locationEntities.forEach(function(entity) {
-			if (entity.getComponentKeys().includes("towerLocation")) {
-				console.log("you've placed a tower");
-				entities.push(makeTower({x: xTile, y: yTile}));
-				console.log(entities);
-			}
-		});
+		//TODO: make the towers only plaeable on 1's, not 0's
+		
+		// locationEntities.forEach(function(entity) {
+		// 	if (entity.getComponentKeys().includes("towerLocation")) {
+		// 		entities.push(makeTower({x: xTile, y: yTile}));
+		// 		console.log("gotta blast!");
+		// 	}
+		// });
+
+		entities.push(makeTower({x: xTile, y: yTile}));
+		console.log(entities);
 	}
 
 	return Object.freeze ({

@@ -15,7 +15,7 @@ export default function badGuyGraphicComponent(spec) {
 		//not sure why, but x and y are flipped here
 		//only spot where this happens
 		//ctx.translate((creepY),(creepX));
-		console.log("we're drawing");
+		//console.log("we're drawing");
 		ctx.drawImage(whiteWalker, 0, 0, 16, 16, creepX, creepY, 1, 1);
 		ctx.restore();
 	}
