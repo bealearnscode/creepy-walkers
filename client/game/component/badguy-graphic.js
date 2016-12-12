@@ -16,7 +16,7 @@ export default function badGuyGraphicComponent(spec) {
 		var xCoordinate = spec.entity.getXLocation();
 		var yCoordinate = spec.entity.getYLocation();
 		var currentDirection = spec.entity.getDirection();
-
+    
 		if(currentDirection == 'right' ) {
 			currentWhiteWalkerImage = whiteWalkerRight		
 		}
@@ -24,6 +24,7 @@ export default function badGuyGraphicComponent(spec) {
 			currentWhiteWalkerImage = whiteWalkerLeft
 		}
 		ctx.drawImage(currentWhiteWalkerImage, 0, 0, 16, 16, xCoordinate, yCoordinate, 1, 1);
+
 	}
 	
 	return Object.freeze ({

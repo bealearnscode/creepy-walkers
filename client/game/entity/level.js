@@ -19,13 +19,14 @@ export default function makeLevel() {
 	level.getMap = function() {
 		return components.map
 	};
-	
+
 	level.getComponentKeys = function() {
 		return Object.keys(components);
 	};
+	console.log(components.map);
 
 	level.draw = function(ctx) {
-		components.graphics.drawMap(ctx, level.getMap())
+		components.graphics.drawMap(ctx, components.map);
 	};
 
 	return Object.freeze(level);

@@ -5,9 +5,10 @@ import waveSystem from './system/wave';
 import badguy from './entity/badguy';
 import tower from './entity/tower';
 import level from './entity/level';
+//tower is being created dynamically in input system
 
 export default function game() {
-
+  
 	var entities = [level(), tower()];
 	var canvas = document.getElementById("canvas");
 	var graphics = graphicsSystem(entities, canvas);

@@ -4,10 +4,10 @@ export default function towerGraphicComponent(spec) {
 	var spriteSheet = new Image();
 	spriteSheet.src = spec.spriteSheet;
 
-	function drawTower(ctx, x, y) {
+	function drawTower(ctx) {
 		ctx.save();
 		ctx.imageSmoothingEnabled = false;
-		ctx.drawImage(spriteSheet, 0, 0, 16, 16, x, y, 1, 1);
+		ctx.drawImage(spriteSheet, 0, 0, 16, 16, entity.getX(), entity.getY(), 1, 1);
 		ctx.restore();
 	}
 

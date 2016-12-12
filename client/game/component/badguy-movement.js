@@ -53,8 +53,10 @@ export default function badGuyMovementComponent(spec) {
 					rowDelta = 0;
 				}
 			}
+          
 			entity.changeXLocation(rowDelta);
 			entity.changeYLocation(colDelta);
+
 		}
     }
 
