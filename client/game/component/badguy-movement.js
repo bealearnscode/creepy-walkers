@@ -1,8 +1,7 @@
 export default function badGuyMovementComponent(spec) {
-    console.log(spec)
+
     var entity = spec.entity;
     var path = spec.path
-    
 
     //if we want the location, get it through the entity
     var finishedPath = false;

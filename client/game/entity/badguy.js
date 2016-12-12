@@ -10,7 +10,8 @@ export default function makeBadGuy() {
 	var map = makeLevelMapComponent().map;
 	var path = pathfinder(map).path();
 
-	console.log(path)
+	//path for each enemy?
+	//console.log(path)
 
 	var location = locationComponent({
 		x:path[0].x,
@@ -19,8 +20,8 @@ export default function makeBadGuy() {
 
 	var graphics = makeBadGuyGraphicComponent({
 		entity: badguy,
-		whiteWalkerLeft: 'assets/img/enemies/white-walker-16x16-left.png',
-		whiteWalkerRight: 'assets/img/enemies/white-walker-16x16-right.png',
+		whiteWalkerLeft: 'assets/img/enemies/white-walker-left.png',
+		whiteWalkerRight: 'assets/img/enemies/white-walker-right.png',
 		movement: movement,
 	});
 
@@ -34,7 +35,7 @@ export default function makeBadGuy() {
 		location: location,
 		movement: movement
 	};
-	console.log(components)
+	//console.log(components)
 
 	badguy.getXLocation = function() {
 		return components.location.getXLocation();
