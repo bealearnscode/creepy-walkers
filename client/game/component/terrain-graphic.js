@@ -1,4 +1,3 @@
-//this is where I load the grass and dirt
 export default function makeLevelGraphicComponent(spec) {
 
 	var dirt = new Image()

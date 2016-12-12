@@ -1,4 +1,4 @@
-import badguy from '../entity/badguy'
+import makeBadguy from '../entity/badguy'
 
 export default function waveSystem(entities) {
 
@@ -10,15 +10,17 @@ export default function waveSystem(entities) {
 
 	//possible put wave information in as parameters for this function
 	function generateCreep() {
-		entities.push(badguy())
+		var currentCreep = makeBadguy()
+		creepCounter += 1
+		console.log(creepCounter)
+		entities.push(currentCreep)
 	}
 
 	function wave() {
-		setInterval(generateCreep(),1000)
-		creepCounter++
-		console.log(creepCounter)
-		if(creepCounter == 30) {
-			return 
+		var currentWave = window.setInterval(generateCreep,1000)
+		if(creepCounter === 30) {
+			console.log('made it inside clear condition')
+			clearInterval(currentWave)
 		}
 	}
 

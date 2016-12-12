@@ -24,8 +24,8 @@ export default function badGuyGraphicComponent(spec) {
 			currentWhiteWalkerImage = whiteWalkerLeft
 		}
 		ctx.drawImage(currentWhiteWalkerImage, 0, 0, 16, 16, xCoordinate, yCoordinate, 1, 1);
-
 	}
+	
 	return Object.freeze ({
 		drawBadGuy: drawBadGuy,
 	});

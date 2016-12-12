@@ -1,7 +1,8 @@
 export default function badGuyMovementComponent(spec) {
     console.log(spec)
     var entity = spec.entity;
-    var path = entity.getPath()
+    var path = spec.path
+    
 
     //if we want the location, get it through the entity
     var finishedPath = false;
@@ -56,6 +57,7 @@ export default function badGuyMovementComponent(spec) {
 			entity.changeYLocation(colDelta);
 		}
     }
+
     return Object.freeze ({
 	    moveBadGuy: moveBadGuy,
     });

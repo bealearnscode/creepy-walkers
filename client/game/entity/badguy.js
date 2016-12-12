@@ -4,23 +4,37 @@ import makeLevelMapComponent from '../component/map';
 import pathfinder from '../component/pathfinder';
 import locationComponent from '../component/location';
 
-export default function makeBadGuy(spec) {
-
+export default function makeBadGuy() {
 	var badguy = {};
+
 	var map = makeLevelMapComponent().map;
 	var path = pathfinder(map).path();
-	
+
+	console.log(path)
+
 	var location = locationComponent({
 		x:path[0].x,
 		y:path[0].y,
 	});
 
+	var graphics = makeBadGuyGraphicComponent({
+		entity: badguy,
+		whiteWalkerLeft: 'assets/img/enemies/white-walker-16x16-left.png',
+		whiteWalkerRight: 'assets/img/enemies/white-walker-16x16-right.png',
+		movement: movement,
+	});
+
+	var movement = badGuyMovementComponent({
+		entity: badguy,
+		path: path
+	});
+
 	var components = {
 		graphics: graphics,
 		location: location,
-		path: path,
 		movement: movement
 	};
+	console.log(components)
 
 	badguy.getXLocation = function() {
 		return components.location.getXLocation();
@@ -31,15 +45,15 @@ export default function makeBadGuy(spec) {
 	};
 
 	badguy.getDirection = function() {
-		return components.location.getDirection()
+		return components.location.getDirection();
 	}
 
 	badguy.changeXLocation = function(delta) {
-		return components.location.changeXlocation(delta)
+		return components.location.changeXLocation(delta);
 	}
 
-	badguy.changeYlocation = function(delta) {
-		return components.location.changeYlocation(delta)
+	badguy.changeYLocation = function(delta) {
+		return components.location.changeYLocation(delta);
 	}
 
 	badguy.getPath = function() {
@@ -58,18 +72,6 @@ export default function makeBadGuy(spec) {
 		components.movement.moveBadGuy();
 	};
 
-	console.log(badguy)
-
-	var movement = badGuyMovementComponent({
-		entity: badguy,
-	});
-
-	var graphics = makeBadGuyGraphicComponent({
-		entity: badguy,
-		whiteWalkerLeft: 'assets/img/enemies/white-walker-16x16-left.png',
-		whiteWalkerRight: 'assets/img/enemies/white-walker-16x16-right.png',
-		movement: movement,
-	});
 
 	return Object.freeze(badguy);
 }
