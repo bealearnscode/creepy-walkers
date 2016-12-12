@@ -3,10 +3,10 @@ module.exports = function(dimensions,parentNode,coordinates) {
 			//pointer to another node object
 			Parent: parentNode,
 			//array index represented as an object containing x and y coordinates, should be unique for each coordinate
-			value: coordinates.x + (coordinates.y * dimensions),
+			value: coordinates.y + (coordinates.x * dimensions),
 			//coordinates for this node
-			x: coordinates.x,
-			y: coordinates.y,
+			x: coordinates.y,
+			y: coordinates.x,
 			//heurisitic cost of an entire path using this node
 			heuristicCost: 0,
 			//distance cost, what is returned by the manhattan distance function

@@ -4,7 +4,7 @@ function translatePathNodesIntoCoordinates(pathNode) {
 	if(pathNode === null) {
 			return pathCoordinateArray.reverse()
 		}
-		pathCoordinateArray.push({x:pathNode.x, y:pathNode.y})
+		pathCoordinateArray.push({x:pathNode.y, y:pathNode.x})
 		return translatePathNodesIntoCoordinates(pathNode.Parent)
 }
 
