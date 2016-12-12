@@ -8,5 +8,6 @@ html, body {
 #canvas {
 	width: 800px;
 	height: 800px;
+	border: 1px black solid;
 	background-color: gray; 
 }

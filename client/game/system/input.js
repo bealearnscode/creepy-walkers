@@ -1,64 +1,40 @@
-//input system
-export default function inputSystem(entities, gameCanvas) {
+import makeTower from '../entity/tower';
+import level from '../entity/level';
 
-	var locationEntities = entities;
-	var canvas = gameCanvas;
+export default function inputSystem(entities, canvas) {
+
 	var ctx = canvas.getContext('2d');
+	var map = level().getMap().layout;
+	//map is an object, convert it to an array
+	var mapArr = Object.keys(map).map(function (key) { return map[key]; });
 
 	function run() {
 		canvas.addEventListener("click", clickHandler, false);
 	}
 
-	//TODO: create new entity with x and y
-
 	function clickHandler(e) {
-		console.log("you clicked the canvas");
 		var x = e.pageX - canvas.offsetLeft;
 		var y = e.pageY - canvas.offsetTop;
 
-		// var xPercent = (x / canvas.width) * 2 - 1;
-		// var yPercent = y / -canvas.height + 1;
-		//console.log('x:', xPercent, 'y:', yPercent);
-
-		var mapWidthAndHeight = 16;
-		var xTile = Math.floor((x / canvas.width) * mapWidthAndHeight);
-		var yTile = Math.floor((y / canvas.height) * mapWidthAndHeight);
+		//intended to rescale canvas to a 16 tile grid
+		var tileWidthAndHeight = 16;
+		var xTile = Math.floor((x / canvas.width) * tileWidthAndHeight);
+		var yTile = Math.floor((y / canvas.height) * tileWidthAndHeight);
 		console.log(`x: ${xTile}, y: ${yTile}`);
 
-		//if xTile is between 0 and 1 && yTile is between 0 and 1, you're at the top left tile
-		/*if((xTile > 0 && xTile < 1) && (yTile > 0 && yTile < 1)) {
-			console.log("top left tile");
-		}*/
+		if(mapArr[yTile][xTile] === 1) {
+			console.log("placeable")
+			entities.push(makeTower({x: xTile, y: yTile}));
+			//set the location where you click to 2 
+			//so you aren't able to place towers on top of each other
+			mapArr[yTile][xTile] = 2;
+			console.log(entities);
+		}
+		else {
+			console.log("invalid tile location");
+			console.log(entities);
+		}
 
-		// for(var i = 0; i <= mapWidthAndHeight; i++) {
-		// 	for(var j = 0; j <= mapWidthAndHeight; j++) {
-		// 		console.log("what am i doing?");
-		// 		if((xTile > j && xTile < i) && (yTile > j && yTile < i)) {
-		// 			console.log(j, i);
-		// 		}
-		// 	}
-		// }
-
-		// var arr = [];
-		// for(var x = 0; x < mapWidthAndHeight; x++) {
-		// 	arr[x] = [];
-		// 	for(var y = 0; y < mapWidthAndHeight; y++) {
-		// 		arr[x][y] = y;
-
-		// 		if((xTile > y && xTile < x) && (yTile > y && yTile < x)) {
-		// 			console.log(arr[y][x]);
-		// 		}
-		// 	}
-		// }
-
-		// console.log(arr);
-
-		locationEntities.forEach(function(entity) {
-			if(entity.getComponentKeys().includes("location")) {
-				console.log("you draw!");
-				entity.draw(ctx, xTile, yTile);
-			}
-		});
 	}
 
 	return Object.freeze ({

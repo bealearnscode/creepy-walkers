@@ -1,23 +1,40 @@
+import badGuyMovementComponent from '../component/badguy-movement';
 import makeBadGuyGraphicComponent from '../component/badguy-graphic';
+import makeLevelMapComponent from '../component/map';
+import pathfinder from '../component/pathfinder';
 
 export default function makeBadGuy() {
 
-	console.log("Creating bad guy entity");
 	var badguy = {};
-	var graphics = makeBadGuyGraphicComponent(badguy);
-	var location = {x: 10, y: 10};
+	var map = makeLevelMapComponent().map;
+	var spawnLocation = map.startingPoint;
+	var path = pathfinder(map).path();
+	var movement = badGuyMovementComponent({
+		entity: badguy,
+		path: path,
+	});
+	var graphics = makeBadGuyGraphicComponent({
+		whiteWalker: 'assets/img/enemies/white-walker-left.png',
+		movement: movement,
+	});
 
 	var components = {
 		graphics: graphics,
-		location: location,
+		spawnLocation: spawnLocation,
+		path: path,
+		movement: movement
 	};
 
 	badguy.getXLocation = function() {
-		return components.location.x;
+		return components.spawnLocation.x;
 	};
 
 	badguy.getYLocation = function() {
-		return components.location.y;
+		return components.spawnLocation.y;
+	};
+
+	badguy.getPath = function() {
+		return components.path;
 	};
 
 	badguy.getComponentKeys = function() {
@@ -27,7 +44,10 @@ export default function makeBadGuy() {
 	badguy.draw = function(ctx) {
 		components.graphics.drawBadGuy(ctx);
 	};
+	
+	badguy.move = function() {
+		components.movement.moveBadGuy();
+	};
 
 	return Object.freeze(badguy);
-	
 }

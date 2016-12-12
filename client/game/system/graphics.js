@@ -1,8 +1,5 @@
-//graphics system
-export default function graphicsSystem(entities, gameCanvas) {
+export default function graphicsSystem(entities, canvas) {
 
-	var graphicalEntities = entities;
-	var canvas = gameCanvas;
 	var ctx = canvas.getContext('2d');
 
 	function run() {
@@ -19,21 +16,14 @@ export default function graphicsSystem(entities, gameCanvas) {
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
 
 		ctx.save();
-		/*ctx.translate(canvas.width + 1,canvas.height + 1);*/
-	
-		//console.log("canvas width: " + canvas.width + " canvas height: " +  canvas.height);
 		
 		var newWidth = (canvas.width / 16);
 		var newHeight = (canvas.height / 16);
-		/*ctx.scale(canvas.width, newWidth);
-		ctx.scale(canvas.height, newHeight);*/
+		
 		ctx.scale(newWidth, newHeight);
-		console.log("canvas width: " + canvas.width + " canvas height: " +  canvas.height)
-		
-		
 		
 		//Every graphic entity that has a graphic component needs a draw function
-		graphicalEntities.forEach(function(entity) {
+		entities.forEach(function(entity) {
 			if(entity.getComponentKeys().includes("graphics")) {
 				entity.draw(ctx);
 			}
