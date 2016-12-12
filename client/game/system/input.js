@@ -5,6 +5,7 @@ export default function inputSystem(entities, canvas) {
 
 	var ctx = canvas.getContext('2d');
 	var map = level().getMap().layout;
+	//map is an object, convert it to an array
 	var mapArr = Object.keys(map).map(function (key) { return map[key]; });
 
 	function run() {
