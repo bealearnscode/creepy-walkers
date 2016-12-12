@@ -1,8 +1,11 @@
 import makeTower from '../entity/tower';
+import level from '../entity/level';
 
 export default function inputSystem(entities, canvas) {
 
 	var ctx = canvas.getContext('2d');
+	var map = level().getMap().layout;
+	var mapArr = Object.keys(map).map(function (key) { return map[key]; });
 
 	function run() {
 		canvas.addEventListener("click", clickHandler, false);
@@ -18,17 +21,19 @@ export default function inputSystem(entities, canvas) {
 		var yTile = Math.floor((y / canvas.height) * tileWidthAndHeight);
 		console.log(`x: ${xTile}, y: ${yTile}`);
 
-		//TODO: make the towers only plaeable on 1's, not 0's
+		if(mapArr[yTile][xTile] === 1) {
+			console.log("placeable")
+			entities.push(makeTower({x: xTile, y: yTile}));
+			//set the location where you click to 2 
+			//so you aren't able to place towers on top of each other
+			mapArr[yTile][xTile] = 2;
+			console.log(entities);
+		}
+		else {
+			console.log("invalid tile location");
+			console.log(entities);
+		}
 
-		// entities.forEach(function(entity) {
-		// 	if (entity.getComponentKeys().includes("towerLocation")) {
-		// 		entities.push(makeTower({x: xTile, y: yTile}));
-		// 		console.log("gotta blast!");
-		// 	}
-		// });
-
-		entities.push(makeTower({x: xTile, y: yTile}));
-		console.log(entities);
 	}
 
 	return Object.freeze ({
