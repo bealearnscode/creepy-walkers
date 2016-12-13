@@ -37,11 +37,16 @@ export default function makeTower(spec) {
 	};
 
 	tower.getEntityType = function() {
-		return components.collision.entityType;
+		return components.collision.getEntityType();
 	};
 
+	tower.getRadius = function() {
+		return components.collision.getRadius();
+	}
+
 	tower.onCollision = function(entity) {
-		console.log("badguy collided with entity:", entity);
+		console.log("tower collided with entity:", entity);
+		return components.collision.collidesWith(entity);
 	};
 
 	tower.getComponentKeys = function() {

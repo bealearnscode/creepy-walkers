@@ -1,5 +1,7 @@
 export default function collisionComponent(spec) {
 
+	console.log("collision component-=-=-=-=-=-=");
+
 	var entity = spec.entity;
 	var radius = spec.radius;
 
@@ -14,7 +16,10 @@ export default function collisionComponent(spec) {
 		};
 
 		var radiusA = radius;
-		var radiusB = otherEntity.radius;
+		console.log("radiusA", radiusA);
+		var radiusB = otherEntity.getRadius();
+		console.log("otherEntity", otherEntity);
+		console.log("radiusB", radiusB);
 
 		var diff = {x: positionA.x - positionB.x,
 					y: positionA.y - positionB.y};
@@ -26,8 +31,18 @@ export default function collisionComponent(spec) {
 		return distanceSquared < radiusSum * radiusSum;
 	}
 
+	function getEntityType() {
+		return spec.entityType;
+	}
+
+	function getRadius() {
+		return spec.radius;
+	}
+
 	return Object.freeze({
 		collidesWith: collidesWith,
+		getEntityType: getEntityType,
+		getRadius: getRadius,
 	});
 
 }

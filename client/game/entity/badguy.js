@@ -80,11 +80,16 @@ export default function makeBadGuy() {
 	};
 
 	badguy.getEntityType = function() {
-		return components.collision.entityType;
+		return components.collision.getEntityType();
 	};
+
+	badguy.getRadius = function() {
+		return components.collision.getRadius();
+	}
 
 	badguy.onCollision = function(entity) {
 		console.log("badguy collided with entity:", entity);
+		return components.collision.collidesWith(entity);
 	};
 
 	badguy.getComponentKeys = function() {
