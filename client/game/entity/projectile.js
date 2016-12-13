@@ -1,6 +1,7 @@
 import projectileGraphicComponent from '../component/projectile-graphic';
 import projectileLocation from '../component/location';
 import collisionComponent from '../component/collision';
+import movementComponent from '../component/projectile-movement';
 
 export default function makeProjectile(spec) {
 	var projectile = {};
@@ -22,10 +23,16 @@ export default function makeProjectile(spec) {
 		radius: 0.25,
 	})
 
+	var projectileMovement = movementComponent({
+		entity: projectile,
+		speed: .1,
+	})
+
 	var components = {
 		graphics: graphics,
 		location: location,
 		collision: collision,
+		projectileMovement: projectileMovement,
 	};
 
 	projectile.getXLocation = function() {
@@ -36,10 +43,19 @@ export default function makeProjectile(spec) {
 		return components.location.getYLocation();
 	};
 
-	projectile.move = function() {
+	projectile.changeXLocation = function(delta) {
+		return components.location.getXLocation(delta);
+	}
+
+	projectile.changeYLocation = function(delta) {
+		return components.location.getYLocation(delta);
+	}
+
+	projectile.projectileMovement = function(creepLocation) {
 		//move the projectile toward the badguy
 		//move will change the location component of the projectile,
 		//and will make the projectile get closer to the badguy
+		return components.projectileMovement.projectileTrajectory(creepLocation,{x:components.location.getXLocation,y:components.location.getYLocation});
 	};
 
 	projectile.getRadius = function() {
