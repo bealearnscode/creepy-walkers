@@ -6,7 +6,7 @@ import collisionSystem from './system/collision';
 import badguy from './entity/badguy';
 import tower from './entity/tower';
 import level from './entity/level';
-//tower is being created dynamically in input system
+//tower and badguy are being created dynamically
 
 export default function game() {
   

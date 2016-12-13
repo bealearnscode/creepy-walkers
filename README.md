@@ -1,4 +1,4 @@
-# Creepy Walkers
+# Game of Towers
 
 ### To run this in development mode
 * if this is your first time, type "npm install" to install the necessary packages
