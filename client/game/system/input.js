@@ -1,5 +1,6 @@
 import makeTower from '../entity/tower';
 import level from '../entity/level';
+import makeProjectile from '../entity/projectile';
 
 export default function inputSystem(entities, canvas) {
 
@@ -28,11 +29,11 @@ export default function inputSystem(entities, canvas) {
 			//set the location where you click to 2 
 			//so you aren't able to place towers on top of each other
 			mapArr[yTile][xTile] = 2;
-			console.log(entities);
+			//console.log(entities);
 		}
 		else {
 			console.log("invalid tile location");
-			console.log(entities);
+			//console.log(entities);
 		}
 
 	}

@@ -1,6 +1,7 @@
-import makeTowerGraphicComponent from  '../component/tower-maker';
+import makeTowerGraphicComponent from  '../component/tower-graphic';
 import makeTowerLocationComponent from '../component/location';
 import tileLocationComponent from '../component/tile-location';
+import collisionComponent from '../component/collision';
 
 export default function makeTower(spec) {
 
@@ -15,17 +16,36 @@ export default function makeTower(spec) {
 		y: spec.y,
 	});
 
+	var collision = collisionComponent({
+		entity: tower,
+		entityType: "tower",
+		radius: 2,
+	});
+
 	var components = {
 		graphics: graphics,
 		towerLocation: towerLocation,
+		collision: collision,
 	};
 
-	tower.getX = function() {
+	tower.getXLocation = function() {
 		return components.towerLocation.getXLocation();
 	};
 
-	tower.getY = function() {
+	tower.getYLocation = function() {
 		return components.towerLocation.getYLocation();
+	};
+
+	tower.getEntityType = function() {
+		return components.collision.getEntityType();
+	};
+
+	tower.getRadius = function() {
+		return components.collision.getRadius();
+	}
+
+	tower.onCollision = function(entity) {
+		return components.collision.collidesWith(entity);
 	};
 
 	tower.getComponentKeys = function() {

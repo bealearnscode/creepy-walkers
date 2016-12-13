@@ -3,6 +3,8 @@ import makeBadGuyGraphicComponent from '../component/badguy-graphic';
 import makeLevelMapComponent from '../component/map';
 import pathfinder from '../component/pathfinder';
 import locationComponent from '../component/location';
+import healthComponent from '../component/health';
+import collisionComponent from '../component/collision';
 
 export default function makeBadGuy() {
 	var badguy = {};
@@ -27,15 +29,27 @@ export default function makeBadGuy() {
 
 	var movement = badGuyMovementComponent({
 		entity: badguy,
-		path: path
+		path: path,
+	});
+
+	var health = healthComponent({
+		amount: 10,
+	});
+
+	var collision = collisionComponent({
+		entity: badguy,
+		entityType: "badguy",
+		radius: 0.5,
 	});
 
 	var components = {
 		graphics: graphics,
 		location: location,
-		movement: movement
+		movement: movement,
+		health: health,
+		collision: collision,
 	};
-	//console.log(components)
+	//console.log(components);
 
 	badguy.getXLocation = function() {
 		return components.location.getXLocation();
@@ -59,6 +73,26 @@ export default function makeBadGuy() {
 
 	badguy.getPath = function() {
 		return components.path;
+	};
+
+	badguy.getHealth = function() {
+		return components.health.getHealth();
+	};
+
+	badguy.reduceHealth = function(damage) {
+		return components.health.reduceHealth(damage);
+	}
+
+	badguy.getEntityType = function() {
+		return components.collision.getEntityType();
+	};
+
+	badguy.getRadius = function() {
+		return components.collision.getRadius();
+	}
+
+	badguy.onCollision = function(entity) {
+		return components.collision.collidesWith(entity);
 	};
 
 	badguy.getComponentKeys = function() {

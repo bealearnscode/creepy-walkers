@@ -1,11 +1,12 @@
 import graphicsSystem from './system/graphics';
 import inputSystem from './system/input';
 import movementSystem from './system/movement';
-import waveSystem from './system/wave';
+import vitalitySystem from './system/vitality';
+import collisionSystem from './system/collision';
 import badguy from './entity/badguy';
 import tower from './entity/tower';
 import level from './entity/level';
-//tower is being created dynamically in input system
+//tower and badguy are being created dynamically
 
 export default function game() {
   
@@ -14,13 +15,15 @@ export default function game() {
 	var graphics = graphicsSystem(entities, canvas);
 	var input = inputSystem(entities, canvas);
 	var movement = movementSystem(entities);
-	var wave = waveSystem(entities)
+	var vitality = vitalitySystem(entities)
+	var collision = collisionSystem(entities);
 
 	function run() {
 		graphics.run();
 		input.run();
 		movement.run();
-		wave.run();
+		vitality.run();
+		collision.run();
 	}
 
 	return Object.freeze ({

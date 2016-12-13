@@ -10,14 +10,14 @@ export default function makeLevelGraphicComponent(spec) {
 	function drawMap(ctx,map) {
 		ctx.imageSmoothingEnabled = false;
 		for(var y = 0;y<map.dimensions;y++) {
-		for(var x = 0; x<map.dimensions;x++) {
-			switch(map.layout[x][y]) {
-				case 0:
-					ctx.drawImage(dirt,0,0,tileWidth,tileHeight,y,x,1,1);
-					break;
-				case 1:
-					ctx.drawImage(grass,0,0,tileWidth,tileHeight,y,x,1,1);
-					break;
+			for(var x = 0; x<map.dimensions;x++) {
+				switch(map.layout[x][y]) {
+					case 0:
+						ctx.drawImage(dirt,0,0,tileWidth,tileHeight,y,x,1,1);
+						break;
+					case 1:
+						ctx.drawImage(grass,0,0,tileWidth,tileHeight,y,x,1,1);
+						break;
 				}
 			}
 		}
