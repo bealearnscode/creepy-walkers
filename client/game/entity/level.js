@@ -23,7 +23,7 @@ export default function makeLevel() {
 	level.getComponentKeys = function() {
 		return Object.keys(components);
 	};
-	console.log(components.map);
+	//console.log(components.map);
 
 	level.draw = function(ctx) {
 		components.graphics.drawMap(ctx, components.map);

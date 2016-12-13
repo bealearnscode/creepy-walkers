@@ -7,12 +7,21 @@ export default function towerGraphicComponent(spec) {
 	function drawTower(ctx) {
 		ctx.save();
 		ctx.imageSmoothingEnabled = false;
-		ctx.drawImage(spriteSheet, 0, 0, 16, 16, entity.getX(), entity.getY(), 1, 1);
+		ctx.drawImage(spriteSheet, 0, 0, 16, 16, entity.getXLocation(), entity.getYLocation(), 1, 1);
 		ctx.restore();
+	}
+
+	function towerRange(ctx) {
+		ctx.beginPath();
+		ctx.arc(entity.getXLocation() + 0.5, entity.getYLocation() + 0.5, 2, 0, Math.PI * 2);
+		ctx.fillStyle = 'rgba(0, 200, 0, 0.2)';
+		ctx.fill();
+		ctx.closePath();
 	}
 
 	return Object.freeze ({
 		drawTower: drawTower,
+		towerRange: towerRange,
 	});
 
 }
