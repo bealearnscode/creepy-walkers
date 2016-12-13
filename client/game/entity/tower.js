@@ -45,7 +45,6 @@ export default function makeTower(spec) {
 	}
 
 	tower.onCollision = function(entity) {
-		console.log("tower collided with entity:", entity);
 		return components.collision.collidesWith(entity);
 	};
 

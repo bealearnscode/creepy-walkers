@@ -76,8 +76,12 @@ export default function makeBadGuy() {
 	};
 
 	badguy.getHealth = function() {
-		return components.health;
+		return components.health.getHealth();
 	};
+
+	badguy.reduceHealth = function(damage) {
+		return components.health.reduceHealth(damage);
+	}
 
 	badguy.getEntityType = function() {
 		return components.collision.getEntityType();
@@ -88,7 +92,6 @@ export default function makeBadGuy() {
 	}
 
 	badguy.onCollision = function(entity) {
-		console.log("badguy collided with entity:", entity);
 		return components.collision.collidesWith(entity);
 	};
 

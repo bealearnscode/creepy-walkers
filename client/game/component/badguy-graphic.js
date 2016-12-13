@@ -27,11 +27,11 @@ export default function badGuyGraphicComponent(spec) {
 		ctx.drawImage(currentWhiteWalkerImage, 0, 0, 16, 16, xCoordinate, yCoordinate, 1, 1);
 
 		//Testing purposes
-		ctx.beginPath();
-		ctx.arc(xCoordinate + 0.5, yCoordinate + 0.5, 0.5, 0, Math.PI * 2);
-		ctx.fillStyle = 'rgba(200, 0, 0, 0.8)';
-		ctx.fill();
-		ctx.closePath();
+		// ctx.beginPath();
+		// ctx.arc(xCoordinate + 0.5, yCoordinate + 0.5, 0.5, 0, Math.PI * 2);
+		// ctx.fillStyle = 'rgba(200, 0, 0, 0.8)';
+		// ctx.fill();
+		// ctx.closePath();
 
 	}
 	

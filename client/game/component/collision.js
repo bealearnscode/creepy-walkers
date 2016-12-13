@@ -1,7 +1,5 @@
 export default function collisionComponent(spec) {
 
-	console.log("collision component-=-=-=-=-=-=");
-
 	var entity = spec.entity;
 	var radius = spec.radius;
 
@@ -16,10 +14,7 @@ export default function collisionComponent(spec) {
 		};
 
 		var radiusA = radius;
-		console.log("radiusA", radiusA);
 		var radiusB = otherEntity.getRadius();
-		console.log("otherEntity", otherEntity);
-		console.log("radiusB", radiusB);
 
 		var diff = {x: positionA.x - positionB.x,
 					y: positionA.y - positionB.y};
