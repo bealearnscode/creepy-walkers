@@ -1,6 +1,6 @@
 import makeBadguy from '../entity/badguy';
 
-export default function waveSystem(entities) {
+export default function vitalitySystem(entities) {
 
 	var creepCounter = 0;
 
@@ -30,8 +30,8 @@ export default function waveSystem(entities) {
 			if(entity.getComponentKeys().includes("health")) {
 				if(entity.getHealth() <= 0) {
 					entities.splice(index, 1);
-					console.log("after splice", entities);
-					console.log("index", index);
+					//console.log("after splice", entities);
+					//console.log("index", index);
 				}
 			}
 		});

@@ -9,9 +9,8 @@ export default function towerGraphicComponent(spec) {
 		ctx.imageSmoothingEnabled = false;
 		ctx.drawImage(spriteSheet, 0, 0, 16, 16, entity.getXLocation(), entity.getYLocation(), 1, 1);
 		ctx.restore();
-	}
 
-	function towerRange(ctx) {
+		//Testing purposes
 		ctx.beginPath();
 		ctx.arc(entity.getXLocation() + 0.5, entity.getYLocation() + 0.5, 2, 0, Math.PI * 2);
 		ctx.fillStyle = 'rgba(0, 200, 0, 0.2)';
@@ -21,7 +20,6 @@ export default function towerGraphicComponent(spec) {
 
 	return Object.freeze ({
 		drawTower: drawTower,
-		towerRange: towerRange,
 	});
 
 }

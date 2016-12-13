@@ -53,7 +53,6 @@ export default function makeTower(spec) {
 	};
 
 	tower.draw = function(ctx) {
-		components.graphics.towerRange(ctx);
 		components.graphics.drawTower(ctx);
 	};
 
