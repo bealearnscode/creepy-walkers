@@ -16,31 +16,12 @@ class UserLogin extends Component {
     };
   }
 
-  loginWithProvider(provider) {
-    this.props.loginWithProvider(provider).then(data => {
-      if (data.payload.errorCode)
-        this.setState({ message: data.payload.errorMessage })
-      else
-        browserHistory.push('/profile');
-    });
-    // alert("login with provider");
-  }
 
   onFormSubmit(event) {
     event.preventDefault();
 
     var email = this.refs.email.value;
     var password = this.refs.password.value;
-    this.props.loginUser({ email: email, password: password }).then(data => {
-
-      if (data.payload.errorCode)
-        this.setState({ message: data.payload.errorMessage })
-      else
-        browserHistory.push('/profile');
-
-    }
-    )
-
   }
 
   render() {
