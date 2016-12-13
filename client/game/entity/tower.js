@@ -1,4 +1,4 @@
-import makeTowerGraphicComponent from  '../component/tower-maker';
+import makeTowerGraphicComponent from  '../component/tower-graphic';
 import makeTowerLocationComponent from '../component/location';
 import tileLocationComponent from '../component/tile-location';
 import collisionComponent from '../component/collision';

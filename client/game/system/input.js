@@ -1,5 +1,6 @@
 import makeTower from '../entity/tower';
 import level from '../entity/level';
+import makeProjectile from '../entity/projectile';
 
 export default function inputSystem(entities, canvas) {
 
