@@ -11,7 +11,6 @@
     "mkdir:assets": "mkdir -p build/dev/public/assets",
     "build": "npm run clean && npm run mkdir && npm run build:html && npm run build:css && npm run build:js && npm run build:assets",
     "watch": "npm run watch:html & npm run watch:css & npm run watch:js",
-
     "serve": "[ \"$NODE_ENV\" = \"production\" ] && npm run serve:server:production || npm run serve:server:dev",
     "serve:server:production": "NODE_ENV=production CLIENT_PATH=build/production/public node build/production/server/index.js",
     "serve:server:dev": "NODE_ENV=development CLIENT_PATH=build/dev/public nodemon --exec babel-node server/index.js --watch server --ignore server/public",
@@ -39,6 +38,9 @@
   "homepage": "https://github.com/matcodesalot/creepy-walkers#readme",
   "dependencies": {
     "express": "^4.14.0",
+    "mongodb": "^2.2.16",
+    "mongoose": "^4.7.2",
+    "redux": "^3.6.0",
     "socket.io": "^1.7.1"
   },
   "devDependencies": {
