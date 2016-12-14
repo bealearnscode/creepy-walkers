@@ -37,10 +37,12 @@
   },
   "homepage": "https://github.com/matcodesalot/creepy-walkers#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.0",
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "isomorphic-fetch": "^2.2.1",
     "mongoose": "^4.7.2",
+    "passport": "^0.3.2",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
     "react-redux": "^5.0.1",

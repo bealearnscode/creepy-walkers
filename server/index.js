@@ -30,7 +30,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 
-mongoose.Promise= global.Promise;
+mongoose.Promise = global.Promise;
 
 const HOST = process.env.HOST;
 const PORT = process.env.PORT || 8080;
@@ -42,7 +42,22 @@ exports.app = app;
 
 app.use(express.static(process.env.CLIENT_PATH));
 
-function runServer() {
+// Configuration 
+// app.configure('development', function() { 
+//   	app.set('dburi', 'mongodb://admin:admin@ds133338.mlab.com:33338/tower-defense'); 
+// }); 
+
+// app.configure('production', function(){ 
+//   	app.set('dburi', 'mongodb://admin:admin@ds133338.mlab.com:33338/tower-defense'); 
+// }); 
+
+//app.set('dburi', 'mongodb://admin:admin@ds133338.mlab.com:33338/tower-defense'); 
+
+//global.databaseUri = (global.db ? global.db : mongoose.createConnection(app.settings.dburi));
+
+mongoose.createConnection('mongodb://admin:admin@ds133338.mlab.com:33338/tower-defense');
+
+function runServer(callback) {
     return new Promise((resolve, reject) => {
         app.listen(PORT, HOST, (err) => {
             if (err) {
@@ -50,8 +65,22 @@ function runServer() {
                 reject(err);
             }
 
-            const host = HOST || 'localhost';
-            console.log(`Listening on ${host}:${PORT}`);
+            let databaseUri = process.env.DATABASE_URI || global.databaseUri || 'mongodb://localhost/towers';
+            mongoose.connect(databaseUri)
+            .then(function() {
+            	console.log("Database connected.");
+
+            	const host = HOST || 'localhost';
+            	let server = app.listen(port, function() {
+            		console.log(`Listening on ${host}:${PORT}`);
+            		if(callback) {
+            			callback(server);
+            			console.log("Server running");
+            		}
+            	});
+            }).catch(function(err) {
+            	console.log(err);
+            });
         });
     });
 }
