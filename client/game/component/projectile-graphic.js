@@ -9,6 +9,8 @@ export default function projectileGraphicComponent(spec) {
 		ctx.imageSmoothingEnabled = false;
 		ctx.drawImage(projectile, 0, 0, 8, 8, entity.getXLocation(), entity.getYLocation(), 0.25, 0.25);
 		ctx.restore();
+		console.log(entity.getXLocation());
+		console.log(entity.getYLocation());
 	}
 
 	return Object.freeze({

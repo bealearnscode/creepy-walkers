@@ -11,9 +11,9 @@ export default function movementSystem(entities) {
 		    if(entity.getComponentKeys().includes("movement")) {
 			    entity.move();
 		    }
-		    if(entity.getComponentKeys().includes("projectileMovement")) {
-		    	entity.projectileMovement({x:badguy().getXLocation(),y:badguy().getYLocation()})
-		    }
+		    // if(entity.getComponentKeys().includes("projectileMovement")) {
+		    // 	entity.projectileMovement({x:badguy().getXLocation(),y:badguy().getYLocation()})
+		    // }
 	    });
     }
 	

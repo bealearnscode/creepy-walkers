@@ -1,39 +1,75 @@
 export default function projectileMovementComponent(spec) {
 	var entity = spec.entity;
-	console.log(entity)
 	var speed = spec.speed;
 	var colDelta = 0;
 	var rowDelta = 0;
 
 
 
-	function projectileTrajectory(creepLocation,projectileLocation) {
-		var creepXLocation = creepLocation.x
-		var creepYLocation = creepLocation.y
-		var projectileXLocation = projectileLocation.x
-		var projectileYLocation = projectileLocation.y
+	function projectileTrajectory(creepLocation) {
+		//calculate direction and distance towards creep
+		var toCreepX = (entity.getXLocation() - creepLocation.x);
+		var toCreepY = (entity.getYLocation() - creepLocation.y);
 
-		console.log('creepxlocation',creepXLocation)
-			console.log('creepYlocation',creepYLocation)
-		console.log('projectileXLocation',projectileXLocation)
-		console.log('projectileYLocation',projectileYLocation)	
-		if(creepYLocation > projectileYLocation) {
+		if (toCreepY < 0) {
 			colDelta = speed;
-		}else if (creepYLocation < projectileYLocation) {
-			colDelta =-speed;
-		}else {
-			colDelta = 0;
 		}
-		if(creepXLocation > projectileXLocation) {
+		if (toCreepY > 0) {
+			colDelta = -speed;
+		}
+		if (toCreepX < 0) {
 			rowDelta = speed;
-		}else if(creepXLocation < projectileXLocation) {
+		}
+		if (toCreepX > 0) {
 			rowDelta = -speed;
-		}else {
+		}
+		if (toCreepX === 0) {
 			rowDelta = 0;
 		}
-		
+		if (toCreepY === 0) {
+			colDelta = 0;
+		}
+
+		//move towards creep
 		entity.changeXLocation(rowDelta);
 		entity.changeYLocation(colDelta);
+
+		// console.log('creepxlocation',creepXLocation)
+		// 	console.log('creepYlocation',creepYLocation)
+		// console.log('projectileXLocation',projectileXLocation)
+		// console.log('projectileYLocation',projectileYLocation)	
+		// if(creepYLocation > projectileYLocation) {
+		// 	colDelta = speed;
+		// }else if (creepYLocation < projectileYLocation) {
+		// 	colDelta =-speed;
+		// }else {
+		// 	colDelta = 0;
+		// }
+		// if(creepXLocation > projectileXLocation) {
+		// 	rowDelta = speed;
+		// }else if(creepXLocation < projectileXLocation) {
+		// 	rowDelta = -speed;
+		// }else {
+		// 	rowDelta = 0;
+		// }
+		
+		// entity.changeXLocation(rowDelta);
+		// entity.changeYLocation(colDelta);
+
+
+		
+		
+		//console.log(entity.getXLocation());
+		//console.log(creepLocation.x);
+		//console.log("toCreepX", toCreepX);
+		//console.log("toCreepY", toCreepY);
+
+		//normalize
+		// var toCreepLength = Math.sqrt(toCreepX * toCreepX + toCreepY * toCreepY);
+		// toCreepX /= toCreepLength;
+		// toCreepY /= toCreepLength;
+
+		
 	}
 
 	return Object.freeze({

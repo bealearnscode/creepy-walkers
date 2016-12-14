@@ -71,11 +71,14 @@ export default function collisionSystem(entities) {
 		    					console.log("tower collided with badguy");
 		    					//shoot the projectile
 		    					if(entityA.getComponentKeys().includes("towerLocation")) {
-		    						entities.push(makeProjectile({x: entityA.getXLocation(), y: entityA.getYLocation()}));
-		    						console.log(1);
+		    						entities.push(makeProjectile({x: entityA.getXLocation(), y: entityA.getYLocation()}, {x: entityB.getXLocation() + 0.5, y: entityB.getYLocation() + 0.5}));
+		    						// console.log(entityA.getXLocation());
+		    						// console.log(entityA.getYLocation());
+		    						// console.log(entityB.getXLocation());
+		    						// console.log(entityB.getYLocation());
 		    					}
 		    					if(entityB.getComponentKeys().includes("towerLocation")) {
-		    						entities.push(makeProjectile({x: entityB.getXLocation(), y: entityB.getYLocation()}));
+		    						entities.push(makeProjectile({x: entityB.getXLocation(), y: entityB.getYLocation()}, {x: entityA.getXLocation() + 0.5, y: entityA.getYLocation() + 0.5}));
 		    						console.log(2);
 		    					}
 
@@ -83,9 +86,13 @@ export default function collisionSystem(entities) {
 		    				if((entityA.getEntityType() === "projectile" && entityB.getEntityType() === "badguy") || (entityA.getEntityType() === "badguy" && entityB.getEntityType() === "projectile")) {
 		    					if(entityA.getComponentKeys().includes("health")) {
 		    						entityA.reduceHealth(1);
+		    						console.log(entities);
+
+		    						entities.splice(entities.indexOf(entityB), 1);
 		    					}
 		    					if(entityB.getComponentKeys().includes("health")) {
 		    						entityB.reduceHealth(1);
+		    						entities.splice(entities.indexOf(entityA), 1);
 		    					}
 		    				}
 		    			}
