@@ -18,8 +18,7 @@ export default function vitalitySystem(entities) {
 				creepCounter += 1;
 				//console.log(creepCounter);
 				entities.push(currentCreep);
-				if(creepCounter === 10) {
-					console.log('made it inside clear condition');
+				if(creepCounter === 1) {
 					clearInterval(currentWave);
 				}
 		},1000);
