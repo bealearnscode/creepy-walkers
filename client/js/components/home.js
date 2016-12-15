@@ -18,7 +18,8 @@ export default class Home extends Component {
 
 				<p><Link to={`/login`}>Login</Link></p>
                 <p><Link to={`/register`}>Register</Link></p>
-                <p><Link to={`/game`}>Game</Link></p>
+                <p><Link to={`/game`}>Play</Link></p>
+                <p><Link to={`/highscores`}>High Scores</Link></p>
 			</div>
 		);
 	}

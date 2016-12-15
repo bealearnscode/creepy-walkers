@@ -40,18 +40,17 @@ highScoreRouter.post('/', jsonParser, passport.authenticate("basic", {session: f
 	}
 
 	let score = req.body.score;
-	let fromId = req.body.from;
+	let fromUser = req.body.from;
 
-	User.findOne({username: fromId}, function(err, user) {
+	User.findOne({username: fromUser}, function(err, user) {
 		if(err) {
 			console.log(err);
 			return res.status(500).json({message: "Internal server error"});
 		}
 
-		console.log(user); //user is null?
 		let newScore = new HighScore({
 			score: score,
-			from: user._id
+			from: user.username
 		});
 
 		newScore.save(function(err) {

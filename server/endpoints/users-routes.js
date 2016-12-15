@@ -23,6 +23,19 @@ usersRouter.get('/', passport.authenticate("basic", {session: false}), function(
 	});
 });
 
+usersRouter.get('/:username', passport.authenticate("basic", {session: false}), function(req, res) {
+	let username = req.params.username;
+
+	User.findOne({username: username}, function(err, user) {
+		if(err) {
+			console.log(err);
+			return res.status(500).json({message: "Internal server error"});
+		}
+		
+		return res.json({username: user.username});
+	})
+})
+
 //login (might not need it)
 // usersRouter.post('/login', jsonParser, passport.authenticate("basic", {session: false}), function(req, res) {
 // 	let username = req.body.username;

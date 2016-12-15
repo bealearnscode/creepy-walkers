@@ -5,7 +5,7 @@ import * as actions from '../redux/actions';
 class Login extends Component {
 	onLoginPressed(e) {
 		e.preventDefault();
-		this.props.dispatch(actions.signInAsync(this.refs.username.value, this.refs.password.value));
+		this.props.dispatch(actions.loginAsync(this.refs.username.value, this.refs.password.value));
 		this.refs.username.value = "";
 		this.refs.password.value = "";
 		//this.props.router.push('/game');

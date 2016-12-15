@@ -16,6 +16,7 @@ import Home from './js/components/home';
 import Login from './js/components/login';
 import Register from './js/components/register';
 import Game from './js/components/game';
+import Highscore from './js/components/highscore';
 
 import store from './js/redux/store';
 
@@ -26,6 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			<Route path='/login' component={Login} />
 			<Route path='/register' component={Register} />
 			<Route path="/game" component={Game} />
+			<Route path="/highscores" component={Highscore} />
 		</Router>
 		</Provider>,
 		document.getElementById('app')
