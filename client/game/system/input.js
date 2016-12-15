@@ -24,12 +24,17 @@ export default function inputSystem(entities, canvas) {
 		console.log(`x: ${xTile}, y: ${yTile}`);
 
 		if(mapArr[yTile][xTile] === 1) {
-			console.log("placeable")
-			entities.push(makeTower({x: xTile, y: yTile}));
-			//set the location where you click to 2 
-			//so you aren't able to place towers on top of each other
-			mapArr[yTile][xTile] = 2;
-			//console.log(entities);
+			entities.forEach(function(entity,index){
+				if(entity.getComponentKeys().includes("money")) {
+					if(entity.getMoney() >= 40) {
+						entities.push(makeTower({x: xTile, y: yTile}));
+						mapArr[yTile][xTile] = 2;
+						entity.updateMoney(-40)
+					//set the location where you click to 2 
+					//so you aren't able to place towers on top of each other
+					}
+				}
+			}) 
 		}
 		else {
 			console.log("invalid tile location");
