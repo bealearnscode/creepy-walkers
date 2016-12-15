@@ -38,6 +38,7 @@ export default function vitalitySystem(entities) {
 					entities.forEach(function(entity,index) {
 						if(entity.getComponentKeys().includes("money")) {
 							entity.updateMoney(5)
+							entity.updateScore(15)
 						}
 					})
 				}
