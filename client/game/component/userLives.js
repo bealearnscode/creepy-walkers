@@ -1,10 +1,8 @@
 export default function userLives(spec) {
-	var lives = {
-		amount: spec.amount,
-	}
+	var lives = spec.amount
 
 	function getLives() {
-		return lives.amount;
+		return lives;
 	}
 
 	function updateLives(amount) {

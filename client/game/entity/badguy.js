@@ -49,7 +49,7 @@ export default function makeBadGuy() {
 		health: health,
 		collision: collision,
 	};
-	//console.log(components);
+	
 
 	badguy.getXLocation = function() {
 		return components.location.getXLocation();
@@ -107,7 +107,7 @@ export default function makeBadGuy() {
 		components.movement.moveBadGuy();
 	};
 
-
+	
 	return Object.freeze(badguy);
 }
 //refactor the functions

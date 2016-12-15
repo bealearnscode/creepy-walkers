@@ -10,7 +10,7 @@ import user from './entity/user';
 //tower and badguy are being created dynamically
 
 export default function game() {
-  	console.log(user())
+
 	var entities = [level(),user()];
 	var canvas = document.getElementById("canvas");
 	var graphics = graphicsSystem(entities, canvas);

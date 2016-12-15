@@ -7,21 +7,19 @@ export default function userState() {
 	var user = {};
 
 	var lives =  userLives({
-		entity: user,
-		amount: 30
+		amount: 10,
 	});
 
 	var money = userMoney({
-		entity: user,
-		amount: 100
-	});
-
-	var graphics = userStatGraphics({
-		entity: user,
+		amount: 100,
 	});
 
 	var score = userScore({
-		entity:user,
+		amount: 0,
+	});
+
+	var graphics = userStatGraphics({
+		entity:user
 	});
 
 	var components = {
@@ -31,16 +29,8 @@ export default function userState() {
 		graphics: graphics,
 	};
 
-	user.updateLives = function(amount) {
-		return components.lives.updateLives(amount);
-	};
-
 	user.getLives = function() {
 		return components.lives.getLives();
-	};
-
-	user.updateMoney = function(amount) {
-		return components.money.updateMoney(amount);
 	};
 
 	user.getMoney = function() {
@@ -51,13 +41,24 @@ export default function userState() {
 		return components.score.getScore();
 	};
 
+	user.updateLives = function(amount) {
+		components.lives.updateLives(amount);
+	};
+
+	user.updateMoney = function(amount) {
+		components.money.updateMoney(amount);
+	};
+
 	user.updateScore = function(amount) {
-		return components.score.updateScore(amount);
+		components.score.updateScore(amount);
 	};
 
 	user.draw = function(ctx) {
-		console.log(2)
 		components.graphics.drawStats(ctx);
+	};
+
+	user.getComponentKeys = function() {
+		return Object.keys(components);
 	};
 
 	return Object.freeze(user);

@@ -4,9 +4,14 @@ export default function vitalitySystem(entities) {
 
 	var creepCounter = 0;
 	var creepDeath = 0
+	var waveEnd = false
+
 	function run() {
-		wave();
-		setInterval(die, 1000/4);
+		if(waveEnd === false) {
+			window.setTimeout(wave(),5000);
+			setInterval(die, 1000/4);	
+		}
+		
 	}
 
 	//possible put wave information in as parameters for this function
@@ -25,18 +30,29 @@ export default function vitalitySystem(entities) {
 	};
 
 	function die() {
-		
 		entities.forEach(function(entity, index) {
 			if(entity.getComponentKeys().includes("health")) {
 				if(entity.getHealth() <= 0) {
 					creepDeath += 1
 					entities.splice(index, 1);
+					entities.forEach(function(entity,index) {
+						if(entity.getComponentKeys().includes("money")) {
+							entity.updateMoney(5)
+						}
+					})
 				}
 			}
 		});
 		if(creepDeath == creepCounter) {
-			console.log('goodjob')
-			window.setTimeout(cleanProjectiles(),250)			
+			window.setTimeout(cleanProjectiles(),250)
+			entities.forEach(function(entity,index) {
+				if(entity.getComponentKeys().includes("money")) {
+					waveEnd = true
+					entity.updateScore(50*creepDeath);
+					entity.updateMoney(15*creepDeath);
+					window.setTimeout(resetWave(), 200);
+				}
+			})			
 		}
 	};
 
@@ -46,6 +62,12 @@ export default function vitalitySystem(entities) {
 				entities.splice(entities.indexOf(entity),1)
 			}
 		})	
+	};
+
+	function resetWave() {
+		creepDeath = 0;
+		creepCounter = 0;
+		waveEnd = false
 	}
 
 	return Object.freeze({

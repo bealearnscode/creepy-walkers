@@ -30,5 +30,4 @@ export default function makeLevel() {
 	};
 
 	return Object.freeze(level);
-	
 }
