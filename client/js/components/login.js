@@ -1,10 +1,15 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import * as actions from '../redux/actions';
 
-export default class Login extends Component {
+class Login extends Component {
 	onLoginPressed(e) {
 		e.preventDefault();
-		//dispatch an action here
-		this.props.router.push('/game');
+		let username = this.refs.username.value;
+		let password = this.refs.password.value
+		this.props.dispatch(actions.signInAsync(username, password));
+		console.log("You made it!");
+		//this.props.router.push('/game');
 	}
 
 	render() {
@@ -23,8 +28,8 @@ export default class Login extends Component {
 				<div className="wrapper">
 			        <form className="form-signin">
 			            <h2 className="form-signin-heading">Please login</h2>
-			            <input type="text" className="form-control" name="username" placeholder="Username" required="" autoFocus="" />
-			            <input type="password" className="form-control" name="password" placeholder="Password" required=""/>
+			            <input type="text" className="form-control" ref="username" name="username" placeholder="Username" required="" autoFocus="" />
+			            <input type="password" className="form-control" name="password" ref="password" placeholder="Password" required=""/>
 			            <button className="btn btn-lg btn-primary btn-block" type="submit" onClick={this.onLoginPressed.bind(this)}>Login</button>
 			        </form>
 			    </div>
@@ -32,3 +37,11 @@ export default class Login extends Component {
 		);
 	}
 }
+
+// let mapStateToProps = function(state, props) {
+// 	return {
+// 		isStarted: state.isStarted,
+// 	}
+// }
+
+export default connect()(Login);

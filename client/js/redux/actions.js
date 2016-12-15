@@ -25,26 +25,42 @@ export function signInError(err) {
 }
 
 export function signInAsync(username, password) {
-	let endpoint = "/users/login";
-    return fetch(endpoint, {
-        method: "post",
-        body: JSON.stringify({
-            username: username,
-            password: password
-        })
-        .then(function(res) {
-            if(res.status < 200 || res.status >= 300) {
-                var error = new Error(res.statusText);
-                error.res = res;
-                throw error;
-            }
-            res = res.json();
-        })
-        .then(response => {
-            return dispatch(signInSuccess(user));
-        })
-            
-        })
+	return function(dispatch) {
+		var endpoint = "/users";
+		return fetch(endpoint, {
+			method: "GET",
+			headers: {
+				"Authorization": "Basic " + btoa(username + ":" + password),
+	        	// "Content-Type": "application/x-www-form-urlencoded",
+	        	// "Access-Control-Allow-Origin": "*",
+	        	// "Accept": "application/json",
+	        	// "Content-Type": "application/json"
+			},
+			// body: JSON.stringify({
+	  //           username: username,
+	  //           password: password
+	  //       })
+		})
+		.then(function(response) {
+			if (response.status < 200 || response.status >= 300) {
+				var error = new Error(response.statusText);
+				error.response = response;
+				throw error;
+			}
+			return response;
+		})
+		.then(function(response) {
+			return response.json();
+		})
+		.then(function(data) {
+			console.log(data);
+			//return dispatch(signInSuccess(data));
+		})
+		.catch(function(error) {
+			console.log(error);
+			//return dispatch(signInError(error));
+		})
+	}
 }
 
 export const REGISTER_USER_SUCCESS = 'REGISTER_USER_SUCCESS';
