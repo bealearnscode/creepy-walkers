@@ -1,3 +1,5 @@
+import badguy from '../entity/badguy'
+
 export default function movementSystem(entities) {
 
 	function run() {
@@ -9,6 +11,9 @@ export default function movementSystem(entities) {
 		    if(entity.getComponentKeys().includes("movement")) {
 			    entity.move();
 		    }
+		    // if(entity.getComponentKeys().includes("projectileMovement")) {
+		    // 	entity.projectileMovement({x:badguy().getXLocation(),y:badguy().getYLocation()})
+		    // }
 	    });
     }
 	

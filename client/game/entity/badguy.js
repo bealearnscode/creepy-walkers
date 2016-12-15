@@ -5,19 +5,21 @@ import pathfinder from '../component/pathfinder';
 import locationComponent from '../component/location';
 import healthComponent from '../component/health';
 import collisionComponent from '../component/collision';
+import madeItComponent from '../component/madeIt'
 
 export default function makeBadGuy() {
 	var badguy = {};
 
 	var map = makeLevelMapComponent().map;
-	var path = pathfinder(map).path();
-
+	var path = { 
+		path: pathfinder(map).path(),
+	}
 	//path for each enemy?
 	//console.log(path)
 
 	var location = locationComponent({
-		x:path[0].x,
-		y:path[0].y,
+		x:path.path[0].x,
+		y:path.path[0].y,
 	});
 
 	var graphics = makeBadGuyGraphicComponent({
@@ -29,7 +31,7 @@ export default function makeBadGuy() {
 
 	var movement = badGuyMovementComponent({
 		entity: badguy,
-		path: path,
+		path: path.path,
 	});
 
 	var health = healthComponent({
@@ -42,14 +44,19 @@ export default function makeBadGuy() {
 		radius: 0.5,
 	});
 
+	var madeIt = madeItComponent({
+	})
+
 	var components = {
 		graphics: graphics,
 		location: location,
 		movement: movement,
 		health: health,
 		collision: collision,
+		path: path,
+		madeIt: madeIt,
 	};
-	//console.log(components);
+	
 
 	badguy.getXLocation = function() {
 		return components.location.getXLocation();
@@ -102,12 +109,20 @@ export default function makeBadGuy() {
 	badguy.draw = function(ctx,x,y) {
 		components.graphics.drawBadGuy(ctx,badguy.getXLocation(),badguy.getYLocation());
 	};
-	
+
+	badguy.madeItToEnd = function() {
+		components.madeIt.pathFinished();
+	}
+		
+	badguy.checkStatus = function() {
+		return components.madeIt.checkStatus()
+	}
+
 	badguy.move = function() {
 		components.movement.moveBadGuy();
 	};
 
-
+	
 	return Object.freeze(badguy);
 }
 //refactor the functions
