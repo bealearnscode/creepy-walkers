@@ -38,16 +38,16 @@ export default function badGuyMovementComponent(spec) {
 			//checks which direction creep needs to go
 			if(!finishedPath) {
 				if(nextCoordinate.y > currentCoordinate.y) {
-					colDelta = .025;
+					colDelta = .05;
 				}else if(nextCoordinate.y < currentCoordinate.y) {
-					colDelta = -.025;
+					colDelta = -.05;
 				}else {
 					colDelta = 0;
 				}
 				if(nextCoordinate.x > currentCoordinate.x) {
-					rowDelta = .025;
+					rowDelta = .05;
 				}else if(nextCoordinate.x < currentCoordinate.x) {
-					rowDelta = -.025;
+					rowDelta = -.05;
 				}else {
 					rowDelta = 0;
 				}

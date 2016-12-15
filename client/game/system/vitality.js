@@ -3,7 +3,7 @@ import makeBadguy from '../entity/badguy';
 export default function vitalitySystem(entities) {
 
 	var creepCounter = 0;
-
+	var creepDeath = 0
 	function run() {
 		wave();
 		setInterval(die, 1000/4);
@@ -18,22 +18,34 @@ export default function vitalitySystem(entities) {
 				creepCounter += 1;
 				//console.log(creepCounter);
 				entities.push(currentCreep);
-				if(creepCounter === 1) {
-					clearInterval(currentWave);
+				if(creepCounter === 5) {
+				clearInterval(currentWave);
 				}
 		},1000);
-	}
+	};
 
 	function die() {
+		
 		entities.forEach(function(entity, index) {
 			if(entity.getComponentKeys().includes("health")) {
 				if(entity.getHealth() <= 0) {
+					creepDeath += 1
 					entities.splice(index, 1);
-					//console.log("after splice", entities);
-					//console.log("index", index);
 				}
 			}
 		});
+		if(creepDeath == creepCounter) {
+			console.log('goodjob')
+			window.setTimeout(cleanProjectiles(),250)			
+		}
+	};
+
+	function cleanProjectiles() {
+		entities.forEach(function(entity,index) {
+			if(entity.getComponentKeys().includes("projectileLocation")) {
+				entities.splice(entities.indexOf(entity),1)
+			}
+		})	
 	}
 
 	return Object.freeze({

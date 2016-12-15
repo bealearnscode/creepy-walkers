@@ -1,11 +1,9 @@
 import makeProjectile from '../entity/projectile';
 
 export default function collisionSystem(entities) {
-
 	function run() {
 		setInterval(tick, 1000/4); //4 frames per second
 	}
-
 
 	//enemy gets in range of tower radius
 	//projectile entity is pushed on to the entities array
@@ -23,23 +21,25 @@ export default function collisionSystem(entities) {
 		    			if (entityA.onCollision(entityB)) {
 		    				//if badguy is in range of tower
 		    				if((entityA.getEntityType() === "tower" && entityB.getEntityType() === "badguy") || (entityA.getEntityType() === "badguy" && entityB.getEntityType() === "tower")) {
-		    					console.log("tower collided with badguy");
+		    					var projectile
 		    					//shoot the projectile
 		    					if(entityA.getComponentKeys().includes("towerLocation")) {
-		    						entities.push(makeProjectile({x: entityA.getXLocation(), y: entityA.getYLocation()}, {x: entityB.getXLocation() + 0.5, y: entityB.getYLocation() + 0.5}));
-		    						
+		    						projectile = makeProjectile({x: entityA.getXLocation(), y: entityA.getYLocation()}, {x: entityB.getXLocation() + 0.5, y: entityB.getYLocation() + 0.5})
+		    						entities.push(projectile);
 		    					}
 		    					if(entityB.getComponentKeys().includes("towerLocation")) {
-		    						entities.push(makeProjectile({x: entityB.getXLocation(), y: entityB.getYLocation()}, {x: entityA.getXLocation() + 0.5, y: entityA.getYLocation() + 0.5}));
+		    						projectile = makeProjectile({x: entityB.getXLocation(), y: entityB.getYLocation()}, {x: entityA.getXLocation() + 0.5, y: entityA.getYLocation() + 0.5})
+		    						entities.push(projectile);
 		    					}
-
 		    				}
 		    				if((entityA.getEntityType() === "projectile" && entityB.getEntityType() === "badguy") || (entityA.getEntityType() === "badguy" && entityB.getEntityType() === "projectile")) {
 		    					if(entityA.getComponentKeys().includes("health")) {
+		    						console.log('enemyHit')
 		    						entityA.reduceHealth(1);
 		    						entities.splice(entities.indexOf(entityB), 1);
 		    					}
 		    					if(entityB.getComponentKeys().includes("health")) {
+		    						console.log('enemyhit')
 		    						entityB.reduceHealth(1);
 		    						entities.splice(entities.indexOf(entityA), 1);
 		    					}
