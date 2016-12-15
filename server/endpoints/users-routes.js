@@ -12,7 +12,7 @@ passport.use(strategy);
 usersRouter.use(passport.initialize());
 
 //Get all the users from the db
-usersRouter.get('/', function(req, res) {
+usersRouter.get('/', passport.authenticate("basic", {session: false}), function(req, res) {
 	User.find({}, function(err, users) {
 		if(err) {
 			console.log(err);
@@ -20,6 +20,25 @@ usersRouter.get('/', function(req, res) {
 		}
 
 		return res.json(users);
+	});
+});
+
+//login (might not need it)
+usersRouter.post('/login', jsonParser, passport.authenticate("basic", {session: false}), function(req, res) {
+	let username = req.body.username;
+	let password = req.body.password;
+
+	User.findOne({username: username}, function(err, user) {
+		if(!user) return res.sendStatus(401);
+
+		user.validatePassword(password, function(err, isValid) {
+			if(err) {
+				console.log(err);
+				return res.status(500).json({message: "Internal server error"});
+			}
+
+			return res.status(200).json({});
+		});
 	});
 });
 

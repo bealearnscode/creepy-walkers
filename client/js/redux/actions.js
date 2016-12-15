@@ -41,7 +41,7 @@ export function signInAsync(username, password) {
             res = res.json();
         })
         .then(response => {
-            return dispatch(SIGN_IN_SUCCESS(user));
+            return dispatch(signInSuccess(user));
         })
             
         })

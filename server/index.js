@@ -69,3 +69,5 @@ function runServer() {
 if (require.main === module) {
     runServer();
 }
+
+module.exports = runServer;
