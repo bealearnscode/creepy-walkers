@@ -27,8 +27,9 @@ export default function badGuyMovementComponent(spec) {
 			//check if the creep has reached the next coordinate
 			if(Math.round(entity.getXLocation()*100)/100 === nextCoordinate.x && Math.round(entity.getYLocation()*100)/100 === nextCoordinate.y) {
 				currentCoordinateIndex++;
-				if(currentCoordinateIndex == path.length) {
+				if(path[currentCoordinateIndex] == path[113]) {
 					finishedPath = true;
+					entity.madeItToEnd();
 				}
 				currentCoordinate = nextCoordinate;
 				nextCoordinate = path[currentCoordinateIndex];
@@ -38,16 +39,16 @@ export default function badGuyMovementComponent(spec) {
 			//checks which direction creep needs to go
 			if(!finishedPath) {
 				if(nextCoordinate.y > currentCoordinate.y) {
-					colDelta = .025;
+					colDelta = .125;
 				}else if(nextCoordinate.y < currentCoordinate.y) {
-					colDelta = -.025;
+					colDelta = -.125;
 				}else {
 					colDelta = 0;
 				}
 				if(nextCoordinate.x > currentCoordinate.x) {
-					rowDelta = .025;
+					rowDelta = .125;
 				}else if(nextCoordinate.x < currentCoordinate.x) {
-					rowDelta = -.025;
+					rowDelta = -.125;
 				}else {
 					rowDelta = 0;
 				}

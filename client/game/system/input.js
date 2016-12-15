@@ -33,6 +33,9 @@ export default function inputSystem(entities, canvas) {
 					//set the location where you click to 2 
 					//so you aren't able to place towers on top of each other
 					}
+					else if(entity.getMoney() < 40) {
+						console.log('not enough money')
+					}
 				}
 			}) 
 		}

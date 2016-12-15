@@ -6,7 +6,7 @@ export default function userLives(spec) {
 	}
 
 	function updateLives(amount) {
-		return lives.amount += amount;
+		return lives -= amount;
 	}
 
 	return Object.freeze ({

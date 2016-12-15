@@ -9,7 +9,8 @@ export default function vitalitySystem(entities) {
 	function run() {
 		if(waveEnd === false) {
 			window.setTimeout(wave(),5000);
-			setInterval(die, 1000/4);	
+			setInterval(die, 1000/4);
+			setInterval(creepMadeIt,500)	
 		}
 		
 	}
@@ -42,6 +43,14 @@ export default function vitalitySystem(entities) {
 						}
 					})
 				}
+				if(entity.checkStatus() === true) {
+					entities.splice(entities.indexOf(entity),1)
+					entities.forEach(function(userEntity,index) {
+						if(userEntity.getComponentKeys().includes("money")) {
+							userEntity.updateLives(1)
+						}
+					})
+				}
 			}
 		});
 		if(creepDeath == creepCounter) {
@@ -56,6 +65,15 @@ export default function vitalitySystem(entities) {
 			})			
 		}
 	};
+
+	function creepMadeIt() {
+		entities.forEach(function(entityA, index) {
+			if(entityA.getComponentKeys().includes("health")) {
+				
+
+			}
+		})
+	}
 
 	function cleanProjectiles() {
 		entities.forEach(function(entity,index) {
