@@ -28,13 +28,9 @@ export function signInAsync(username, password) {
 	let endpoint = "/users/login";
     return fetch(endpoint, {
         method: "post",
-        headers: {
-            
-        },
-        
-            body:JSON.stringify({
-                username: username,
-                password: password
+        body: JSON.stringify({
+            username: username,
+            password: password
         })
         .then(function(res) {
             if(res.status < 200 || res.status >= 300) {
@@ -44,7 +40,7 @@ export function signInAsync(username, password) {
             }
             res = res.json();
         })
-        .then (response => {
+        .then(response => {
             return dispatch(SIGN_IN_SUCCESS(user));
         })
             
