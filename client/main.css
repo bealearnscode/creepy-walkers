@@ -60,7 +60,7 @@ header {
     margin-bottom: 80px;
 }
 
-.form-signin {
+.form-signin, .form-start-options {
     max-width: 380px;
     padding: 15px 35px 45px;
     margin: 10px auto;
@@ -68,7 +68,7 @@ header {
     border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.form-signin-heading {
+.form-signin-heading, .form-start-options-heading {
     color: #000;
     text-align: center;
 }
