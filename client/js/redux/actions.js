@@ -28,7 +28,7 @@ export function signInAsync(username, password) {
 	return function(dispatch) {
 		let endpoint = "/users";
 		return fetch(endpoint, {
-			method: "GET",
+			method: "POST",
 			headers: {
 				"Authorization": "Basic " + btoa(username + ":" + password),
 	        	// "Content-Type": "application/x-www-form-urlencoded",
@@ -36,10 +36,10 @@ export function signInAsync(username, password) {
 	        	// "Accept": "application/json",
 	        	// "Content-Type": "application/json"
 			},
-			// body: JSON.stringify({
-	  //           username: username,
-	  //           password: password
-	  //       })
+			body: JSON.stringify({
+	            username: username,
+	            password: password
+	        })
 		})
 		.then(response => {
 			if (response.status < 200 || response.status >= 300) {
