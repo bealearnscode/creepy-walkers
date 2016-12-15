@@ -1,9 +1,12 @@
 import projectileGraphicComponent from '../component/projectile-graphic';
-import projectileLocation from '../component/location';
+import projectileLocationComponent from '../component/location';
 import collisionComponent from '../component/collision';
 import movementComponent from '../component/projectile-movement';
 
 export default function makeProjectile(spec, badguy) {
+	if(!badguy.x) {
+		console.log('hello')
+	}
 	var projectile = {};
 
 	var graphics = projectileGraphicComponent({
@@ -12,7 +15,7 @@ export default function makeProjectile(spec, badguy) {
 	});
 
 	//starting location will be where the tower location is
-	var location = projectileLocation({
+	var projectileLocation = projectileLocationComponent({
 		x: spec.x,
 		y: spec.y,
 	});
@@ -25,30 +28,30 @@ export default function makeProjectile(spec, badguy) {
 
 	var movement = movementComponent({
 		entity: projectile,
-		speed: 0.1,
+		speed: 0.125,
 	})
 
 	var components = {
 		graphics: graphics,
-		location: location,
+		projectileLocation: projectileLocation,
 		collision: collision,
 		movement: movement,
 	};
 
 	projectile.getXLocation = function() {
-		return components.location.getXLocation();
+		return components.projectileLocation.getXLocation();
 	};
 
 	projectile.getYLocation = function() {
-		return components.location.getYLocation();
+		return components.projectileLocation.getYLocation();
 	};
 
 	projectile.changeXLocation = function(delta) {
-		return components.location.changeXLocation(delta);
+		return components.projectileLocation.changeXLocation(delta);
 	}
 
 	projectile.changeYLocation = function(delta) {
-		return components.location.changeYLocation(delta);
+		return components.projectileLocation.changeYLocation(delta);
 	}
 
 	projectile.move = function() {
