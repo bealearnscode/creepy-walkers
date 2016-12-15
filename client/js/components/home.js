@@ -16,10 +16,15 @@ export default class Home extends Component {
 		            </div>
 				</header>
 
-				<p><Link to={`/login`}>Login</Link></p>
-                <p><Link to={`/register`}>Register</Link></p>
-                <p><Link to={`/game`}>Play</Link></p>
-                <p><Link to={`/highscores`}>High Scores</Link></p>
+				<div className="wrapper">
+    				<form className="form-start-options">
+        				<h2 className="form-start-options-heading">Select an Option</h2>
+        				<button className="btn btn-lg btn-primary btn-block"><Link to={`/login`}>Login</Link></button>
+        				<button className="btn btn-lg btn-primary btn-block"><Link to={`/register`}>Register</Link></button>
+        				<button className="btn btn-lg btn-primary btn-block"><Link to={`/game`}>Game</Link></button>
+        				<button className="btn btn-lg btn-primary btn-block"><Link to={`/highscores`}>High Scores</Link></button>
+    				</form>
+				</div>
 			</div>
 		);
 	}

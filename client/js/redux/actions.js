@@ -140,8 +140,9 @@ export function fetchHighScores(state) {
 			}
 			return response.json();
 		})
-		.then(() => {
-			return dispatch(fetchHighScoresSuccess());
+		.then(data => {
+			console.log(data);
+			return dispatch(fetchHighScoresSuccess(data));
 		})
 		.catch(error => {
 			console.log(error);

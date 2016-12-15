@@ -8,7 +8,7 @@ const initialState = {
 	currentPass: "",
 	error: "",
 	feedback: "",
-	highScores: [];
+	highScores: [],
 };
 
 export default function theReducer(state = initialState, action) {
