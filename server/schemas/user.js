@@ -1,5 +1,5 @@
-var mongoose = require("mongoose");
-var bcrypt = require("bcryptjs");
+import mongoose from 'mongoose';
+import bcrypt from 'bcryptjs';
 
 var UserSchema = new mongoose.Schema({
     username: {

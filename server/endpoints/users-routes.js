@@ -12,7 +12,6 @@ passport.use(strategy);
 usersRouter.use(passport.initialize());
 
 //Get all the users from the db
-
 usersRouter.get('/', passport.authenticate("basic", {session: false}), function(req, res) {
 	User.find({}, function(err, users) {
 		if(err) {

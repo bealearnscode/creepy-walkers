@@ -26,7 +26,7 @@ export function signInError(err) {
 
 export function signInAsync(username, password) {
 	return function(dispatch) {
-		var endpoint = "/users";
+		let endpoint = "/users";
 		return fetch(endpoint, {
 			method: "GET",
 			headers: {
@@ -41,22 +41,19 @@ export function signInAsync(username, password) {
 	  //           password: password
 	  //       })
 		})
-		.then(function(response) {
+		.then(response => {
 			if (response.status < 200 || response.status >= 300) {
-				var error = new Error(response.statusText);
+				let error = new Error(response.statusText);
 				error.response = response;
 				throw error;
 			}
-			return response;
-		})
-		.then(function(response) {
 			return response.json();
 		})
-		.then(function(data) {
+		.then(data => {
 			console.log(data);
 			//return dispatch(signInSuccess(data));
 		})
-		.catch(function(error) {
+		.catch(error => {
 			console.log(error);
 			//return dispatch(signInError(error));
 		})
@@ -80,38 +77,34 @@ export function registerUserError(err) {
 
 export function registerUserAsync(username, password) {
 	return function(dispatch) {
-        let endpoint = '/users';
-        fetch(endpoint, {
-            method:'post',
-            //var headers = new headers
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-        },
-                body:JSON.stringify({
-                username: username,
-                password: password
-        })})
-            .then(function(res) {
-                if(res.status < 200 || res.status >= 300) {
-                    //bad response :(
-                    var error = new Error(res.statusText);
-                    error.res = res;
-                    throw error;
-                }
-                res = res.json();
-            })
-            .then(response => {
-                //if success, dispatch addThoughtSuccess(response);
-                return dispatch(registerUserSuccess());
-            })
-            
-        .catch(err => {
-            //if fail, dispatch addThoughtFail(error);
-            console.log(err);
-            return dispatch(registerUserError(err));
-        });
-    };
+		let endpoint = "/users";
+		return fetch(endpoint, {
+			method: "POST",
+			headers: {
+	        	"Accept": "application/json",
+	        	"Content-Type": "application/json"
+			},
+			body: JSON.stringify({
+	            username: username,
+	            password: password
+	        })
+		})
+		.then(response => {
+			if (response.status < 200 || response.status >= 300) {
+				let error = new Error(response.statusText);
+				error.response = response;
+				throw error;
+			}
+			return response.json();
+		})
+		.then(() => {
+			return dispatch(registerUserSuccess());
+		})
+		.catch(error => {
+			console.log(error);
+			return dispatch(registerUserError(error));
+		})
+	}
 }
 
 export const DESTROY_SESSION = 'DESTROY_SESSION';
