@@ -16,9 +16,14 @@ export default class Home extends Component {
 		            </div>
 				</header>
 
-				<p><Link to={`/login`}>Login</Link></p>
-                <p><Link to={`/register`}>Register</Link></p>
-                <p><Link to={`/game`}>Game</Link></p>
+				<div class="wrapper">
+    				<form class="form-start-options">
+        				<h2 class="form-start-options-heading">Select an Option</h2>
+        				<button class="btn btn-lg btn-primary btn-block" type="submit"><Link to={`/login`}>Login</Link></button>
+        				<button class="btn btn-lg btn-primary btn-block" type="submit"><Link to={`/register`}>Register</Link></button>
+        				<button class="btn btn-lg btn-primary btn-block" type="submit"><Link to={`/game`}>Game</Link></button>
+    				</form>
+				</div>
 			</div>
 		);
 	}
