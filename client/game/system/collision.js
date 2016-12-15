@@ -5,6 +5,13 @@ export default function collisionSystem(entities) {
 		setInterval(tick, 1000/4); //4 frames per second
 	}
 
+	function cleanProjectiles() {
+		entities.forEach(function(entity,index) {
+			if(entity.getComponentKeys().includes("projectileLocation")) {
+				entities.splice(entities.indexOf(entity),1)
+			}
+		})	
+	}
 	//enemy gets in range of tower radius
 	//projectile entity is pushed on to the entities array
 	//projectile entity moves toward the enemy
@@ -50,8 +57,6 @@ export default function collisionSystem(entities) {
 		    }
 		});
 
-
-
     }
 
     return Object.freeze({
@@ -60,3 +65,5 @@ export default function collisionSystem(entities) {
     });
 
 }
+
+//still need to clean bullets with no target
