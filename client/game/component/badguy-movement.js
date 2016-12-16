@@ -10,8 +10,6 @@ export default function badGuyMovementComponent(spec) {
     var rowDelta = 0;
     var currentCoordinate;
     var nextCoordinate;
-    // var creepX = 0;
-    // var creepY = 0;
     var currentCoordinateIndex = 0;
 
     function moveBadGuy() {
@@ -20,8 +18,6 @@ export default function badGuyMovementComponent(spec) {
 				currentCoordinate = path[0];
 				creepStarted = true;
 				nextCoordinate = path[1];
-				// creepX = currentCoordinate.x;
-				// creepY = currentCoordinate.y;
 			}
 
 			//check if the creep has reached the next coordinate
@@ -39,16 +35,16 @@ export default function badGuyMovementComponent(spec) {
 			//checks which direction creep needs to go
 			if(!finishedPath) {
 				if(nextCoordinate.y > currentCoordinate.y) {
-					colDelta = .125;
+					colDelta = .025;
 				}else if(nextCoordinate.y < currentCoordinate.y) {
-					colDelta = -.125;
+					colDelta = -.025;
 				}else {
 					colDelta = 0;
 				}
 				if(nextCoordinate.x > currentCoordinate.x) {
-					rowDelta = .125;
+					rowDelta = .025;
 				}else if(nextCoordinate.x < currentCoordinate.x) {
-					rowDelta = -.125;
+					rowDelta = -.025;
 				}else {
 					rowDelta = 0;
 				}
@@ -70,13 +66,3 @@ export default function badGuyMovementComponent(spec) {
 //utility function for making numbers more readable
 //change entity to badguy
 
-/*
-WHERE WE LEFT OFF
-need to change currentCoordinateIndex to shift() method
-review badguymovement to see if anything was left out
-test to see if refactor works
-work out the bugs
-
-
-
-*/

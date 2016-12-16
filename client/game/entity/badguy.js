@@ -125,4 +125,3 @@ export default function makeBadGuy() {
 	
 	return Object.freeze(badguy);
 }
-//refactor the functions

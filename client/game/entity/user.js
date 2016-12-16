@@ -1,6 +1,7 @@
 import userMoney from '../component/userMoney';
 import userLives from '../component/userLives';
 import userScore from '../component/userScore';
+import currentWave from '../component/currentWave';
 import userStatGraphics from '../component/userStatGraphics';
 
 export default function userState() {
@@ -18,6 +19,10 @@ export default function userState() {
 		amount: 0,
 	});
 
+	var wave = currentWave({
+		currentWave: 1
+	});
+
 	var graphics = userStatGraphics({
 		entity:user
 	});
@@ -26,6 +31,7 @@ export default function userState() {
 		money: money,
 		lives: lives,
 		score: score,
+		wave: wave,
 		graphics: graphics,
 	};
 
@@ -40,6 +46,14 @@ export default function userState() {
 	user.getScore = function() {
 		return components.score.getScore();
 	};
+
+	user.getWave = function() {
+		return components.wave.getWave();
+	}
+
+	user.updateWave = function() {
+		components.wave.updateWave()
+	}
 
 	user.updateLives = function(amount) {
 		components.lives.updateLives(amount);
