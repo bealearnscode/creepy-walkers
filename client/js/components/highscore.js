@@ -15,12 +15,12 @@ class HighScore extends Component {
 	render() {
 		console.log(this.props.highScores);
 		return(
-			<div>
-				<h1>High Scores</h1>
+			<div className="top-level-component">
+				<h1 className="high-scores">High Scores</h1>
 				<ul>
 					{this.props.highScores.map((score, index) => <ScoreItem key={index} index={index} score={score} />)}
 				</ul>
-				<button className="btn btn-lg btn-primary btn-block" onClick={this.onHomeClick.bind(this)}>Home</button>
+				<button id="home-from-high-score" className="btn btn-lg btn-primary" onClick={this.onHomeClick.bind(this)}>Home</button>
 			</div>
 		);
 	}

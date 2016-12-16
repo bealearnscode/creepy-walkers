@@ -20,7 +20,6 @@ class Home extends Component {
 			                <div className="col-12">
 			                    <div className="intro">
 			                        <h1>Game of Towers</h1>
-			                        <p>{signedInText}</p>
 			                    </div>
 			                </div>
 			            </div>
@@ -34,6 +33,7 @@ class Home extends Component {
 	        				<button className="btn btn-lg btn-primary btn-block"><Link to={`/game`}>Play Game</Link></button>
 	        				<button className="btn btn-lg btn-primary btn-block"><Link to={`/highscores`}>High Scores</Link></button>
 	    				</form>
+						<p className="signed-in-text">{signedInText}</p>
 					</div>
 				</div>
 			);
@@ -46,7 +46,6 @@ class Home extends Component {
 			                <div className="col-12">
 			                    <div className="intro">
 			                        <h1>Game of Towers</h1>
-			                        <p>{signedInText}</p>
 			                    </div>
 			                </div>
 			            </div>
@@ -59,6 +58,7 @@ class Home extends Component {
 	        				<button className="btn btn-lg btn-primary btn-block"><Link to={`/highscores`}>High Scores</Link></button>
 	        				<button className="btn btn-lg btn-primary btn-block" onClick={this.onLogoutClick.bind(this)}>Log Out</button>
 	    				</form>
+						<p className="signed-in-text">{signedInText}</p>
 					</div>
 				</div>
 			);
