@@ -8,6 +8,7 @@ export default function vitalitySystem(entities) {
 		entities.forEach(function(entity, index) {
 			if(entity.getComponentKeys().includes("health")) {
 				if(entity.getHealth() <= 0) {
+					entity.playAudio();
 					entities.splice(index, 1);
 					entities.forEach(function(entity,index) {
 						if(entity.getComponentKeys().includes("money")) {
