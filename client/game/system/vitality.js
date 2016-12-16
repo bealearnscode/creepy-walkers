@@ -66,15 +66,6 @@ export default function vitalitySystem(entities) {
 		}
 	};
 
-	function creepMadeIt() {
-		entities.forEach(function(entityA, index) {
-			if(entityA.getComponentKeys().includes("health")) {
-				
-
-			}
-		})
-	}
-
 	function cleanProjectiles() {
 		entities.forEach(function(entity,index) {
 			if(entity.getComponentKeys().includes("projectileLocation")) {
