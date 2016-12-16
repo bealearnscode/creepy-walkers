@@ -13,6 +13,7 @@ class HighScore extends Component {
 	}
 
 	render() {
+		console.log(this.props.highScores);
 		return(
 			<div>
 				<h1>High Scores</h1>
