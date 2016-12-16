@@ -45,16 +45,16 @@ body {
 }
 
 #app, .top-level-component {
-    min-height: 100%;
+    height: 100vh;
 }
 
-/*header {
-    margin-top: 5%;
-}*/
+
 
 .intro h1 {
     color: #fff;
     font-size: 4em;
+    margin-top: 0;
+    padding-top: 5%;
     text-align: center;
 }
 
