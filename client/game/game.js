@@ -28,6 +28,7 @@ export default function game() {
 		vitality.run();
 		collision.run();
 		wave.run();
+		document.getElementById("theme_song").play()
 	}
 
 	return Object.freeze ({

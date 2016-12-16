@@ -16,7 +16,11 @@ class Game extends Component {
 			<div>
 				<canvas id="canvas"></canvas>
 				<button id="start-game" onClick={this.onStartPressed.bind(this)}>{text}</button>
+				<audio id="enemy_death" src="assets/audio/enemy_died.wav"></audio>
+				<audio id="victory_wave" src="assets/audio/victory.wav"></audio>
+				<audio id="theme_song" src="assets/audio/theme.wav"></audio>
 			</div>
+
 		);
 	}
 }

@@ -38,6 +38,8 @@ export default function waveSystem(entities) {
 			}
 		})
 		if(currentCreeps.length === 0 && creepsGenerating == false) {
+			var victorySound = document.getElementById("victory_wave");
+			victorySound.play()
 			cleanProjectiles()
 			entities.forEach(function(entity,index) {
 				if(entity.getComponentKeys().includes("money")) {
