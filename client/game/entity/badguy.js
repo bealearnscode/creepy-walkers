@@ -6,8 +6,9 @@ import locationComponent from '../component/location';
 import healthComponent from '../component/health';
 import collisionComponent from '../component/collision';
 import madeItComponent from '../component/madeIt'
+import makeBadguyAudioComponent from '../component/badguy_audio'
 
-export default function makeBadGuy() {
+export default function makeBadGuy(healthWaveBoost) {
 	var badguy = {};
 
 	var map = makeLevelMapComponent().map;
@@ -29,13 +30,16 @@ export default function makeBadGuy() {
 		movement: movement,
 	});
 
+	var audio = makeBadguyAudioComponent({
+	})
+
 	var movement = badGuyMovementComponent({
 		entity: badguy,
 		path: path.path,
 	});
 
 	var health = healthComponent({
-		amount: 10,
+		amount: 20 + healthWaveBoost,
 	});
 
 	var collision = collisionComponent({
@@ -48,6 +52,7 @@ export default function makeBadGuy() {
 	})
 
 	var components = {
+		audio: audio,
 		graphics: graphics,
 		location: location,
 		movement: movement,
@@ -110,6 +115,10 @@ export default function makeBadGuy() {
 		components.graphics.drawBadGuy(ctx,badguy.getXLocation(),badguy.getYLocation());
 	};
 
+	badguy.playAudio = function() {
+		components.audio.playAudio()
+	}
+
 	badguy.madeItToEnd = function() {
 		components.madeIt.pathFinished();
 	}
@@ -125,4 +134,3 @@ export default function makeBadGuy() {
 	
 	return Object.freeze(badguy);
 }
-//refactor the functions

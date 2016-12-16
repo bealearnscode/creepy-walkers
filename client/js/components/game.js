@@ -15,13 +15,20 @@ class Game extends Component {
 
 	render() {
 		let text = "";
-		const startButtonText = !this.props.isStarted ? (text = "Start Game") : (text = "Restart");
+		const startButton = !this.props.isStarted ? (<button id="start-game" onClick={this.onStartPressed.bind(this)}>Start Game</button>) : (null);
 		return (
 			<div className="top-level-component">
 				<canvas id="canvas"></canvas>
-				<button id="start-game"  onClick={this.onStartPressed.bind(this)}>{text}</button>
+
+		
 				<button id="go-home"  onClick={this.onHomeClick.bind(this)}>Home</button>
+				{startButton} 
+				<audio id="enemy_death" src="assets/audio/enemy_died.wav"></audio>
+				<audio id="victory_wave" src="assets/audio/victory.wav"></audio>
+				<audio id="theme_song" src="assets/audio/theme.wav"></audio>
+
 			</div>
+
 		);
 	}
 }

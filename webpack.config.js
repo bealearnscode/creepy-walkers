@@ -11,7 +11,7 @@ var plugins;
 var outputPath;
 
 if (isProduction) {
-    outputPath = 'build/production/public/js';
+    outputPath = 'build/production/client/js';
     filename = `${packageData.name}.${packageData.version}.min.js`;
     plugins = [
         new webpack.optimize.UglifyJsPlugin(),
@@ -23,7 +23,7 @@ if (isProduction) {
     ];
 }
 else {
-    outputPath = 'build/dev/public/js';
+    outputPath = 'build/dev/client/js';
     filename = `${packageData.name}.${packageData.version}.js`;
     plugins = [
         new webpack.DefinePlugin({
@@ -36,7 +36,7 @@ else {
 
 
 module.exports = {
-    entry: path.resolve(__dirname, packageData['main']),
+    entry: path.resolve(__dirname, packageData['main:client']),
     output: {
         path: path.resolve(__dirname, outputPath),
         filename: filename,

@@ -3,8 +3,7 @@
 ### To run this in development mode
 * if this is your first time, type "npm install" to install the necessary packages
 * in a terminal, type "npm run build" (you only have to do this once)
-	* after you do "npm run build", you can use "npm run watch" to continuously watch your html, css, and js files
-* in another terminal window, type "npm run serve" (nodemon is installed and watching your every move ( ͡° ͜ʖ ͡°))
+	* after you do "npm run build", you can use "npm run dev" to continuously watch your html, css, and js files. This will also run the server. (nodemon is installed and watching your every move ( ͡° ͜ʖ ͡°))
 * install mongo on your machine
 	* c9: 
 		* sudo apt-get install -y mongodb-org
