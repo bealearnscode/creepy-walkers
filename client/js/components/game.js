@@ -15,11 +15,11 @@ class Game extends Component {
 
 	render() {
 		let text = "";
-		const startButtonText = !this.props.isStarted ? (text = "Start Game") : (text = "Restart");
+		const startButton = !this.props.isStarted ? (<button id="start-game" onClick={this.onStartPressed.bind(this)}>Start Game</button>) : (null);
 		return (
 			<div>
 				<canvas id="canvas"></canvas>
-				<button id="start-game" onClick={this.onStartPressed.bind(this)}>{text}</button>
+				{startButton}
         		<button className="btn btn-lg btn-primary btn-block" onClick={this.onHomeClick.bind(this)}>Home</button>
 				<audio id="enemy_death" src="assets/audio/enemy_died.wav"></audio>
 				<audio id="victory_wave" src="assets/audio/victory.wav"></audio>
