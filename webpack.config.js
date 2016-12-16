@@ -11,7 +11,7 @@ var plugins;
 var outputPath;
 
 if (isProduction) {
-    outputPath = 'build/production/client/js';
+    outputPath = 'build/production/public/js';
     filename = `${packageData.name}.${packageData.version}.min.js`;
     plugins = [
         new webpack.optimize.UglifyJsPlugin(),

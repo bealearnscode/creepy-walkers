@@ -4,6 +4,9 @@ import { Router, Route, Link } from 'react-router';
 
 class Home extends Component {
 	render() {
+		let user = this.props.currentUser;
+		let text = "";
+		const signedInText = !user ? (text = "sign in to log your high scores") : (text = "signed in as: " + user);
 		return (
 			<div>
 				<header>
@@ -11,7 +14,7 @@ class Home extends Component {
 		                <div className="col-12">
 		                    <div className="intro">
 		                        <h1>Game of Towers</h1>
-		                        <p>signed in as: {this.props.currentUser}</p>
+		                        <p>{signedInText}</p>
 		                    </div>
 		                </div>
 		            </div>
