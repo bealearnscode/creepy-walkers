@@ -4,6 +4,7 @@ export default function badGuyAudioComponent(spec) {
 	//badGuyAudio.src = spec.badGuyDeathAudio;
 
 	function playAudio() {
+		badGuyDeathAudio.volume = .5;
 		badGuyDeathAudio.play();
 	}
 

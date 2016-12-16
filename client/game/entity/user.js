@@ -3,6 +3,7 @@ import userLives from '../component/userLives';
 import userScore from '../component/userScore';
 import currentWave from '../component/currentWave';
 import userStatGraphics from '../component/userStatGraphics';
+import userStatus from '../component/userStatus';
 
 export default function userState() {
 	var user = {};
@@ -27,12 +28,16 @@ export default function userState() {
 		entity:user
 	});
 
+	var status = userStatus({
+	})
+
 	var components = {
 		money: money,
 		lives: lives,
 		score: score,
 		wave: wave,
 		graphics: graphics,
+		status: status,
 	};
 
 	user.getLives = function() {
@@ -74,6 +79,14 @@ export default function userState() {
 	user.getComponentKeys = function() {
 		return Object.keys(components);
 	};
+
+	user.changeStatus = function() {
+		components.status.changeStatus()
+	}
+
+	user.getStatus = function() {
+		return components.status.getStatus()
+	}
 
 	return Object.freeze(user);
 }
