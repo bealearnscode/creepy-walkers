@@ -19,6 +19,8 @@ export default function game() {
 	var vitality = vitalitySystem(entities)
 	var collision = collisionSystem(entities);
 
+	console.log(user().getScore());
+
 	function run() {
 		graphics.run();
 		input.run();

@@ -1,13 +1,178 @@
-/*css goes here*/
+/*
 html, body {
 	height: 100%;
 	margin: 0;
 	padding: 0;
+}*/
+
+html, body, #app {
+    min-height: 100%;
+}
+
+body {
+    background-color: #000;
+    background-image: url('http://www.wearewebstars.dk/codepen/img/s1.png'), url('http://www.wearewebstars.dk/codepen/img//s2.png'), url('http://www.wearewebstars.dk/codepen/img//s3.png');
+    font-family: 'Press Start 2P', cursive;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index:1;
+    -webkit-animation: snow 10s linear infinite;
+    -moz-animation: snow 10s linear infinite;
+    -ms-animation: snow 10s linear infinite;
+    animation: snow 10s linear infinite;
+}
+
+@keyframes snow {
+    0% {background-position: 0px 0px, 0px 0px, 0px 0px;}
+    50% {background-position: 500px 500px, 100px 200px, -100px 150px;}
+    100% {background-position: 500px 1000px, 200px 400px, -100px 300px;}
+}
+@-moz-keyframes snow {
+    0% {background-position: 0px 0px, 0px 0px, 0px 0px;}
+    50% {background-position: 500px 500px, 100px 200px, -100px 150px;}
+    100% {background-position: 400px 1000px, 200px 400px, 100px 300px;}
+}
+@-webkit-keyframes snow {
+    0% {background-position: 0px 0px, 0px 0px, 0px 0px;}
+    50% {background-position: 500px 500px, 100px 200px, -100px 150px;}
+    100% {background-position: 500px 1000px, 200px 400px, -100px 300px;}
+}
+@-ms-keyframes snow {
+    0% {background-position: 0px 0px, 0px 0px, 0px 0px;}
+    50% {background-position: 500px 500px, 100px 200px, -100px 150px;}
+    100% {background-position: 500px 1000px, 200px 400px, -100px 300px;}
+}
+
+header {
+    margin-top: 5%;
+}
+
+.intro h1 {
+    color: #fff;
+    font-size: 4em;
+    text-align: center;
+}
+
+.wrapper {
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+
+.form-signin, .form-start-options {
+    max-width: 380px;
+    padding: 15px 35px 45px;
+    margin: 10px auto;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.form-signin-heading, .form-start-options-heading {
+    color: #000;
+    text-align: center;
+}
+
+.form-signin-heading,
+.checkbox {
+    margin-bottom: 30px;
+}
+
+.checkbox {
+    font-weight: normal;
+}
+
+.form-control {
+    box-sizing: border-box;
+    font-size: 16px;
+    height: auto;
+    padding: 10px;
+    position: relative;
+}
+
+input {
+    color: #000;
+}
+
+input[type="text"] {
+    margin-bottom: -1px;
+}
+
+input[type="text"], input[type="password"] {
+    border: 1px solid #000;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+
+input[type="password"] {
+    margin-bottom: 20px;
+}
+
+.btn {
+    background-color: #000;
+}
+
+/* ----------- iPhone 5 and 5S ----------- */
+
+/* Portrait and Landscape */
+@media only screen
+and (min-device-width: 320px)
+and (max-device-width: 568px)
+and (-webkit-min-device-pixel-ratio: 2) {
+    header {
+        margin-top: 40%;
+    }
+    .wrapper {
+        margin-top: 100px;
+        margin-bottom: 100px;
+    }
+
+}
+
+/* ----------- iPad 1 and 2 ----------- */
+/* Portrait and Landscape */
+@media only screen
+and (min-device-width: 768px)
+and (max-device-width: 1024px)
+and (-webkit-min-device-pixel-ratio: 1) {
+    header {
+        margin-top: 40%;
+    }
+    .wrapper {
+        margin-top: 100px;
+        margin-bottom: 100px;
+    }
+}
+
+/* ----------- Non-Retina Screens ----------- */
+@media screen
+and (min-device-width: 1200px)
+and (max-device-width: 1600px)
+and (-webkit-min-device-pixel-ratio: 1) {
+
+}
+
+/* ----------- Retina Screens ----------- */
+@media screen
+and (min-device-width: 1200px)
+and (max-device-width: 1600px)
+and (-webkit-min-device-pixel-ratio: 2)
+and (min-resolution: 192dpi) {
+}
+
+#start-game {
+    position: absolute;
+    top: 45%;
+    left: calc(47%);
+    z-index: 1;
 }
 
 #canvas {
-	width: 800px;
-	height: 800px;
+	background-color: gray;
 	border: 1px black solid;
-	background-color: gray; 
+	box-sizing: border-box;
+	height: 600px;
+    margin: 5% 30% 0 30%;
+	width: 600px;
 }
