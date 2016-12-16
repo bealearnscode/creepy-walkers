@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { Router, Route, Link } from 'react-router';
 
-export default class Home extends Component {
+class Home extends Component {
 	render() {
 		return (
 			<div>
@@ -10,6 +10,7 @@ export default class Home extends Component {
 					<div id="row">
 		                <div className="col-12">
 		                    <div className="intro">
+		                    	<p>signed in as: {this.props.currentUser}</p>
 		                        <h1>Game of Towers</h1>
 		                    </div>
 		                </div>
@@ -29,3 +30,11 @@ export default class Home extends Component {
 		);
 	}
 }
+
+let mapStateToProps = function(state, props) {
+	return {
+		currentUser: state.currentUser,
+	}
+}
+
+export default connect(mapStateToProps)(Home);

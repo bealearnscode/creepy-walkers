@@ -13,7 +13,7 @@ passport.use(strategy);
 highScoreRouter.use(passport.initialize());
 
 //Get all the high scores
-highScoreRouter.get('/', passport.authenticate("basic", {session: false}), function(req, res) {
+highScoreRouter.get('/', function(req, res) {
 	HighScore.find({}, function(err, scores) {
 		if(err) {
 			console.log(err);

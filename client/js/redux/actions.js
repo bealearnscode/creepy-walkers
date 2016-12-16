@@ -116,21 +116,18 @@ export function fetchHighScoresSuccess(data) {
 }
 
 export const FETCH_HIGH_SCORES_ERROR = "FETCH_HIGH_SCORES_ERROR";
-export function fetchHighScoresError (err) {
+export function fetchHighScoresError(err) {
 	return {
 		type: FETCH_HIGH_SCORES_ERROR,
 		payload: err
 	}
 }
 
-export function fetchHighScores(state) {
+export function fetchHighScores() {
 	return function(dispatch) {
 		let endpoint = "/scores";
 		return fetch(endpoint, {
 			method: "GET",
-			headers: {
-				"Authorization": "Basic " + btoa(state.currentUser + ":" + state.currentPass)
-			}
 		})
 		.then(response => {
 			if (response.status < 200 || response.status >= 300) {

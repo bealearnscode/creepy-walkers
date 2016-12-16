@@ -8,7 +8,7 @@ class Login extends Component {
 		this.props.dispatch(actions.loginAsync(this.refs.username.value, this.refs.password.value));
 		this.refs.username.value = "";
 		this.refs.password.value = "";
-		//this.props.router.push('/game');
+		this.props.router.push('/');
 	}
 
 	render() {
