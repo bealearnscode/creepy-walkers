@@ -20,6 +20,7 @@ export default function game() {
 	var vitality = vitalitySystem(entities)
 	var collision = collisionSystem(entities);
 	var wave = waveSystem(entities);
+	var bgMusic = document.getElementById("theme_song")
 
 	function run() {
 		graphics.run();
@@ -28,7 +29,8 @@ export default function game() {
 		vitality.run();
 		collision.run();
 		wave.run();
-		document.getElementById("theme_song").play()
+		bgMusic.loop = true;
+		bgMusic.play()
 	}
 
 	return Object.freeze ({

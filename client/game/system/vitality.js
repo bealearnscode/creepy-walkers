@@ -1,3 +1,5 @@
+import userEntity from '../entity/user';
+
 export default function vitalitySystem(entities) {
 
 	function run() {
@@ -12,7 +14,7 @@ export default function vitalitySystem(entities) {
 					entities.splice(index, 1);
 					entities.forEach(function(entity,index) {
 						if(entity.getComponentKeys().includes("money")) {
-							entity.updateMoney(5)
+							entity.updateMoney(3)
 							entity.updateScore(15)
 						}
 					})
@@ -22,6 +24,13 @@ export default function vitalitySystem(entities) {
 					entities.forEach(function(userEntity,index) {
 						if(userEntity.getComponentKeys().includes("money")) {
 							userEntity.updateLives(1)
+							if(userEntity.getLives() === 0) {
+								entities.forEach(function(entity,index) {
+									if(entity.getComponentKeys().includes("map") || entity.getComponentKeys().includes("collision")) {
+										entities.splice(entity,1);
+									}
+								})
+							} 
 						}
 					})
 				}

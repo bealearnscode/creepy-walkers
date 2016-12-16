@@ -5,8 +5,10 @@ export default function waveSystem(entities) {
 	var creepsGenerating = false
 	var creepCounter = 0;
 	var waveTotal = 10;
+	var waveHealthBoost = 1;
+	var gameOver = false
 	function run() {
-		setInterval(wave,1000)
+		var waveLoop = setInterval(wave,1000)
 		var waveChecker = setInterval(isWaveComplete, 2000);
 	}
 
@@ -19,7 +21,7 @@ export default function waveSystem(entities) {
 			creepsGenerating = true;
 			var currentWave = window.setInterval(
 				function generateCreep() {
-					var currentCreep = makeBadguy();
+					var currentCreep = makeBadguy(waveHealthBoost);
 					creepCounter += 1;
 					entities.push(currentCreep);
 					if(creepCounter === waveTotal){
@@ -37,7 +39,19 @@ export default function waveSystem(entities) {
 				currentCreeps.push(entity)
 			}
 		})
+		entities.forEach(function(entity,index){
+			if(entity.getComponentKeys().includes("money")) {
+				if(entity.getLives() === 0) {
+						gameOver = true;
+						entity.changeStatus()
+				}
+			}
+		}) 
 		if(currentCreeps.length === 0 && creepsGenerating == false) {
+			if(gameOver) {
+				clearInterval(waveChecker)
+				clearInterval(waveLoop)
+			};
 			var victorySound = document.getElementById("victory_wave");
 			victorySound.play()
 			cleanProjectiles()
@@ -47,6 +61,7 @@ export default function waveSystem(entities) {
 					entity.updateScore(33*entity.getMoney())
 					entity.updateMoney(3*waveTotal);
 					entity.updateWave();
+					waveHealthBoost += entity.getWave() * 1.5;
 					waveTotal += 5
 					waveStart = false;
 					cleanProjectiles()

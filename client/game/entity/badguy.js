@@ -8,7 +8,7 @@ import collisionComponent from '../component/collision';
 import madeItComponent from '../component/madeIt'
 import makeBadguyAudioComponent from '../component/badguy_audio'
 
-export default function makeBadGuy() {
+export default function makeBadGuy(healthWaveBoost) {
 	var badguy = {};
 
 	var map = makeLevelMapComponent().map;
@@ -39,7 +39,7 @@ export default function makeBadGuy() {
 	});
 
 	var health = healthComponent({
-		amount: 10,
+		amount: 20 + healthWaveBoost,
 	});
 
 	var collision = collisionComponent({
