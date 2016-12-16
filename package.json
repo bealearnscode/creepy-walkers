@@ -16,7 +16,7 @@
     "build": "npm run clean && npm run mkdir && npm run build:html && npm run build:css && npm run build:js && npm run build:assets && npm run build:production",
     "watch": "npm run watch:html & npm run watch:css & npm run watch:js",
     "serve": "npm run start",
-    "serve:server:production": "NODE_ENV=production CLIENT_PATH=../build/production/public node ../build/production/server/index.js",
+    "serve:server:production": "NODE_ENV=production CLIENT_PATH=app/production/public node app/production/server/index.js",
     "serve:server:dev": "NODE_ENV=development CLIENT_PATH=build/dev/public nodemon --exec babel-node server/index.js --watch server --ignore server/public",
     "build:html": "npm run clean:html && mustache package.json client/index.html > build/dev/public/index.html",
     "watch:html": "npm run build:html && chokidar client/index.html -c 'npm run build:html'",
