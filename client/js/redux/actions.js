@@ -173,7 +173,7 @@ export function sendHighScoreError(error) {
 	}
 }
 
-export function sendHighScoreAsync(username, password) {
+export function sendHighScoreAsync(username, password, score) {
 	return function(dispatch) {
 		let endpoint = "/scores";
 		return fetch(endpoint, {
