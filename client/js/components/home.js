@@ -20,7 +20,7 @@ class Home extends Component {
 			                <div className="col-12">
 			                    <div className="intro">
 			                        <h1>Game of Towers</h1>
-			                        <p>{signedInText}</p>
+			                        <p className="signed-in-text">{signedInText}</p>
 			                    </div>
 			                </div>
 			            </div>

@@ -19,8 +19,8 @@ class Game extends Component {
 		return (
 			<div>
 				<canvas id="canvas"></canvas>
-				<button id="start-game" onClick={this.onStartPressed.bind(this)}>{text}</button>
-				<button className="btn btn-lg btn-primary btn-block" onClick={this.onHomeClick.bind(this)}>Home</button>
+				<button id="start-game" className="btn btn-sm btn-primary btn-block" onClick={this.onStartPressed.bind(this)}>{text}</button>
+				<button id="go-home" className="btn btn-sm btn-primary btn-block" onClick={this.onHomeClick.bind(this)}>Home</button>
 			</div>
 		);
 	}

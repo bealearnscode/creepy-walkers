@@ -58,6 +58,11 @@ body {
     text-align: center;
 }
 
+.signed-in-text {
+    color: #fff;
+    text-align: center;
+}
+
 .wrapper {
     margin-top: 80px;
     margin-bottom: 80px;
@@ -164,10 +169,18 @@ and (-webkit-min-device-pixel-ratio: 2)
 and (min-resolution: 192dpi) {
 }
 
+/*#go-home {
+    left: calc(65%);
+}*/
+
+
 #start-game {
+    left: calc(35%);
+}
+
+#start-game, #go-home {
     position: absolute;
     top: 0;
-    left: calc(45%);
     z-index: 1;
 }
 
