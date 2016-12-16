@@ -19,7 +19,7 @@ class HighScore extends Component {
 				<ul>
 					{this.props.highScores.map((score, index) => <ScoreItem key={index} index={index} score={score} />)}
 				</ul>
-				<button className="btn btn-sm btn-primary btn-block" onClick={this.onHomeClick.bind(this)}>Home</button>
+				<button id="home-from-high-score" className="btn btn-lg btn-primary" onClick={this.onHomeClick.bind(this)}>Home</button>
 			</div>
 		);
 	}

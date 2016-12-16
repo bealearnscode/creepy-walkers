@@ -138,6 +138,11 @@ input[type="password"] {
     margin: 0;
     text-align: center;
 }
+#home-from-high-score {
+    position: absolute;
+    top: 0;
+    z-index: 1;
+}
 
 #canvas {
     background-color: gray;
