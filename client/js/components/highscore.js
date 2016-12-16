@@ -8,6 +8,10 @@ class HighScore extends Component {
 		this.props.dispatch(actions.fetchHighScores());
 	}
 
+	onHomeClick() {
+		this.props.router.push('/');
+	}
+
 	render() {
 		return(
 			<div>
@@ -15,6 +19,7 @@ class HighScore extends Component {
 				<ul>
 					{this.props.highScores.map((score, index) => <ScoreItem key={index} index={index} score={score} />)}
 				</ul>
+				<button className="btn btn-lg btn-primary btn-block" onClick={this.onHomeClick.bind(this)}>Home</button>
 			</div>
 		);
 	}
