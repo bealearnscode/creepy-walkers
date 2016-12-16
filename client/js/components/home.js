@@ -4,14 +4,17 @@ import { Router, Route, Link } from 'react-router';
 
 class Home extends Component {
 	render() {
+		let user = this.props.currentUser;
+		let text = "";
+		const signedInText = !user ? (text = "sign in to log your high scores") : (text = "signed in as: " + user);
 		return (
 			<div>
 				<header>
 					<div id="row">
 		                <div className="col-12">
 		                    <div className="intro">
-		                    	<p>signed in as: {this.props.currentUser}</p>
 		                        <h1>Game of Towers</h1>
+		                        <p>{signedInText}</p>
 		                    </div>
 		                </div>
 		            </div>
