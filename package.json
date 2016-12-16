@@ -2,7 +2,9 @@
   "name": "game-creep",
   "version": "1.0.0",
   "description": "",
-  "main": "client/index.js",
+  "main": "index.js",
+  "main:server": "server/index.js",
+  "main:client": "client/index.js",
   "scripts": {
     "start": "[ \"$NODE_ENV\" = \"production\" ] && npm run serve:server:production || npm run serve:server:dev",
     "test": "echo \"Error: no test specified\" && exit 1",
