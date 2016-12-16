@@ -35,21 +35,22 @@ export default function badGuyMovementComponent(spec) {
 			//checks which direction creep needs to go
 			if(!finishedPath) {
 				if(nextCoordinate.y > currentCoordinate.y) {
-					colDelta = .1;
+					colDelta = .025;
 				}else if(nextCoordinate.y < currentCoordinate.y) {
-					colDelta = -.1;
+					colDelta = -.025;
 				}else {
 					colDelta = 0;
 				}
 				if(nextCoordinate.x > currentCoordinate.x) {
-					rowDelta = .1;
+					rowDelta = .025;
 				}else if(nextCoordinate.x < currentCoordinate.x) {
-					rowDelta = -.1;
+					rowDelta = -.025;
 				}else {
 					rowDelta = 0;
 				}
 			}
-          
+          	console.log(rowDelta)
+          	console.log(colDelta)
 			entity.changeXLocation(rowDelta);
 			entity.changeYLocation(colDelta);
 
