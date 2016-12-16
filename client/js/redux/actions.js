@@ -9,11 +9,11 @@ export function isGameStarted(bool) {
 }
 
 export const SIGN_IN_SUCCESS = "SIGN_IN_SUCCESS";
-export function signInSuccess(username, password) {
+export function signInSuccess(data) {
     return {
         type: SIGN_IN_SUCCESS,
-        payloadUser: username,
-        payloadPass: password,
+        payloadUser: data.username,
+        payloadPass: data.password,
     };
 }
 

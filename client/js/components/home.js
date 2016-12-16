@@ -10,8 +10,8 @@ class Home extends Component {
 					<div id="row">
 		                <div className="col-12">
 		                    <div className="intro">
-		                    	<p>signed in as: {this.props.currentUser}</p>
 		                        <h1>Game of Towers</h1>
+		                        <p>signed in as: {this.props.currentUser}</p>
 		                    </div>
 		                </div>
 		            </div>
