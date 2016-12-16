@@ -21,13 +21,10 @@ export default function waveSystem(entities) {
 				function generateCreep() {
 					var currentCreep = makeBadguy();
 					creepCounter += 1;
-					//console.log(creepCounter);
 					entities.push(currentCreep);
 					if(creepCounter === waveTotal){
 						creepsGenerating = false;
 						clearInterval(currentWave);
-						waveTotal += 5;
-						console.log(waveTotal)
 					}
 			},1000);
 		}
@@ -35,22 +32,22 @@ export default function waveSystem(entities) {
 
 	function isWaveComplete() {
 		var currentCreeps = []
-		console.log('currentcreeps',currentCreeps)
 		entities.forEach(function(entity,index) {
 			if(entity.getComponentKeys().includes("health")) {
 				currentCreeps.push(entity)
 			}
 		})
 		if(currentCreeps.length === 0 && creepsGenerating == false) {
-			console.log('hello')
 			cleanProjectiles()
 			entities.forEach(function(entity,index) {
 				if(entity.getComponentKeys().includes("money")) {
 					entity.updateScore(50*waveTotal);
 					entity.updateScore(33*entity.getMoney())
-					entity.updateMoney(15*waveTotal);
+					entity.updateMoney(3*waveTotal);
+					entity.updateWave();
 					waveTotal += 5
 					waveStart = false;
+					cleanProjectiles()
 				}
 			})
 		}	
