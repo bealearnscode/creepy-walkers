@@ -184,6 +184,12 @@ and (min-resolution: 192dpi) {
     z-index: 1;
 }
 
+.high-scores {
+    color: #fff;
+    margin: 0;
+    text-align: center;
+}
+
 #canvas {
     background-color: gray;
     border: 1px black solid;
