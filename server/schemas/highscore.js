@@ -8,9 +8,9 @@ var HighScoreSchema = new mongoose.Schema({
     },
     //who got the score
     from: {
-    	type: mongoose.Schema.Types.String,
-    	ref: "User",
-    	required: true
+        type: mongoose.Schema.Types.String,
+        ref: "User",
+        required: true
     }
 });
 

@@ -139,7 +139,16 @@ export function fetchHighScores() {
 		})
 		.then(data => {
 			console.log(data);
-			return dispatch(fetchHighScoresSuccess(data));
+			function compare(score1, score2) {
+				if(score1.score < score2.score) {
+					return 1;
+				}
+				if(score1.score > score2.score) {
+					return -1;
+				}
+				return 0;
+			}
+			return dispatch(fetchHighScoresSuccess(data.sort(compare)));
 		})
 		.catch(error => {
 			console.log(error);
