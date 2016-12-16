@@ -5,7 +5,7 @@ html, body {
 	padding: 0;
 }*/
 
-html, body {
+html, body, #app {
     min-height: 100%;
 }
 
@@ -46,7 +46,7 @@ body {
 }
 
 header {
-    margin-top: 10%;
+    margin-top: 5%;
 }
 
 .intro h1 {
@@ -143,15 +143,36 @@ and (-webkit-min-device-pixel-ratio: 1) {
         margin-top: 100px;
         margin-bottom: 100px;
     }
+}
+
+/* ----------- Non-Retina Screens ----------- */
+@media screen
+and (min-device-width: 1200px)
+and (max-device-width: 1600px)
+and (-webkit-min-device-pixel-ratio: 1) {
 
 }
 
+/* ----------- Retina Screens ----------- */
+@media screen
+and (min-device-width: 1200px)
+and (max-device-width: 1600px)
+and (-webkit-min-device-pixel-ratio: 2)
+and (min-resolution: 192dpi) {
+}
+
+#start-game {
+    position: absolute;
+    top: 45%;
+    left: calc(47%);
+    z-index: 1;
+}
+
 #canvas {
-	position: relative;
 	background-color: gray;
 	border: 1px black solid;
 	box-sizing: border-box;
-	height: 720px;
-	bottom: 20px;
-	width: 800px;
+	height: 600px;
+    margin: 5% 30% 0 30%;
+	width: 600px;
 }
