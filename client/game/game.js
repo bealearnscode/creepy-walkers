@@ -3,6 +3,7 @@ import inputSystem from './system/input';
 import movementSystem from './system/movement';
 import vitalitySystem from './system/vitality';
 import collisionSystem from './system/collision';
+import waveSystem from './system/wave';
 import badguy from './entity/badguy';
 import tower from './entity/tower';
 import level from './entity/level';
@@ -18,8 +19,7 @@ export default function game() {
 	var movement = movementSystem(entities);
 	var vitality = vitalitySystem(entities)
 	var collision = collisionSystem(entities);
-
-	console.log(user().getScore());
+	var wave = waveSystem(entities);
 
 	function run() {
 		graphics.run();
@@ -27,6 +27,7 @@ export default function game() {
 		movement.run();
 		vitality.run();
 		collision.run();
+		wave.run();
 	}
 
 	return Object.freeze ({
