@@ -20,7 +20,7 @@ class Register extends Component {
 
 	render() {
 		return(
-			<div>
+			<div className="top-level-component">
 				<header>
 					<div id="row">
 		                <div className="col-12">

@@ -13,7 +13,7 @@ class Game extends Component {
 		let text = "";
 		const startButtonText = !this.props.isStarted ? (text = "Start Game") : (text = "Restart");
 		return (
-			<div>
+			<div className="top-level-component">
 				<canvas id="canvas"></canvas>
 				<button id="start-game" onClick={this.onStartPressed.bind(this)}>{text}</button>
 			</div>
