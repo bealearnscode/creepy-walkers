@@ -13,7 +13,6 @@ class HighScore extends Component {
 	}
 
 	render() {
-		console.log(this.props.highScores);
 		return(
 			<div className="top-level-component">
 				<h1 className="high-scores">High Scores</h1>

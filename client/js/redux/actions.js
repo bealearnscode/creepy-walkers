@@ -1,4 +1,4 @@
-var fetch = require("isomorphic-fetch");
+import fetch from 'isomorphic-fetch';
 
 export const IS_GAME_STARTED = 'IS_GAME_STARTED';
 export function isGameStarted(bool) {
@@ -43,11 +43,9 @@ export function loginAsync(username, password) {
 			return response.json();
 		})
 		.then(data => {
-			console.log(data);
 			return dispatch(signInSuccess(data));
 		})
 		.catch(error => {
-			console.log(error);
 			return dispatch(signInError(error));
 		})
 	}
@@ -94,7 +92,6 @@ export function registerUserAsync(username, password) {
 			return dispatch(registerUserSuccess());
 		})
 		.catch(error => {
-			console.log(error);
 			return dispatch(registerUserError(error));
 		})
 	}
@@ -138,7 +135,6 @@ export function fetchHighScores() {
 			return response.json();
 		})
 		.then(data => {
-			console.log(data);
 			function compare(score1, score2) {
 				if(score1.score < score2.score) {
 					return 1;
@@ -151,7 +147,6 @@ export function fetchHighScores() {
 			return dispatch(fetchHighScoresSuccess(data.sort(compare)));
 		})
 		.catch(error => {
-			console.log(error);
 			return dispatch(fetchHighScoresError(error));
 		})
 	}
@@ -200,7 +195,6 @@ export function sendHighScoreAsync(username, password, score) {
 			return dispatch(sendHighScoreSuccess(data));
 		})
 		.catch(error => {
-			console.log(error);
 			return dispatch(sendHighScoreError(error));
 		})
 	}

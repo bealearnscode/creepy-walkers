@@ -1,5 +1,5 @@
 export default function userLives(spec) {
-	var lives = spec.amount
+	var lives = spec.amount;
 
 	function getLives() {
 		return lives;
@@ -12,5 +12,5 @@ export default function userLives(spec) {
 	return Object.freeze ({
 		getLives: getLives,
 		updateLives: updateLives,
-	})
+	});
 }

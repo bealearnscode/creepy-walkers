@@ -2,22 +2,16 @@ import makeProjectile from '../entity/projectile';
 
 export default function collisionSystem(entities) {
 	function run() {
-		setInterval(tick, 1000/4); //4 frames per second
+		setInterval(tick, 1000/4);
 	}
 
 	function cleanProjectiles() {
 		entities.forEach(function(entity,index) {
 			if(entity.getComponentKeys().includes("projectileLocation")) {
-				entities.splice(entities.indexOf(entity),1)
+				entities.splice(entities.indexOf(entity), 1);
 			}
-		})	
+		});
 	}
-	//enemy gets in range of tower radius
-	//projectile entity is pushed on to the entities array
-	//projectile entity moves toward the enemy
-	//if enemy collides with projectile...
-	//enemy loses health
-	//projectile is removed from entities array
 
 	function tick() {
 	     entities.forEach(function(entityA, index) {
@@ -28,25 +22,23 @@ export default function collisionSystem(entities) {
 		    			if (entityA.onCollision(entityB)) {
 		    				//if badguy is in range of tower
 		    				if((entityA.getEntityType() === "tower" && entityB.getEntityType() === "badguy") || (entityA.getEntityType() === "badguy" && entityB.getEntityType() === "tower")) {
-		    					var projectile
+		    					var projectile;
 		    					//shoot the projectile
 		    					if(entityA.getComponentKeys().includes("towerLocation")) {
-		    						projectile = makeProjectile({x: entityA.getXLocation(), y: entityA.getYLocation()}, {x: entityB.getXLocation() + 0.5, y: entityB.getYLocation() + 0.5})
+		    						projectile = makeProjectile({x: entityA.getXLocation(), y: entityA.getYLocation()}, {x: entityB.getXLocation() + 0.5, y: entityB.getYLocation() + 0.5});
 		    						entities.push(projectile);
 		    					}
 		    					if(entityB.getComponentKeys().includes("towerLocation")) {
-		    						projectile = makeProjectile({x: entityB.getXLocation(), y: entityB.getYLocation()}, {x: entityA.getXLocation() + 0.5, y: entityA.getYLocation() + 0.5})
+		    						projectile = makeProjectile({x: entityB.getXLocation(), y: entityB.getYLocation()}, {x: entityA.getXLocation() + 0.5, y: entityA.getYLocation() + 0.5});
 		    						entities.push(projectile);
 		    					}
 		    				}
 		    				if((entityA.getEntityType() === "projectile" && entityB.getEntityType() === "badguy") || (entityA.getEntityType() === "badguy" && entityB.getEntityType() === "projectile")) {
 		    					if(entityA.getComponentKeys().includes("health")) {
-		    						console.log('enemyHit')
 		    						entityA.reduceHealth(1);
 		    						entities.splice(entities.indexOf(entityB), 1);
 		    					}
 		    					if(entityB.getComponentKeys().includes("health")) {
-		    						console.log('enemyhit')
 		    						entityB.reduceHealth(1);
 		    						entities.splice(entities.indexOf(entityA), 1);
 		    					}
@@ -56,14 +48,10 @@ export default function collisionSystem(entities) {
 		    	});
 		    }
 		});
-
     }
 
     return Object.freeze({
     	run: run,
     	tick: tick,
     });
-
 }
-
-//still need to clean bullets with no target

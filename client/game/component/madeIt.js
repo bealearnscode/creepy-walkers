@@ -12,5 +12,5 @@ export default function madeIt() {
 	return Object.freeze ({
 		pathFinished: pathFinished,
 		checkStatus: checkStatus,
-	})
+	});
 }

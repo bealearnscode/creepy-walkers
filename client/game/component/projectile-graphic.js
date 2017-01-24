@@ -1,5 +1,4 @@
 export default function projectileGraphicComponent(spec) {
-
 	var entity = spec.entity;
 	var projectile = new Image();
 	projectile.src = spec.projectile;
@@ -14,5 +13,4 @@ export default function projectileGraphicComponent(spec) {
 	return Object.freeze({
 		drawProjectile: drawProjectile,
 	});
-
 }

@@ -14,5 +14,5 @@ export default function waves(spec) {
 	return Object.freeze ({
 		getWave: getWave,
 		updateWave: updateWave,
-	})
+	});
 }

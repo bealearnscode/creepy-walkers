@@ -1,6 +1,5 @@
 export default function UserStatGraphics(spec) {
-	var entity = spec.entity
-	console.log(entity)
+	var entity = spec.entity;
 	function drawStats(ctx) {
 		if(entity.getStatus() == "playing") {
 			var lives  = spec.entity.getLives();
@@ -14,12 +13,11 @@ export default function UserStatGraphics(spec) {
 		if(entity.getStatus() == "You Lose") {
 			ctx.fillstyle = "white";
 			ctx.font = "5px Helvetica";
-			ctx.fillText("L", 6,9)
+			ctx.fillText("L", 6,9);
 		}
-		
 	}
 
 	return Object.freeze ({
 		drawStats: drawStats,
-	})
+	});
 }

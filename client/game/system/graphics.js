@@ -1,5 +1,4 @@
 export default function graphicsSystem(entities, canvas) {
-
 	var ctx = canvas.getContext('2d');
 
 	function run() {
@@ -22,7 +21,6 @@ export default function graphicsSystem(entities, canvas) {
 		
 		ctx.scale(newWidth, newHeight);
 		
-		//Every graphic entity that has a graphic component needs a draw function
 		entities.forEach(function(entity) {
 			if(entity.getComponentKeys().includes("graphics")) {
 				entity.draw(ctx);
@@ -38,5 +36,4 @@ export default function graphicsSystem(entities, canvas) {
 		run: run,
 		tick: tick,
 	});
-	
 }
