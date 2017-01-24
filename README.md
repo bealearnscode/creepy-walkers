@@ -1,5 +1,7 @@
 # Game of Towers
 
+### Demo: https://gameoftowers.herokuapp.com/
+
 ### To run this in development mode
 * if this is your first time, type "npm install" to install the necessary packages
 * in a terminal, type "npm run build" (you only have to do this once)
