@@ -1,18 +1,17 @@
 import makeBadguy from '../entity/badguy';
 
 export default function waveSystem(entities) {
-	var waveStart = false
-	var creepsGenerating = false
+	var waveStart = false;
+	var creepsGenerating = false;
 	var creepCounter = 0;
 	var waveTotal = 10;
 	var waveHealthBoost = 1;
-	var gameOver = false
+	var gameOver = false;
+
 	function run() {
-		var waveLoop = setInterval(wave,1000)
+		var waveLoop = setInterval(wave, 1000)
 		var waveChecker = setInterval(isWaveComplete, 2000);
 	}
-
-	//possible put wave information in as parameters for this function
 
 	function wave() {
 		if(!waveStart) {
@@ -28,55 +27,60 @@ export default function waveSystem(entities) {
 						creepsGenerating = false;
 						clearInterval(currentWave);
 					}
-			},1000);
+			}, 1000);
 		}
 	};
 
 	function isWaveComplete() {
-		var currentCreeps = []
-		entities.forEach(function(entity,index) {
+		var currentCreeps = [];
+
+		entities.forEach(function(entity, index) {
 			if(entity.getComponentKeys().includes("health")) {
-				currentCreeps.push(entity)
+				currentCreeps.push(entity);
 			}
-		})
-		entities.forEach(function(entity,index){
+		});
+
+		entities.forEach(function(entity, index) {
 			if(entity.getComponentKeys().includes("money")) {
 				if(entity.getLives() === 0) {
 						gameOver = true;
-						entity.changeStatus()
+						entity.changeStatus();
 				}
 			}
-		}) 
+		});
+
 		if(currentCreeps.length === 0 && creepsGenerating == false) {
 			if(gameOver) {
-				clearInterval(waveChecker)
-				clearInterval(waveLoop)
+				clearInterval(waveChecker);
+				clearInterval(waveLoop);
 			};
+
 			var victorySound = document.getElementById("victory_wave");
-			victorySound.play()
-			cleanProjectiles()
-			entities.forEach(function(entity,index) {
+			victorySound.play();
+			cleanProjectiles();
+
+			entities.forEach(function(entity, index) {
 				if(entity.getComponentKeys().includes("money")) {
-					entity.updateScore(50*waveTotal);
-					entity.updateScore(33*entity.getMoney())
-					entity.updateMoney(3*waveTotal);
+					entity.updateScore(50 * waveTotal);
+					entity.updateScore(33 * entity.getMoney());
+					entity.updateMoney(3 * waveTotal);
 					entity.updateWave();
 					waveHealthBoost += entity.getWave() * 1.5;
-					waveTotal += 5
+					waveTotal += 5;
 					waveStart = false;
-					cleanProjectiles()
+					cleanProjectiles();
 				}
 			})
 		}	
 	}
 
 	function cleanProjectiles() {
-		entities.forEach(function(entity,index) {
+		entities.forEach(function(entity, index) {
 			if(entity.getComponentKeys().includes("projectileLocation")) {
-				entities.splice(entities.indexOf(entity),1)
+				entities.splice(entities.indexOf(entity), 1);
 			}
-		})	
-	};
+		});
+	}
 
 	return Object.freeze({
 		run:run,

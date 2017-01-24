@@ -21,15 +21,14 @@ export default function userState() {
 	});
 
 	var wave = currentWave({
-		currentWave: 1
+		currentWave: 1,
 	});
 
 	var graphics = userStatGraphics({
 		entity:user
 	});
 
-	var status = userStatus({
-	})
+	var status = userStatus({});
 
 	var components = {
 		money: money,
@@ -54,11 +53,11 @@ export default function userState() {
 
 	user.getWave = function() {
 		return components.wave.getWave();
-	}
+	};
 
 	user.updateWave = function() {
 		components.wave.updateWave()
-	}
+	};
 
 	user.updateLives = function(amount) {
 		components.lives.updateLives(amount);
@@ -81,12 +80,12 @@ export default function userState() {
 	};
 
 	user.changeStatus = function() {
-		components.status.changeStatus()
-	}
+		components.status.changeStatus();
+	};
 
 	user.getStatus = function() {
-		return components.status.getStatus()
-	}
+		return components.status.getStatus();
+	};
 
 	return Object.freeze(user);
 }

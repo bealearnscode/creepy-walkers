@@ -4,8 +4,8 @@ import tileLocationComponent from '../component/tile-location';
 import collisionComponent from '../component/collision';
 
 export default function makeTower(spec) {
-
 	var tower = {};
+
 	var graphics = makeTowerGraphicComponent({
 		entityOfComponent: tower,
 		spriteSheet: "assets/img/towers/Stark/jon-left.png",
@@ -42,7 +42,7 @@ export default function makeTower(spec) {
 
 	tower.getRadius = function() {
 		return components.collision.getRadius();
-	}
+	};
 
 	tower.onCollision = function(entity) {
 		return components.collision.collidesWith(entity);
@@ -57,5 +57,4 @@ export default function makeTower(spec) {
 	};
 
 	return Object.freeze(tower);
-
 }

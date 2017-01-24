@@ -1,7 +1,6 @@
 import badguy from '../entity/badguy'
 
 export default function movementSystem(entities) {
-
 	function run() {
 		setInterval(tick, 1000/60);
 	}
@@ -11,9 +10,6 @@ export default function movementSystem(entities) {
 		    if(entity.getComponentKeys().includes("movement")) {
 			    entity.move();
 		    }
-		    // if(entity.getComponentKeys().includes("projectileMovement")) {
-		    // 	entity.projectileMovement({x:badguy().getXLocation(),y:badguy().getYLocation()})
-		    // }
 	    });
     }
 	
@@ -21,5 +17,4 @@ export default function movementSystem(entities) {
 	    run: run,
 	    tick: tick
 	});
-    
 }

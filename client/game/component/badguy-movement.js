@@ -1,9 +1,6 @@
 export default function badGuyMovementComponent(spec) {
-
     var entity = spec.entity;
-    var path = spec.path
-
-    //if we want the location, get it through the entity
+    var path = spec.path;
     var finishedPath = false;
     var creepStarted = false;
     var colDelta = 0;
@@ -21,7 +18,7 @@ export default function badGuyMovementComponent(spec) {
 			}
 
 			//check if the creep has reached the next coordinate
-			if(Math.round(entity.getXLocation()*100)/100 === nextCoordinate.x && Math.round(entity.getYLocation()*100)/100 === nextCoordinate.y) {
+			if(Math.round(entity.getXLocation() * 100) / 100 === nextCoordinate.x && Math.round(entity.getYLocation() * 100) / 100 === nextCoordinate.y) {
 				currentCoordinateIndex++;
 				if(path[currentCoordinateIndex] == path[113]) {
 					finishedPath = true;
@@ -41,6 +38,7 @@ export default function badGuyMovementComponent(spec) {
 				}else {
 					colDelta = 0;
 				}
+
 				if(nextCoordinate.x > currentCoordinate.x) {
 					rowDelta = .025;
 				}else if(nextCoordinate.x < currentCoordinate.x) {
@@ -49,11 +47,8 @@ export default function badGuyMovementComponent(spec) {
 					rowDelta = 0;
 				}
 			}
-          	console.log(rowDelta)
-          	console.log(colDelta)
 			entity.changeXLocation(rowDelta);
 			entity.changeYLocation(colDelta);
-
 		}
     }
 
@@ -61,9 +56,3 @@ export default function badGuyMovementComponent(spec) {
 	    moveBadGuy: moveBadGuy,
     });
 }
-
-//pass through coordinate array once, not continuously generate a path
-//instead of using coordinate index, shift off values from an array
-//utility function for making numbers more readable
-//change entity to badguy
-

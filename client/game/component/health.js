@@ -1,7 +1,4 @@
-//make a method to lower amount of health
-//when health <= 0, they dead. lata.
 export default function badGuyHealthComponent(spec) {
-
 	var health = {
 		amount: spec.amount,
 	}
@@ -18,5 +15,4 @@ export default function badGuyHealthComponent(spec) {
 		getHealth: getHealth,
 		reduceHealth: reduceHealth,
 	});
-
 }

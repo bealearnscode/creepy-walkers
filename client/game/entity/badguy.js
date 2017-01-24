@@ -5,18 +5,17 @@ import pathfinder from '../component/pathfinder';
 import locationComponent from '../component/location';
 import healthComponent from '../component/health';
 import collisionComponent from '../component/collision';
-import madeItComponent from '../component/madeIt'
-import makeBadguyAudioComponent from '../component/badguy_audio'
+import madeItComponent from '../component/madeIt';
+import makeBadguyAudioComponent from '../component/badguy_audio';
 
 export default function makeBadGuy(healthWaveBoost) {
 	var badguy = {};
 
 	var map = makeLevelMapComponent().map;
+	
 	var path = { 
 		path: pathfinder(map).path(),
-	}
-	//path for each enemy?
-	//console.log(path)
+	};
 
 	var location = locationComponent({
 		x:path.path[0].x,
@@ -30,8 +29,7 @@ export default function makeBadGuy(healthWaveBoost) {
 		movement: movement,
 	});
 
-	var audio = makeBadguyAudioComponent({
-	})
+	var audio = makeBadguyAudioComponent({});
 
 	var movement = badGuyMovementComponent({
 		entity: badguy,
@@ -48,8 +46,7 @@ export default function makeBadGuy(healthWaveBoost) {
 		radius: 0.5,
 	});
 
-	var madeIt = madeItComponent({
-	})
+	var madeIt = madeItComponent({});
 
 	var components = {
 		audio: audio,
@@ -61,7 +58,6 @@ export default function makeBadGuy(healthWaveBoost) {
 		path: path,
 		madeIt: madeIt,
 	};
-	
 
 	badguy.getXLocation = function() {
 		return components.location.getXLocation();
@@ -73,15 +69,15 @@ export default function makeBadGuy(healthWaveBoost) {
 
 	badguy.getDirection = function() {
 		return components.location.getDirection();
-	}
+	};
 
 	badguy.changeXLocation = function(delta) {
 		return components.location.changeXLocation(delta);
-	}
+	};
 
 	badguy.changeYLocation = function(delta) {
 		return components.location.changeYLocation(delta);
-	}
+	};
 
 	badguy.getPath = function() {
 		return components.path;
@@ -93,7 +89,7 @@ export default function makeBadGuy(healthWaveBoost) {
 
 	badguy.reduceHealth = function(damage) {
 		return components.health.reduceHealth(damage);
-	}
+	};
 
 	badguy.getEntityType = function() {
 		return components.collision.getEntityType();
@@ -101,7 +97,7 @@ export default function makeBadGuy(healthWaveBoost) {
 
 	badguy.getRadius = function() {
 		return components.collision.getRadius();
-	}
+	};
 
 	badguy.onCollision = function(entity) {
 		return components.collision.collidesWith(entity);
@@ -116,21 +112,20 @@ export default function makeBadGuy(healthWaveBoost) {
 	};
 
 	badguy.playAudio = function() {
-		components.audio.playAudio()
-	}
+		components.audio.playAudio();
+	};
 
 	badguy.madeItToEnd = function() {
 		components.madeIt.pathFinished();
-	}
+	};
 		
 	badguy.checkStatus = function() {
-		return components.madeIt.checkStatus()
-	}
+		return components.madeIt.checkStatus();
+	};
 
 	badguy.move = function() {
 		components.movement.moveBadGuy();
 	};
-
 	
 	return Object.freeze(badguy);
 }

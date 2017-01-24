@@ -1,5 +1,4 @@
 export default function collisionComponent(spec) {
-
 	var entity = spec.entity;
 	var radius = spec.radius;
 
@@ -39,5 +38,4 @@ export default function collisionComponent(spec) {
 		getEntityType: getEntityType,
 		getRadius: getRadius,
 	});
-
 }

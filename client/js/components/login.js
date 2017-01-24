@@ -37,10 +37,4 @@ class Login extends Component {
 	}
 }
 
-// let mapStateToProps = function(state, props) {
-// 	return {
-// 		isStarted: state.isStarted,
-// 	}
-// }
-
 export default connect()(Login);
