@@ -1,12 +1,3 @@
-//import theGame from './game/game';
-
-// document.addEventListener("DOMContentLoaded", function() {
-// 	game().run();
-// });
-
-
-//browserhistory or hashhistory?
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, Link, hashHistory } from 'react-router';

@@ -4,9 +4,6 @@ import collisionComponent from '../component/collision';
 import movementComponent from '../component/projectile-movement';
 
 export default function makeProjectile(spec, badguy) {
-	if(!badguy.x) {
-		console.log('hello')
-	}
 	var projectile = {};
 
 	var graphics = projectileGraphicComponent({
@@ -14,7 +11,6 @@ export default function makeProjectile(spec, badguy) {
 		projectile: "assets/img/projectiles/jon-weapon-8x8.png",
 	});
 
-	//starting location will be where the tower location is
 	var projectileLocation = projectileLocationComponent({
 		x: spec.x,
 		y: spec.y,
@@ -24,12 +20,12 @@ export default function makeProjectile(spec, badguy) {
 		entity: projectile,
 		entityType: "projectile",
 		radius: 0.25,
-	})
+	});
 
 	var movement = movementComponent({
 		entity: projectile,
 		speed: 0.125,
-	})
+	});
 
 	var components = {
 		graphics: graphics,
@@ -48,16 +44,13 @@ export default function makeProjectile(spec, badguy) {
 
 	projectile.changeXLocation = function(delta) {
 		return components.projectileLocation.changeXLocation(delta);
-	}
+	};
 
 	projectile.changeYLocation = function(delta) {
 		return components.projectileLocation.changeYLocation(delta);
-	}
+	};
 
 	projectile.move = function() {
-		//move the projectile toward the badguy
-		//move will change the location component of the projectile,
-		//and will make the projectile get closer to the badguy
 		return components.movement.projectileTrajectory({x: badguy.x, y: badguy.y});
 	};
 

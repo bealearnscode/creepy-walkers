@@ -21,7 +21,6 @@ export default function inputSystem(entities, canvas) {
 		var tileWidthAndHeight = 16;
 		var xTile = Math.floor((x / canvas.width) * tileWidthAndHeight);
 		var yTile = Math.floor((y / canvas.height) * tileWidthAndHeight);
-		console.log(`x: ${xTile}, y: ${yTile}`);
 
 		if(mapArr[yTile][xTile] === 1) {
 			entities.forEach(function(entity,index){
@@ -29,26 +28,15 @@ export default function inputSystem(entities, canvas) {
 					if(entity.getMoney() >= 60) {
 						entities.push(makeTower({x: xTile, y: yTile}));
 						mapArr[yTile][xTile] = 2;
-						entity.updateMoney(-60)
-					//set the location where you click to 2 
-					//so you aren't able to place towers on top of each other
-					}
-					else if(entity.getMoney() < 60) {
-						console.log('not enough money')
+						entity.updateMoney(-60);
 					}
 				}
-			}) 
+			});
 		}
-		else {
-			console.log("invalid tile location");
-			//console.log(entities);
-		}
-
 	}
 
 	return Object.freeze ({
 		run: run,
 		clickHandler: clickHandler,
 	});
-
 }

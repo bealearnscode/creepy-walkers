@@ -1,5 +1,4 @@
 export default function tileLocationComponent(spec) {
-
 	var currentTileLocation = {
 		x: Math.floor(spec.x),
 		y: Math.floor(spec.y),
@@ -17,5 +16,4 @@ export default function tileLocationComponent(spec) {
 		getXLocation: getXLocation,
 		getYLocation: getYLocation,
 	});
-
 }

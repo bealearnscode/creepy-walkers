@@ -3,11 +3,11 @@ export default function projectileMovementComponent(spec) {
 	var speed = spec.speed;
 	var colDelta = 0;
 	var rowDelta = 0;
-	var previousCreepLocation
-	var currentCreepLocation 
+	var previousCreepLocation;
+	var currentCreepLocation ;
 
 	function projectileTrajectory(creepLocation) {
-		previousCreepLocation = currentCreepLocation
+		previousCreepLocation = currentCreepLocation;
 		var toCreepX = (entity.getXLocation() - creepLocation.x);
 		var toCreepY = (entity.getYLocation() - creepLocation.y);
 
@@ -32,5 +32,5 @@ export default function projectileMovementComponent(spec) {
 
 	return Object.freeze({
 		projectileTrajectory: projectileTrajectory,
-	})
+	});
 }

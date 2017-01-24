@@ -7,11 +7,7 @@ class Register extends Component {
 		e.preventDefault();
 		if(this.refs.password.value === this.refs.confirmPassword.value) {
 			this.props.dispatch(actions.registerUserAsync(this.refs.username.value, this.refs.password.value));
-			console.log("passwords match. User registered");
 			this.props.router.push('/');
-		}
-		else {
-			console.log("passwords do not match");
 		}
 		this.refs.username.value = "";
 		this.refs.password.value = "";

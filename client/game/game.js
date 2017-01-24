@@ -8,11 +8,9 @@ import badguy from './entity/badguy';
 import tower from './entity/tower';
 import level from './entity/level';
 import user from './entity/user';
-//tower and badguy are being created dynamically
 
 export default function game() {
-
-	var entities = [level(),user()];
+	var entities = [level(), user()];
 	var canvas = document.getElementById("canvas");
 	var graphics = graphicsSystem(entities, canvas);
 	var input = inputSystem(entities, canvas);
@@ -20,7 +18,7 @@ export default function game() {
 	var vitality = vitalitySystem(entities)
 	var collision = collisionSystem(entities);
 	var wave = waveSystem(entities);
-	var bgMusic = document.getElementById("theme_song")
+	var bgMusic = document.getElementById("theme_song");
 
 	function run() {
 		graphics.run();
@@ -30,11 +28,10 @@ export default function game() {
 		collision.run();
 		wave.run();
 		bgMusic.loop = true;
-		bgMusic.play()
+		bgMusic.play();
 	}
 
 	return Object.freeze ({
 		run: run,
 	});
-	
 }
