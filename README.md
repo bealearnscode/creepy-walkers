@@ -27,7 +27,7 @@ Who doesn't love video games? Who doesn't love a good tower defense game? We're 
 * Once you complete a round, a sound of joy will play through your speakers and the next round will begin. There are an infinite number or rounds.
 * If you run out of lives, a very large L will fill the screen and you will probably be sad. If you earned a high score, it will automatically be posted to the high scores list.
 
-![Screenshot](client/assets/img/cleveland.png)
+![Screenshot](client/assets/img/cleveland.jpg)
 
 ## API Documentation
 
